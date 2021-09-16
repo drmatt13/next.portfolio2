@@ -1,0 +1,62 @@
+.modal_container {
+  height: 100%;
+  overflow-y: scroll;
+  padding-right: 10px;
+
+  .margin_container {
+    margin-bottom: 20px;
+  }
+  
+  .margin_container:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .app_container {
+    // width: 100%;
+    min-height: 75px;
+    height: 10vw;
+    max-height: 100px;
+    // background: linear-gradient(0deg, #c9cbce40 0%, #d9e5f1b0 100%), radial-gradient(at top left, rgba(255,255,255,0.30) 0%, rgba(0,0,0,0.30) 100%);
+    // background-blend-mode: screen;
+    // border-radius: 15px;
+    // display: flex;
+    // box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    // transition: background-color 0.15s ease-out;
+
+    .image_container {
+      height: 100%;
+      min-width: 75px;
+      width: 10vw;
+      max-width: 100px;
+      padding: 20px;
+
+      > div {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        border-radius: 50%;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+        * {
+          border-radius: 50%;
+        }
+      }
+    }
+
+    .test {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: large;
+    }
+  }
+
+  .app_container:last-of-type {
+    // margin: 0;
+  }
+
+  .app_container:hover {
+    background-color: #fffb;
+    transition: background-color 0.075s ease-in;
+  }
+}

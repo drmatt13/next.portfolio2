@@ -1,13 +1,37 @@
+import { useContext } from 'react'
+
 // components
 import Navbar from './Navbar'
 
+// context
+import _appContext from '../context/_appContext'
+
 const AppLayout = ({ children }) => {
-  return <div className="h-screen flex flex-col bg-gradient-to-tl from-white via-red-200 to-pink-100 dark:from-blue-400 dark:via-purple-600 dark:to-gray-600">
-    <Navbar />
-    <div className="relative flex-1 overflow-y-auto">
-      { children }
+
+  const { darkMode } = useContext(_appContext)
+
+  return <>
+    <style jsx>{`
+      .dark {
+        background: #404149;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #232526, #30313a);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #232526, #30313a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      }
+      .light {
+        // background: #C9D6FF;  /* fallback for old browsers */
+        // background: -webkit-linear-gradient(to right, #E2E2E2, #C9D6FF);  /* Chrome 10-25, Safari 5.1-6 */
+        // background: linear-gradient(to right, #E2E2E2, #C9D6FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        background-color: #8EC5FC;
+        background-image: linear-gradient(62deg, #c3e1ff 0%, #e5e1ff 100%);
+      }
+    `}</style>
+    <div className={`${darkMode ? "dark" : "light"} min-h-screen max-h-screen flex flex-col dark:bg-gray-800`}>
+      <div className="relative flex-1 overflow-y-auto">
+        { children }
+      </div>
+      <Navbar />
     </div>
-  </div>
+  </>
 }
 
 export default AppLayout

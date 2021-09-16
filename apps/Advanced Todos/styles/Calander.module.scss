@@ -1,0 +1,108 @@
+.calander_container {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+     -moz-user-select: none; /* Old versions of Firefox */
+      -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Edge, Opera and Firefox */
+
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  height: 15vw;
+  min-height: calc(250px);
+
+  .days_container {
+    flex: .5;
+    display: flex;
+    justify-content: space-around;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+    
+    > div {
+      background-color: #fff4;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    > div:first-of-type {
+      border-top-left-radius: 10px !important;
+    }
+
+    > div:last-child {
+      border-top-right-radius: 10px !important;
+    }
+
+  }
+
+  .grid_container {
+    flex: 6;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 1px;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+  
+    > div {
+      transition: background-color 0.25s ease-in;
+      padding-left: 2.5px;
+      border-radius: 0px !important;
+      background-color: #fff8;
+    }
+  
+    > div:nth-of-type(36) {
+      border-bottom-left-radius: 10px !important;
+    }
+  
+    > div:nth-of-type(42) {
+      border-bottom-right-radius: 10px !important;
+    }
+  
+    > div:hover {
+      transition: background-color 0.01s ease-in-out;
+      background-color: #fffa;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    }
+  
+    .other_month {
+      background-color: rgba(195, 195, 195, 0.5);
+    }
+
+    .other_month:hover {
+      background-color: rgba(210, 210, 210, 0.65);
+    }
+
+    .green {
+      background-color: rgba(0, 255, 75, 0.4);
+    }
+
+    .green:hover {
+      background-color: rgba(0, 255, 85, 0.65);
+      cursor: pointer;
+    }
+
+    .red {
+      background-color: rgba(255, 75, 75, 0.5);
+    }
+
+    .red:hover {
+      background-color: rgba(255, 99, 71, 0.85);
+      cursor: pointer;
+    }
+
+    .todo {
+      background-color: rgba(255, 226, 39, 0.5);
+    }
+
+    .todo:hover {
+      background-color: rgba(255, 226, 39, 0.75);
+      cursor: pointer;
+    }
+  }
+}

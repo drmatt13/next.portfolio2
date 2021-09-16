@@ -48,7 +48,7 @@ function MyApp({ Component, pageProps }) {
       <meta property="og:description" content="og:description" />
       <meta property="og:image" content="/og-image.jpg" />
     </Head>
-    <_appContext.Provider value={{ mobile, setDarkMode }}>
+    <_appContext.Provider value={{ mobile, darkMode, setDarkMode }}>
       <AppLayout>
         <Component {...pageProps} />
       </AppLayout>

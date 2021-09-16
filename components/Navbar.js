@@ -1,19 +1,60 @@
-import Link from 'next/link'
+import { useState, useContext } from 'react'
+import Link from './Link'
+
+// components
+import Modal from './Modal'
+import NavButton from './NavButton'
+
+// context
+import _appContext from '../context/_appContext'
 
 const Navbar = () => {
+
+  const { darkMode, mobile } = useContext(_appContext),
+        [modal, setModal] = useState(null)
+
+  const toggleModal = x => {
+    if (modal) {
+      if (modal === x) {
+        setModal(null)
+        return null
+      }
+    }
+    if (!x) {
+      setModal(null)
+      return null
+    }
+    setModal(x)
+  }
+
   return <>
-    <div className="max-w-full flex justify-between bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 dark:from-blue-600 dark:via-purple-600 dark:to-gray-600">
-      <div className="select-none ml-5 sm:ml-10 flex justify-center items-center text-7xl sm:text-8xl">
-        <Link href="/">
-          <i className="devicon-nextjs-plain-wordmark colored cursor-pointer" />
+    <style jsx>{`
+      nav {
+        width: 425px;
+        border-top-left-radius: 3rem;
+        border-top-right-radius: 3rem;
+      }
+      .light {
+        background-image: linear-gradient(to right, #ffa2a2e8 0%, #bbc1bfe8 19%, #57c6e1e8 42%, #b49fdae8 79%, #7ac5d8e8 100%);
+      }
+      .dark {
+        background: #944a90;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #0b8793e8, #944a90e8);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #0b8793e8, #944a90e8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      }
+    `}</style>
+    {modal && <Modal modal={modal} toggleModal={()=>toggleModal(null)} />}
+    <div className="absolute w-full bottom-0 flex justify-center">
+      <nav className={`${darkMode ? "dark" : "light"} flex shadow-2xl justify-center text-2xl`} >
+        <Link href={`/`} toggleModal={toggleModal}>
+          <NavButton icon="fas fa-home" onClick={toggleModal} />
         </Link>
-      </div>
-      <div className="select-none mr-5 sm:mr-10 flex justify-center items-center text-sm sm:text-xl">
-        <div className="relative h-10 w-10 flex justify-center items-center bg-white dark:text-gray-200 dark:hover:text-black dark:bg-gray-800 rounded-full shadow-2xl cursor-pointer ring-1 ring-gray-100 hover:ring-green-400 dark:ring-gray-800 dark:hover:ring-green-400 hover:bg-green-400 dark:hover:bg-green-400">
-            <div className="absolute top-0 right-0 h-5 w-5 flex justify-center items-center text-sm text-white bg-black dark:bg-red-500 border border-opacity-50 border-gray-600 rounded-full animate-cart-bounce">2</div>
-            <i className="fas fa-shopping-cart" />
-        </div>
-      </div>
+        <NavButton icon="fas fa-laptop-code" onClick={()=>toggleModal("apps")} active={modal==="apps"?true:false} />
+        <NavButton icon="fas fa-list-ul" onClick={()=>toggleModal("notes")} active={modal==="notes"?true:false} />
+        <NavButton icon="far fa-address-card" onClick={()=>toggleModal("contact")} active={modal==="contact"?true:false} />
+        <NavButton icon="fas fa-question" onClick={()=>toggleModal("about")} active={modal==="about"?true:false} />
+        <NavButton icon="fas fa-cog" onClick={()=>toggleModal("settings")} active={modal==="settings"?true:false} />
+      </nav>
     </div>
   </>
 }

@@ -1,0 +1,114 @@
+.transactions_master_container {
+  flex: 1;
+  height: 15vw;
+  min-height: calc(250px);
+  
+  > div {
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+    padding: 10px;
+
+    > h3 {
+      color: rgba(0, 0, 0, 0.75);
+      border-bottom: 1px solid rgba(128, 128, 128, 0.5);
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .transactions_container {
+
+      flex: 1;
+      max-height: 100%;
+      overflow-y: scroll;
+
+      .transaction:first-of-type {
+        margin-top: 0 !important;
+      }
+      
+      .transaction {
+        margin-top: 10px;
+        margin-right: 10px;
+        background: rgba(255, 255, 255, 0.75);
+        display: flex;
+        position: relative;
+        border-radius: 15px;
+        
+        .exit_btn {
+          position: absolute;
+          visibility: hidden;
+        }
+  
+        .name {
+          flex: 1;
+          padding: 10px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+  
+        .amount {
+          padding: 10px;
+          margin-right: 10px;
+        }
+  
+        .color {
+          position: absolute;
+          right: 0;
+          height: 100%;
+          width: 10px;
+          border-bottom-right-radius: 15px;
+          border-top-right-radius: 15px;
+        }
+
+        .green {
+          background-color: springgreen;
+        }
+  
+        .red {
+          background-color: tomato;
+        }
+
+        .yellow {
+          background-color: rgb(235, 205, 45);
+        }
+
+      }
+
+      .transaction:hover {
+        background: #fffd;
+        cursor: pointer;
+      }
+
+    }
+
+    .transaction_btn {
+      -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+      
+      height: 40px;
+      width: 100%;
+      margin-top: 10px;
+      background-color: #4267B2;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 20px;
+    }
+
+    .transaction_btn:hover {
+      background-color: #4267b2d0;
+      cursor: pointer;
+    } 
+
+  }
+}
