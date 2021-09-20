@@ -28,9 +28,8 @@ const AppsModal = ({ toggleModal }) => {
     `}</style> */}
     <div className={`${styles.modal_container} animate-fade-in`}>
       {apps.map((app, i) => (
-        <div className={styles.margin_container}>
-          <Link 
-            key={i} 
+        <div className={styles.margin_container} key={i}>
+          <Link
             href={`/apps/${app.split(" ").join("-").toLowerCase()}`}
             toggleModal={toggleModal}
           >
