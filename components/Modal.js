@@ -25,6 +25,18 @@ const Modal = ({ modal, toggleModal }) => {
         max-width: 800px;
         padding: 45px 10px 20px 20px;
       }
+
+      @media only screen and (max-width: 768px) {
+        .modal {
+          width: 75vw;
+        }
+      }
+
+      @media only screen and (max-width: 640px) {
+        .modal {
+          width: 90vw;
+        }
+      }
     `}</style>
     <div className="animate-fade-in absolute top-0 left-0 h-screen w-screen flex justify-center items-center">
       <div className="absolute bg-black bg-opacity-25 h-screen w-screen" onClick={()=>toggleModal(null)} />

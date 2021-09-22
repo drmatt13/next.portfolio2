@@ -18,7 +18,7 @@ a {
   scroll-behavior: smooth;
 }
 
-.select-none {
+.select-none, .select-none * {
   -webkit-tap-highlight-color: transparent;
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */

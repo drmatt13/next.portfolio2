@@ -45,7 +45,7 @@ const Navbar = () => {
       }
     `}</style>
     {modal && <Modal modal={modal} toggleModal={()=>toggleModal(null)} />}
-    <div className="absolute w-full bottom-0 flex justify-center">
+    <div className="absolute w-full bottom-0 flex justify-center select-none">
       <nav className={`${darkMode ? "dark" : "light"} flex shadow-2xl justify-center text-2xl`} >
         <Link href={`/`} toggleModal={toggleModal}>
           <NavButton icon="fas fa-home" onClick={toggleModal} />

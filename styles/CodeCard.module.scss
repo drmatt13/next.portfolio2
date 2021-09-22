@@ -16,16 +16,17 @@
     position: relative;
 
     div {
-      padding: 4px 0 4px 7.5px;
-      height: 30px;
+      padding: .5em 0 .5em .5em;
+      // height: 30px;
       width: 150px;
       text-align: left;
       background-color: rgba(0, 0, 0, 0.10);
       transition: all .075s ease-in-out;
+      
       @apply truncate;
 
       i {
-        margin-right: 7.5px;
+        margin-right: .5em;
       }
     }
 
@@ -58,6 +59,7 @@
     flex: 1;
     padding: 10px;
     overflow-x: auto;
+    transition: font-size .25s linear;
   }
 
   .output {
@@ -78,10 +80,17 @@
   }
 }
 
+@media only screen and (max-width: 1024px) {
+  .cardContainer {
+    font-size: smaller;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .cardContainer {
     width: 80vw;
     margin-top: 10vw;
+    font-size: small;
   }
 }
 
@@ -89,5 +98,6 @@
   .cardContainer {
     width: 90vw;
     margin-top: 5vw;
+    font-size: x-small;
   }
 }
