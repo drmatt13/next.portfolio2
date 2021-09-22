@@ -4,6 +4,7 @@ import Link from './Link'
 // components
 import Modal from './Modal'
 import NavButton from './NavButton'
+import ThemeButton from './ThemeButton'
 
 // context
 import _appContext from '../context/_appContext'
@@ -49,11 +50,11 @@ const Navbar = () => {
         <Link href={`/`} toggleModal={toggleModal}>
           <NavButton icon="fas fa-home" onClick={toggleModal} />
         </Link>
+        <ThemeButton />
         <NavButton icon="fas fa-laptop-code" onClick={()=>toggleModal("apps")} active={modal==="apps"?true:false} />
         <NavButton icon="fas fa-list-ul" onClick={()=>toggleModal("notes")} active={modal==="notes"?true:false} />
         <NavButton icon="far fa-address-card" onClick={()=>toggleModal("contact")} active={modal==="contact"?true:false} />
         <NavButton icon="fas fa-question" onClick={()=>toggleModal("about")} active={modal==="about"?true:false} />
-        <NavButton icon="fas fa-cog" onClick={()=>toggleModal("settings")} active={modal==="settings"?true:false} />
       </nav>
     </div>
   </>

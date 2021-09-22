@@ -8,8 +8,7 @@ import _appContext from '../context/_appContext'
 const DynamicAppModal = dynamic(() => import('./modals/apps')),
       DynamicNoteModal = dynamic(() => import('./modals/notes')),
       DynamicContactModal = dynamic(() => import('./modals/contact')),
-      DynamicAboutModal = dynamic(() => import('./modals/about')),
-      DynamicSettingsModal = dynamic(() => import('./modals/settings'))
+      DynamicAboutModal = dynamic(() => import('./modals/about'))
 
 const Modal = ({ modal, toggleModal }) => {
 
@@ -31,7 +30,7 @@ const Modal = ({ modal, toggleModal }) => {
       <div className="absolute bg-black bg-opacity-25 h-screen w-screen" onClick={()=>toggleModal(null)} />
       <div className="modal rounded-2xl shadow-lg bg-gray-300 dark:bg-gray-700 bg-opacity-95 dark:bg-opacity-90 transition-colors">
         <div 
-          className="absolute top-3 right-3 h-6 w-6 flex justify-center items-center rounded-full bg-gray-200 bg-opacity-80 hover:bg-red-400 hover:cursor-pointer transition-colors duration-150 ease-out"
+          className="absolute top-3 right-3 h-6 w-6 flex justify-center items-center rounded-full bg-gray-800 dark:bg-gray-200 text-gray-200 dark:text-black bg-opacity-80 hover:bg-red-500 dark:hover:bg-red-500 hover:cursor-pointer transition-colors duration-150 ease-out"
           onClick={()=>toggleModal(null)}
         >
           <i className="fas fa-times"></i>
@@ -40,7 +39,6 @@ const Modal = ({ modal, toggleModal }) => {
         {modal === 'notes' && <DynamicNoteModal toggleModal={toggleModal} />}
         {modal === 'contact' && <DynamicContactModal />}
         {modal === 'about' && <DynamicAboutModal />}
-        {modal === 'settings' && <DynamicSettingsModal />}
       </div>
     </div>
   </>

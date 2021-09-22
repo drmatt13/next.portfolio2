@@ -1,9 +1,15 @@
-import { useState, useEffect, useCallback, useRef } from "react"
-import 'highlight.js/styles/base16/material.css'; 
-import styles from '../styles/CodeCard.module.scss'
+import { useState, useEffect, useCallback, useRef, useContext } from 'react'
 import hljs from 'highlight.js';
 
+// context
+import _appContext from '../context/_appContext' 
+
+// styles
+import styles from '../styles/CodeCard.module.scss'
+
 const CodeCard = ({ data }) => {
+
+  const { darkMode } = useContext(_appContext)
 
   const [height, setHeight] = useState(200)
   const [previousTab, setPreviousTab] = useState(0)
@@ -129,7 +135,6 @@ const CodeCard = ({ data }) => {
       headerRef.current.childNodes[selectedTab].classList.add(styles.selected)
     } else {
       headerRef.current.childNodes[selectedTab].classList.add(styles.render)
-
       wrapperRef.current.childNodes[selectedTab].srcdoc = wrapperRef.current.childNodes[selectedTab].srcdoc
       wrapperRef.current.childNodes[selectedTab].classList.add("fade-in")
     }
@@ -150,7 +155,53 @@ const CodeCard = ({ data }) => {
   }, [selectedTab])
 
   return <>
+    <style global="true">{`
+      pre {
+        color:${darkMode ? "white" : "black"};
+      }
+      pre::-webkit-scrollbar {
+        width: 12.5px;
+        height: 12.5px;
+      }
+      
+      pre::-webkit-scrollbar-thumb {
+        background-color: ${darkMode ? "rgba(255, 255, 255, 0.125)" : "rgba(0, 0, 0, 0.125)"};
+        border-radius: 6.25px;
+      }
+      
+      pre::-webkit-scrollbar-thumb:hover {
+        background-color: ${darkMode ? "rgba(255, 255, 255, 0.175)" : "rgba(0, 0, 0, 0.175)"};
+      }
+      
+      pre::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.125);
+        border-radius: 6.25px;
+        object-fit: fill;
+      }
+      
+      pre::-webkit-scrollbar-corner {
+        background-color: rgba(0, 0, 0, 0);
+      }
+      code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5px} .hljs-keyword,.hljs-meta-keyword{font-weight:700}
+      ${darkMode ? 
+        `.hljs{color:#eff;background:#263238}.hljs ::selection{color:#314549}.hljs-comment{color:#546e7a}.hljs-tag{color:#b2ccd6}.hljs-operator,.hljs-punctuation,.hljs-subst{color:#eff}.hljs-operator{opacity:.7}.hljs-bullet,.hljs-deletion,.hljs-name,.hljs-selector-tag,.hljs-template-variable,.hljs-variable{color:#f07178}.hljs-attr,.hljs-link,.hljs-literal,.hljs-number,.hljs-symbol,.hljs-variable.constant_{color:#f78c6c}.hljs-class .hljs-title,.hljs-title,.hljs-title.class_{color:#ffcb6b}.hljs-strong{font-weight:700;color:#ffcb6b}.hljs-addition,.hljs-code,.hljs-string,.hljs-title.class_.inherited__{color:#c3e88d}.hljs-built_in,.hljs-doctag,.hljs-keyword.hljs-atrule,.hljs-quote,.hljs-regexp{color:#89ddff}.hljs-attribute,.hljs-function .hljs-title,.hljs-section,.hljs-title.function_,.ruby .hljs-property{color:#82aaff}.diff .hljs-meta,.hljs-keyword,.hljs-template-tag,.hljs-type{color:#c792ea}.hljs-emphasis{color:#c792ea;font-style:italic}.hljs-meta,.hljs-meta.hljs-keyword,.hljs-meta .hljs-string{color:#ff5370}.hljs-meta` 
+        : 
+        `.hljs{color:#373b41;background:#fff}.hljs ::selection{color:#c5c8c6}.hljs-comment{color:#b4b7b4}.hljs-tag{color:#969896}.hljs-operator,.hljs-punctuation,.hljs-subst{color:#373b41}.hljs-operator{opacity:.7}.hljs-bullet,.hljs-deletion,.hljs-name,.hljs-selector-tag,.hljs-template-variable,.hljs-variable{color:#cc342b}.hljs-attr,.hljs-link,.hljs-literal,.hljs-number,.hljs-symbol,.hljs-variable.constant_{color:#f96a38}.hljs-class .hljs-title,.hljs-title,.hljs-title.class_{color:#fba922}.hljs-strong{font-weight:700;color:#fba922}.hljs-addition,.hljs-code,.hljs-string,.hljs-title.class_.inherited__{color:#198844}.hljs-attribute,.hljs-built_in,.hljs-doctag,.hljs-function .hljs-title,.hljs-keyword.hljs-atrule,.hljs-quote,.hljs-regexp,.hljs-section,.hljs-title.function_,.ruby .hljs-property{color:#3971ed}.diff .hljs-meta,.hljs-keyword,.hljs-template-tag,.hljs-type{color:#a36ac7}.hljs-emphasis{color:#a36ac7;font-style:italic}.hljs-meta,.hljs-meta .hljs-keyword,.hljs-meta .hljs-string{color:#3971ed}.hljs-meta`
+      }
+    `}</style>
     <style jsx>{`
+      .dark {
+        background: #232526;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      }
+      .light {
+        background: #232526;  /* fallback for old browsers */
+        background: radial-gradient( circle farthest-corner at 1.3% 2.8%,  rgba(239,249,249,1) 0%, rgb(235, 243, 255) 100.2% );
+      }
+      .${styles.header} {
+        ${darkMode ? "color: grey;" : "color: black;"}
+      }
       .${styles.wrapper} {
         height: ${height}px
       }
@@ -160,7 +211,7 @@ const CodeCard = ({ data }) => {
         color: grey;
       }
     `}</style>
-    <div className={`${styles.cardContainer} animate-fade-in`} ref={containerRef}>
+    <div className={`${styles.cardContainer} ${darkMode ? "dark" : "light"} animate-fade-in`} ref={containerRef}>
       <div className={`${styles.header} select-none`} ref={headerRef} />
       <div className={styles.wrapper} ref={wrapperRef} />
     </div>

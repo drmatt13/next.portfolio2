@@ -4,7 +4,7 @@ import CodeCard from '../components/CodeCard'
 export default function Notes ({data}) {
   const [notes] = useState(data)
   return <>
-    <div className="min-h-screen w-screen pb-36 flex flex-col items-center">
+    <div className="min-h-screen w-full pb-36 flex flex-col items-center">
       {notes && notes.map((data, key) => (
         <CodeCard key={key} data={data} />
       ))}
