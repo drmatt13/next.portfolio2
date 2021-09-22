@@ -17,12 +17,10 @@
 
     div {
       padding: .5em 0 .5em .5em;
-      // height: 30px;
       width: 150px;
       text-align: left;
       background-color: rgba(0, 0, 0, 0.10);
       transition: all .075s ease-in-out;
-      
       @apply truncate;
 
       i {
