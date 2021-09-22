@@ -183,6 +183,21 @@ const CodeCard = ({ data }) => {
         pre::-webkit-scrollbar-corner {
           background-color: rgba(0, 0, 0, 0);
         }
+
+        @media only screen and (max-width: 640px) {
+          pre::-webkit-scrollbar {
+            width: 6.25px;
+            height: 6.25px;
+          }
+          
+          pre::-webkit-scrollbar-thumb {
+            border-radius: 3.125px;
+          }
+          
+          pre::-webkit-scrollbar-track {
+            border-radius: 3.125px;
+          }
+        }
       `}
 
       code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5px} .hljs-keyword,.hljs-meta-keyword{font-weight:700}

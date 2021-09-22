@@ -21,11 +21,16 @@
       text-align: left;
       background-color: rgba(0, 0, 0, 0.10);
       transition: all .075s ease-in-out;
+      border-right: 1px solid rgba(0, 0, 0, 0.05);
       @apply truncate;
 
       i {
         margin-right: .5em;
       }
+    }
+
+    div:last-of-type {
+      border: none;
     }
 
     div:hover {
@@ -40,11 +45,13 @@
       background: #944a90;
       background: -webkit-linear-gradient(to right, #0b879380, #944a9080);
       background: linear-gradient(to right, #0b879380, #944a9080);
+      border: none !important;
     }
 
     .render {
       color: white;
       background-image: linear-gradient(83deg, rgba(39,66,65,.75) 0%, rgba(50,135,75,0.5) 100%);
+      border: none !important;
     }
   }
 
@@ -81,6 +88,10 @@
 @media only screen and (max-width: 1024px) {
   .cardContainer {
     font-size: smaller;
+
+    .header > div {
+      width: 125px;
+    }
   }
 }
 
@@ -89,6 +100,10 @@
     width: 80vw;
     margin-top: 10vw;
     font-size: small;
+
+    .header > div {
+        width: 100px;
+    }
   }
 }
 
@@ -97,5 +112,9 @@
     width: 90vw;
     margin-top: 5vw;
     font-size: x-small;
+
+    .header > div {
+      width: 75px;
+    }
   }
 }
