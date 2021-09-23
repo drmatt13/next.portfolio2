@@ -3,7 +3,7 @@ import { useContext } from 'react'
 // context
 import _appContext from '../context/_appContext'
 
-export default function Home({ env }) {
+export default function Home() {
 
   const { mobile } = useContext(_appContext)
 

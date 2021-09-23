@@ -4,7 +4,6 @@ import Link from './Link'
 // components
 import Modal from './Modal'
 import NavButton from './NavButton'
-import ThemeButton from './ThemeButton'
 
 // context
 import _appContext from '../context/_appContext'
@@ -43,14 +42,24 @@ const Navbar = () => {
         background: -webkit-linear-gradient(to right, #0b8793e8, #944a90e8);  /* Chrome 10-25, Safari 5.1-6 */
         background: linear-gradient(to right, #0b8793e8, #944a90e8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
       }
+      @media only screen and (max-width: 768px) {
+        nav {
+          width: 380px;
+        }
+      }
+      @media only screen and (max-width: 640px) {
+        nav {
+          width: 335px;
+        }
+      }
     `}</style>
     {modal && <Modal modal={modal} toggleModal={()=>toggleModal(null)} />}
-    <div className="absolute w-full bottom-0 flex justify-center select-none">
-      <nav className={`${darkMode ? "dark" : "light"} flex shadow-2xl justify-center text-2xl`} >
+    <div className="absolute w-full bottom-0 flex justify-center select-none pointer-events-none">
+      <nav className={`${darkMode ? "dark" : "light"} flex shadow-2xl justify-center text-2xl pointer-events-auto`} >
         <Link href={`/`} toggleModal={toggleModal}>
           <NavButton icon="fas fa-home" onClick={toggleModal} />
         </Link>
-        <ThemeButton />
+        <NavButton darkButton={true} />
         <NavButton icon="fas fa-laptop-code" onClick={()=>toggleModal("apps")} active={modal==="apps"?true:false} />
         <NavButton icon="fas fa-list-ul" onClick={()=>toggleModal("notes")} active={modal==="notes"?true:false} />
         <NavButton icon="far fa-address-card" onClick={()=>toggleModal("contact")} active={modal==="contact"?true:false} />
