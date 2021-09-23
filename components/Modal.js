@@ -1,9 +1,6 @@
 import { useContext } from 'react'
 import dynamic from "next/dynamic"
 
-// components
-import MobileHover from './MobileHover'
-
 // context
 import _appContext from '../context/_appContext'
 
@@ -37,21 +34,19 @@ const Modal = ({ modal, toggleModal }) => {
 
       @media only screen and (max-width: 640px) {
         .modal {
-          width: 90vw;
+          width: 92.5vw;
         }
       }
     `}</style>
     <div className="animate-fade-in absolute top-0 left-0 h-screen w-screen flex justify-center items-center">
       <div className="absolute bg-black bg-opacity-25 h-screen w-screen" onClick={()=>toggleModal(null)} />
       <div className="modal rounded-2xl shadow-lg bg-gray-300 dark:bg-gray-700 bg-opacity-95 dark:bg-opacity-90 transition-colors">
-        <MobileHover>
-          <div 
-            className="absolute top-3 right-3 h-6 w-6 flex justify-center items-center rounded-full bg-gray-800 dark:bg-gray-200 text-gray-200 dark:text-black bg-opacity-80 hover:bg-red-500 dark:hover:bg-red-500 hover:cursor-pointer transition-colors duration-150 ease-out"
-            onClick={()=>toggleModal(null)}
-          >
-            <i className="fas fa-times"></i>
-          </div>
-        </MobileHover>
+        <div 
+          className="absolute top-3 right-3 h-6 w-6 flex justify-center items-center rounded-full bg-gray-800 dark:bg-gray-200 text-gray-200 dark:text-black bg-opacity-80 hover:bg-red-500 dark:hover:bg-red-500 hover:cursor-pointer transition-colors duration-150 ease-out"
+          onClick={()=>toggleModal(null)}
+        >
+          <i className="fas fa-times"></i>
+        </div>
         {modal === 'apps' && <DynamicAppModal toggleModal={toggleModal} />}
         {modal === 'notes' && <DynamicNoteModal toggleModal={toggleModal} />}
         {modal === 'contact' && <DynamicContactModal />}
