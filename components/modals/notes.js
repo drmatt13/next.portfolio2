@@ -4,6 +4,8 @@ import Link from '../Link'
 const NotesModal = ({ toggleModal }) => {
 
   const [notes] = useState({
+    'd3': ['d3'],
+    'three': ['three'],
     'collection1': ['Note', 'Note2'],
     'data-structures': ['linked lists', 'stacks and queues', 'binary search trees'],
     'react': ['context1', 'redux1']

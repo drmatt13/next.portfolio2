@@ -38,10 +38,11 @@ const NavButton = ({ icon, onClick, active, darkButton=null }) => {
   }
 
   useEffect(() => {
-    if (!mobile) {
-      ref.current.classList.add("dark:hover:text-black", "hover:shadow")
-      if (darkButton) ref.current.classList.add("hover:bg-yellow-300", "dark:hover:bg-purple-500")
-      else ref.current.classList.add("hover:bg-green-300", "dark:hover:bg-green-300")
+    // fix later
+    if (mobile) {
+      ref.current.classList.remove("dark:hover:text-black", "hover:shadow")
+      if (darkButton) ref.current.classList.remove("hover:bg-yellow-300", "dark:hover:bg-purple-500")
+      else ref.current.classList.remove("hover:bg-green-300", "dark:hover:bg-green-300")
     }
   }, [])
 
@@ -86,6 +87,15 @@ const NavButton = ({ icon, onClick, active, darkButton=null }) => {
         bg-white
         dark:bg-gray-700 
         dark:text-gray-300
+
+        dark:hover:text-black
+        hover:shadow
+        ${darkButton ? 
+          `hover:bg-yellow-300 dark:hover:bg-purple-500`
+          :
+          `hover:bg-green-300 dark:hover:bg-green-300`
+        }
+
         flex 
         justify-center 
         items-center        

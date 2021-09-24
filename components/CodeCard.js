@@ -69,7 +69,7 @@ const CodeCard = ({ data }) => {
             code.push(`<style>${value}</style>`)
             break;
           case "javascript":
-            code.push(`<script defer>${value}</script>`)
+            code.push(`<script type="module" defer>${value}</script>`)
             break;          
           default:
             break;
@@ -113,7 +113,7 @@ const CodeCard = ({ data }) => {
           const pre = document.createElement('pre')
           pre.style.display = "none"
           if (extraStyle) pre.classList.add(styles[extraStyle])
-          pre.innerHTML = language ? hljs.highlight(value, { language }).value : value
+          pre.innerHTML = language ? hljs.highlight(value.toString().trim(), { language }).value : value.toString().trim()
           wrapperRef.current.appendChild(pre)
         }
       }
