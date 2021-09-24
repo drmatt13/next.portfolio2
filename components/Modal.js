@@ -24,6 +24,7 @@ const Modal = ({ modal, toggleModal }) => {
         width: 60vw;
         max-width: 800px;
         padding: 45px 10px 20px 20px;
+        overflow-y: hidden;
       }
 
       @media only screen and (max-width: 768px) {

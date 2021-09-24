@@ -2,7 +2,7 @@
 import Notes from '../../../components/Notes'
 
 // card data
-import data from '../../../cards/data structures/binary search trees'
+import data from '../../../cards/test collection/card1'
 
 export default function Index () {
   return <Notes data={data} />
