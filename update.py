@@ -2,10 +2,7 @@ from os import listdir
 from os.path import isfile, join
 
 apps = listdir('./apps')
-notes = listdir('./notes')
+notes = listdir('./cards')
 cards = []
-for 
-
-for app in apps
-
-
+for x in notes:
+    cards.append(listdir('./cards/' + str(x)))
