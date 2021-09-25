@@ -23,9 +23,6 @@ const AppsModal = ({ toggleModal }) => {
   ])
 
   return <>
-    {/* <style jsx global>{`
-
-    `}</style> */}
     <div className={`${styles.modal_container} animate-fade-in`}>
       {apps.map((app, i) => (
         <div className={styles.margin_container} key={i}>
@@ -33,7 +30,7 @@ const AppsModal = ({ toggleModal }) => {
             href={`/apps/${app.split(" ").join("-").toLowerCase()}`}
             toggleModal={toggleModal}
           >
-            <div className={`${styles.app_container} w-full rounded-2xl flex shadow-lg bg-gray-200 dark:bg-gray-400  transition-colors`}>
+            <div className={`${styles.app_container} w-full rounded-3xl md:rounded-2xl flex shadow-lg bg-gray-200 dark:bg-gray-400 transition-colors`}>
               <div className={styles.image_container}>
                 <div>
                 {app === "3D Layered Image" && <Image className="Image" src={layeredImage} layout="fill" />}

@@ -22,7 +22,7 @@ const AppLayout = ({ children }) => {
         background-image: linear-gradient(62deg, #c3e1ff 0%, #e5e1ff 100%);
       }
     `}</style>
-    <div className={`${darkMode ? "dark" : "light"} min-h-screen max-h-screen flex flex-col dark:bg-gray-800`}>
+    <div className={`${darkMode ? "dark" : "light"} h-screen flex flex-col dark:bg-gray-800`}>
       <div className="relative flex-1 overflow-y-auto">
         { children }
       </div>

@@ -23,7 +23,7 @@ const NavButton = ({ icon, onClick, active, darkButton=null }) => {
 
   const touchStart = () => {
     if (mobile) {
-      ref.current.classList.remove("dark:text-gray-300", "bg-white")
+      ref.current.classList.remove("dark:text-gray-300", "bg-white", "dark:hover:text-black", "hover:shadow", "hover:bg-yellow-300", "dark:hover:bg-purple-500", "hover:bg-green-300", "dark:hover:bg-green-300")
       if (darkButton) ref.current.classList.add("bg-yellow-300", "dark:bg-purple-500", "dark:text-black")
       else ref.current.classList.add("dark:bg-green-300", "dark:text-black", "bg-green-300")
     }
@@ -38,13 +38,10 @@ const NavButton = ({ icon, onClick, active, darkButton=null }) => {
   }
 
   useEffect(() => {
-    // fix later
     if (mobile) {
-      ref.current.classList.remove("dark:hover:text-black", "hover:shadow")
-      if (darkButton) ref.current.classList.remove("hover:bg-yellow-300", "dark:hover:bg-purple-500")
-      else ref.current.classList.remove("hover:bg-green-300", "dark:hover:bg-green-300")
+      ref.current.classList.remove("dark:hover:text-black", "hover:shadow", "hover:bg-yellow-300", "dark:hover:bg-purple-500", "hover:bg-green-300", "dark:hover:bg-green-300")
     }
-  }, [])
+  }, [darkMode, setDarkMode, mobile])
 
   return <>
   <style jsx>{`
@@ -55,7 +52,6 @@ const NavButton = ({ icon, onClick, active, darkButton=null }) => {
         ``
       }
     }
-
     .light {
       ${active ? `background-color: rgba(52, 211, 153) !important;` : ``}
     }
@@ -63,12 +59,17 @@ const NavButton = ({ icon, onClick, active, darkButton=null }) => {
     <div
       ref={ref}
       onClick={darkButton ? toggleDarkMode : onClick} 
-      onMouseEnter={touchStart}
       onTouchStart={touchStart}
-      onMouseLeave={touchEnd}
       onTouchEnd={touchEnd}
       className={`
         ${darkMode ? "dark" : "light"}
+        flex 
+        justify-center 
+        items-center        
+        hover:cursor-pointer 
+        transition-colors 
+        duration-200 
+        ease-out
         text-sm
         h-10
         w-10
@@ -83,11 +84,10 @@ const NavButton = ({ icon, onClick, active, darkButton=null }) => {
         md:w-12 
         md:mx-2 
         md:my-2.5 
-        rounded-full 
+        rounded-full
         bg-white
         dark:bg-gray-700 
         dark:text-gray-300
-
         dark:hover:text-black
         hover:shadow
         ${darkButton ? 
@@ -95,14 +95,6 @@ const NavButton = ({ icon, onClick, active, darkButton=null }) => {
           :
           `hover:bg-green-300 dark:hover:bg-green-300`
         }
-
-        flex 
-        justify-center 
-        items-center        
-        hover:cursor-pointer 
-        transition-colors 
-        duration-200 
-        ease-out
     `}>
       {darkButton && <i className={`${darkMode ? "far fa-moon" : "fas fa-sun"}`} />}
       {!darkButton && <i className={icon} />}

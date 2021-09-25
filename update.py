@@ -2,7 +2,8 @@ from shutil import rmtree
 from os import listdir, makedirs
 from os.path import isfile, exists
 
-rmtree("./pages/notes")
+if exists("./pages/notes"):
+    rmtree("./pages/notes")
 makedirs("./pages/notes")
 notes = listdir('./cards')
 noteState = ""
