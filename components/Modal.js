@@ -29,45 +29,69 @@ const Modal = ({ modal, toggleModal }) => {
       }
 
       ${!mobile && `
-      .modal > ::-webkit-scrollbar {
-        width: 12.5px;
-        height: 12.5px;
-      }
-      
-      .modal > ::-webkit-scrollbar-thumb {
-        background-color: ${darkMode ? "#fff6" : "#0002"};
-        border-radius: 6.25px;
-      }
-      
-      .modal > ::-webkit-scrollbar-thumb:hover {
-        background-color: ${darkMode ? "#fff8" : "#0004"};
-      }
-      
-      .modal > ::-webkit-scrollbar-track {
-        background: ${darkMode ? "#fff4" : "#0002"};
-        border-radius: 6.25px;
-        object-fit: fill;
-      }
-      
-      .modal > ::-webkit-scrollbar-corner {
-        background-color: rgba(0, 0, 0, 0);
-      }
-
-      @media only screen and (max-width: 640px) {
         .modal > ::-webkit-scrollbar {
+          width: 12.5px;
+          height: 12.5px;
+        }
+        
+        .modal > ::-webkit-scrollbar-thumb {
+          background-color: ${darkMode ? "#fff6" : "#0002"};
+          border-radius: 6.25px;
+        }
+        
+        .modal > ::-webkit-scrollbar-thumb:hover {
+          background-color: ${darkMode ? "#fff8" : "#0004"};
+        }
+        
+        .modal > ::-webkit-scrollbar-track {
+          background: ${darkMode ? "#fff4" : "#0002"};
+          border-radius: 6.25px;
+          object-fit: fill;
+        }
+        
+        .modal > ::-webkit-scrollbar-corner {
+          background-color: rgba(0, 0, 0, 0);
+        }
+
+        @media only screen and (max-width: 640px) {
+          .modal > ::-webkit-scrollbar {
+            width: 6.25px;
+            height: 6.25px;
+          }
+          
+          .modal > ::-webkit-scrollbar-thumb {
+            border-radius: 3.125px;
+          }
+          
+          .modal > ::-webkit-scrollbar-track {
+            border-radius: 3.125px;
+          }
+        }
+
+        .modal * ::-webkit-scrollbar {
           width: 6.25px;
           height: 6.25px;
         }
         
-        .modal > ::-webkit-scrollbar-thumb {
+        .modal * ::-webkit-scrollbar-thumb {
+          background-color: ${darkMode ? "#fff6" : "#0002"};
           border-radius: 3.125px;
         }
         
-        .modal > ::-webkit-scrollbar-track {
-          border-radius: 3.125px;
+        .modal * ::-webkit-scrollbar-thumb:hover {
+          background-color: ${darkMode ? "#fff8" : "#0004"};
         }
-      }
-    `}
+        
+        .modal * ::-webkit-scrollbar-track {
+          background: ${darkMode ? "#0004" : "#0002"};
+          border-radius: 6.25px;
+          object-fit: fill;
+        }
+        
+        .modal * ::-webkit-scrollbar-corner {
+          background-color: rgba(0, 0, 0, 0);
+        }
+      `}
 
       @media only screen and (max-width: 768px) {
         .modal {
