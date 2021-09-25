@@ -28,6 +28,9 @@ module.exports = {
           '50%': { transform: 'rotate(3deg)' },
         }
       },
+      screens: {
+        'xs': '400px',
+      },
       container: {
         'center': true,
         // 'padding': '2rem'

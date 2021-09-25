@@ -41,7 +41,7 @@ const NavButton = ({ icon, onClick, active, darkButton=null }) => {
     if (mobile) {
       ref.current.classList.remove("dark:hover:text-black", "hover:shadow", "hover:bg-yellow-300", "dark:hover:bg-purple-500", "hover:bg-green-300", "dark:hover:bg-green-300")
     }
-  }, [darkMode, setDarkMode, mobile])
+  })
 
   return <>
   <style jsx>{`

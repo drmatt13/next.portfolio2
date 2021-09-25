@@ -11,14 +11,20 @@ const NotesModal = ({ toggleModal }) => {
 })
   const [keys] = useState(Object.keys(notes))
   return <>
-    <div className="animate-fade-in h-full overflow-y-scroll">
+    <style jsx>{`
+      .modal_container {
+        padding-right: 10px;
+      }
+    `}</style>
+    <div className="modal_container animate-fade-in max-h-full overflow-y-auto grid gap-4 grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {keys.map((key, i) => (
-        <div key={i}>
-        <h4 style={{textDecoration: "underline", color: "#222a"}}>{key}</h4>
-        <div>
+        <div key={i} className="h-44 shadow-lg bg-gray-200 dark:bg-gray-400 rounded-lg overflow-hidden">
+        <h4 className="text-center text-lg bg-gray-100 dark:bg-gray-500">{key}</h4>
+        <div className="text-black p-2">
           {notes[key].map((note, j) => (
             <Link 
               key={j} 
+              className="hover:underline"
               href={`/notes/${key}/${note.split(" ").join("-").toLowerCase()}`}
               toggleModal={toggleModal}
             >

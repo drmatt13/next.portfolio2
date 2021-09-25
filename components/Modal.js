@@ -19,6 +19,7 @@ const Modal = ({ modal, toggleModal }) => {
       .modal {
         position: relative;
         height: 65vh;
+        min-height: 175px;
         max-height: 500px;
         min-width: 300px;
         width: 60vw;
@@ -80,7 +81,7 @@ const Modal = ({ modal, toggleModal }) => {
         }
       }
     `}</style>
-    <div className="animate-fade-in absolute top-0 left-0 h-screen w-screen flex justify-center items-center">
+    <div className="animate-fade-in absolute top-0 left-0 h-full w-screen flex justify-center items-center">
       <div className="absolute bg-black bg-opacity-25 h-screen w-screen" onClick={()=>toggleModal(null)} />
       <div className="modal rounded-2xl shadow-lg bg-gray-300 dark:bg-gray-700 bg-opacity-95 dark:bg-opacity-90 transition-colors">
         <div 

@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-const Link = ({ href, toggleModal, children }) => {
+const Link = ({ className, href, toggleModal, children }) => {
   const router = useRouter()
   const f = async () => {
     if (href === router.pathname)
@@ -14,7 +14,7 @@ const Link = ({ href, toggleModal, children }) => {
         cursor: pointer;
       }
     `}</style>
-    <div onClick={f}>{children}</div>
+    <div className={className} onClick={f}>{children}</div>
   </>
 }
 export default Link
