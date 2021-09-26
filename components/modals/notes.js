@@ -6,6 +6,7 @@ const NotesModal = ({ toggleModal }) => {
     'd3': ['d3'],
     'data-structures': ['binary search trees', 'linked lists', 'stacks and queues'],
     'react': ['context1', 'redux1'],
+    'temp': ['base', 'image preview', 'read file', 'scroll1', 'search user'],
     'test-collection': ['card1', 'card2', 'card3'],
     'three': ['three'],
 })

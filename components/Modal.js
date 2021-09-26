@@ -74,12 +74,12 @@ const Modal = ({ modal, toggleModal }) => {
         }
         
         .modal * ::-webkit-scrollbar-thumb {
-          background-color: ${darkMode ? "#fff6" : "#0002"};
+          background-color: ${darkMode ? "#bbb" : "#0002"};
           border-radius: 3.125px;
         }
         
         .modal * ::-webkit-scrollbar-thumb:hover {
-          background-color: ${darkMode ? "#fff8" : "#0004"};
+          background-color: ${darkMode ? "#fffa" : "#0004"};
         }
         
         .modal * ::-webkit-scrollbar-track {

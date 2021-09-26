@@ -23,7 +23,7 @@ const AppLayout = ({ children }) => {
       }
     `}</style>
     <div className={`${darkMode ? "dark" : "light"}  dark:bg-gray-800`}>
-      <div className="relative h-screen overflow-y-auto bg-yellow-300">
+      <div className="relative h-screen overflow-y-auto">
         { children }
       </div>
     </div>
