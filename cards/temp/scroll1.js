@@ -5,8 +5,8 @@ export default [
   <div id="overflow"></div>
 </div>
 <div class="container">
-  <div>x: <span id="x">0</span></div>
-  <div>y: <span id="y">0</span></div>
+  <div>x: <span id="x">0.00</span></div>
+  <div>y: <span id="y">0.00</span></div>
 </div>
 `,
 'css': `
@@ -30,10 +30,10 @@ body {
 .container:nth-child(2) {
   background-color: #fff8;
   align-self: flex-start;
-  font-size: xx-large;
+  font-size: large;
   border-radius: 18px;
   margin-left: 10px;
-  min-width: 120px;
+  min-width: 100px;
   padding: 10px;
 }`,
 'javascript': `
@@ -42,8 +42,8 @@ const y = document.getElementById("y")
 const container = document.querySelector(".container")
 
 container.addEventListener('scroll', () => {
-  x.innerHTML = container.scrollLeft
-  y.innerHTML = container.scrollTop
+  x.innerHTML = container.scrollLeft.toFixed(2)
+  y.innerHTML = container.scrollTop.toFixed(2)
 })
 `,
 'render': ["html", "css", "javascript"]
