@@ -8,7 +8,7 @@ const NotesModal = ({ toggleModal }) => {
     'react': ['context1', 'redux1'],
     'temp': ['base', 'image preview', 'read file', 'scroll1', 'search user'],
     'test-collection': ['card1', 'card2', 'card3'],
-    'three': ['three'],
+    'three': ['three 2', 'three'],
 })
   const [keys] = useState(Object.keys(notes))
   return <>
