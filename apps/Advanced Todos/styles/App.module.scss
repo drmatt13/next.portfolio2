@@ -32,6 +32,11 @@
   .app {
     padding-top: 10vw;
     flex-direction: column;
+    .spacer {
+      min-height: 30px;
+      height: 5vh;
+      max-height: 50px;
+    }
     .left_container {
       max-height: 160vw;
       max-width: 80vw;
