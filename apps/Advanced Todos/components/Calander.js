@@ -1,4 +1,9 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useContext } from "react"
+
+// context
+import _appContext from '../../../context/_appContext'
+
+// styles
 import styles from '../styles/Calander.module.scss'
 
 // return an object with month infomation ( month: (0-11), year: xxxx ) 
@@ -63,6 +68,8 @@ const parseCalanderData = (data, div, i, month, year, f) => {
 
 const Calander = ({ transactions, todos, setModal }) => {
 
+  const { darkMode } = useContext(_appContext)
+
   const [date] = useState(new Date())
   const [currentMonth, setCurrentMonth] = useState(getMonth(date.getMonth(), date.getFullYear()))
   const [previousMonth, setPreviousMonth] = useState(shiftMonth(currentMonth, -1))
@@ -98,8 +105,8 @@ const Calander = ({ transactions, todos, setModal }) => {
   }, [])
 
   return <>
-    <div className={styles.calander_container}>
-      <div className={styles.days_container}>
+    <div className={`${styles.calander_container} ${darkMode ? styles.dark : styles.light} select-none flex flex-1 flex-col rounded-2xl overflow-hidden bg-white dark:bg-gray-700 dark:text-gray-400 border dark:dark:border-gray-700`}>
+      <div className={`${styles.days_container} flex bg-gray-100 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700`}>
         <div>S</div><div>M</div><div>T</div><div>W</div><div>T</div><div>F</div><div>S</div>
       </div>
       <div className={styles.grid_container} ref={calanderGridRef} />

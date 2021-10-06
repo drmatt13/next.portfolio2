@@ -1,7 +1,14 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useContext } from 'react'
+
+// context
+import _appContext from '../../../context/_appContext'
+
+// styles
 import styles from '../styles/Transactions.module.scss'
 
 const Transactions = ({ transactions, setTransactions, setModal }) => {
+
+  const { darkMode } = useContext(_appContext)
 
   const transactionName = useRef()
   const transactionValue = useRef()
@@ -17,24 +24,28 @@ const Transactions = ({ transactions, setTransactions, setModal }) => {
   }, [])
 
   return <>
-    <div className={styles.transactions_master_container}>
-      <div>
-
-        <h3>Transactions</h3>
-
-        <div className={styles.transactions_container}>
+    <div className={`${styles.transactions_master_container} ${darkMode ? styles.dark : styles.light} flex-1 rounded-2xl bg-gray-100 dark:bg-gray-700 dark:text-gray-200 border dark:dark:border-gray-700`}>
+      <div className="h-full flex flex-col p-2.5">
+        <div className="mb-2.5 pb-2.5 border-b border-gray-300 dark:border-gray-500 truncate">Transactions</div>
+        <div className="flex-1 max-h-full overflow-y-scroll">
           {transactions && transactions.map((transaction, i) => (
-            <div key={i} className={styles.transaction} onClick={() => {setModal(true)}}>
-              <div className={styles.exit_btn}>x</div>
-              <div className={styles.name}>{transaction.name}</div>
-              <div className={styles.amount}>{transaction.amount > 0 ? "" : "-"}${Math.abs(transaction.amount)}</div>
-              <div className={`${styles.color} ${transaction.amount > 0 ? styles.green : styles.red}`} />
+            <div 
+              key={i} 
+              onClick={() => {setModal(true)}}
+              className={`${styles.transaction} border dark:border-gray-400 dark:border-opacity-5 cursor-pointer mt-2.5 mr-2.5 flex relative rounded-xl bg-white dark:bg-gray-500 hover:shadow dark:hover:bg-gray-400 dark:hover:border-gray-600 dark:hover:text-white transition-all`} 
+            >
+              <div className="flex-1 p-2.5 truncate">{transaction.name}</div>
+              <div className="p-2.5 mr-2.5">{transaction.amount > 0 ? "" : "-"}${Math.abs(transaction.amount)}</div>
+              <div className={`${styles.color} ${transaction.amount > 0 ? styles.green : styles.red} absolute right-0 h-full w-2.5`} />
             </div>
           ))}
         </div>
-
-        <div className={styles.transaction_btn} onClick={() => {setModal(true)}}>Add Transaction</div>
-
+        <div 
+          onClick={() => {setModal(true)}}
+          className={`${styles.transaction_btn} cursor-pointer select-none h-10 w-full mt-2.5 flex justify-center items-center rounded-3xl text-white bg-blue-500 dark:bg-blue-500 dark:bg-opacity-75 hover:bg-blue-400 dark:hover:bg-blue-500 transition-all`} 
+        >
+          Add Transaction
+        </div>
       </div>
     </div>
   </>

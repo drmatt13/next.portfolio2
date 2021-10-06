@@ -22,7 +22,7 @@ const AppLayout = ({ children }) => {
         background-image: linear-gradient(62deg, #c3e1ff 0%, #e5e1ff 100%);
       }
     `}</style>
-    <div className={`${darkMode ? "dark" : "light"}  dark:bg-gray-800`}>
+    <div className={`${darkMode ? "dark" : "light"}`}>
       <div className="relative h-screen overflow-y-auto">
         { children }
       </div>

@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import Head from 'next/head'
+
+// styles
 import styles from './styles/App.module.scss'
 
 // components
@@ -18,15 +20,15 @@ const App = () => {
     {
       "name": "name",
       "amount": 500,
-      "start": "8/1/2021",
-      "stop": "9/10/2021",
-      "recurring": "monthly"
+      "start": "10/1/2021",
+      "stop": "11/10/2021",
+      "recurring": "biweekly"
     },
     {
       "name": "test",
       "amount": -450,
       "start": "8/9/2021",
-      "stop": "9/6/2021",
+      "stop": "12/6/2021",
       "recurring": "biweekly"
     },
     {
@@ -49,53 +51,39 @@ const App = () => {
       "start": "8/19/2021",
       // "stop": "9/10/2021",
       // "recurring": "yearly"
-    },
-
-    // {
-    //   "name": "name",
-    //   "amount": 500,
-    //   "start": "8/3/2021",
-    //   // "stop": "9/10/2021",
-    //   "recurring": "weekly"
-    // },
-    // {
-    //   "name": "test",
-    //   "amount": -450,
-    //   "start": "9/3/2021",
-    //   "stop": "9/10/2021",
-    //   "recurring": "weekly"
-    // },
-    // {
-    //   "name": "transaction",
-    //   "amount": 250,
-    //   "start": "9/3/2021",
-    //   "stop": "9/10/2021",
-    //   "recurring": "weekly"
-    // }
+    }
   ])
+
   const [todos, setTodos] = useState([
     {
       "name": "todo",
       "todo": "todo",
       "start": "8/21/2021",
-      "stop": "9/4/2021",
-      "recurring": "biweekly"
+      "stop": "12/4/2021",
+      "recurring": "monthly"
     }
   ])
 
   return <>
     <Head>
-      <title>Advanced Todos</title>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossOrigin="anonymous" />
+    <title>Advanced Todos</title>
     </Head>
-    <div className={`${styles.app} animate-fade-in`}>
+    <div className={`${styles.app} animate-fade-in min-h-screen flex justify-center items-center`}>
+      <div className={`${styles.vertical_container} flex flex-col md:hidden`}>
+        <Results transactions={transactions} />
+        <div className={styles.spacer} />
+      </div>
       <div className={styles.left_container}>
         <Calander transactions={transactions} todos={todos} setModal={setModal} />
         <div className={styles.spacer} />
         <Transactions transactions={transactions} setTransactions={setTransactions} setModal={setModal} />
       </div>
-      <div className={styles.right_container}> 
+      <div className={`${styles.right_container} hidden md:flex flex-col`}> 
         <Results transactions={transactions} />
+        <div className={styles.spacer} />
+        <Todos todos={todos} setTodos={setTodos} setModal={setModal} />
+      </div>
+      <div className={`${styles.vertical_container} flex flex-col md:hidden`}>
         <div className={styles.spacer} />
         <Todos todos={todos} setTodos={setTodos} setModal={setModal} />
       </div>

@@ -4,7 +4,6 @@ export default [
 'html': `
 <form enctype="multipart/form-data">
   <input name="avatar" type="file" accept="image/png, image/jpeg" required />
-  <input type="submit" value="Submit"/>
 <form>
 
 <div>
@@ -19,7 +18,11 @@ div {
   display: block; 
 }
 
-img { height: 100%; width: 100%; object-fit: contain; }
+img { 
+  height: 100%; 
+  width: 100%; 
+  object-fit: contain; 
+}
 `,
 'javascript': `
 const input = document.querySelector('input[name="avatar"]');
@@ -30,26 +33,6 @@ input.onchange = () => {
     .querySelector("img")
     .setAttribute("src", URL.createObjectURL(input.files[0]));
 }
-
-document.querySelector('form').addEventListener("submit", (e) => {  
-  e.preventDefault();
-
-  const formData = new FormData();
-  formData.append("avatar", input.files[0], "test");
-
-  fetch('http://localhost:3500', {
-    method: 'post',
-    body: formData
-  })
-  .then(response => response.json())
-  .then(result => {
-    console.log('Success:', result);
-  })
-  .catch(error => {
-    console.error('Error:', error);
-  });
-
-})
 `,
 'render': ["html", "css", "javascript"]
 },
@@ -244,6 +227,14 @@ uploadContainer.addEventListener('drop', e => {
   e.preventDefault()
   const data = e.dataTransfer.files
   if (data[0].type === 'image/png' || 'image/jpeg') {
+
+    // check the size
+    const maxSizeInBytes = 10e6 // 10MB
+    if (image.size > maxSizeInBytes) {
+      alert("File too large")
+      return false
+    }
+
     imageContainer.classList.remove('empty')
     image.setAttribute('src', URL.createObjectURL(data[0]))
   }

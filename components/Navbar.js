@@ -42,7 +42,7 @@ const Navbar = () => {
         background: -webkit-linear-gradient(to right, #0b8793e8, #944a90e8);  /* Chrome 10-25, Safari 5.1-6 */
         background: linear-gradient(to right, #0b8793e8, #944a90e8); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
       }
-      @media only screen and (max-width: 768px) {
+      @media only screen and (max-width: 767px) {
         nav {
           width: 380px;
         }
