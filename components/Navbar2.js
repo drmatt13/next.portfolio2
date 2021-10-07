@@ -27,42 +27,54 @@ const Navbar = () => {
 
   return <>
     <style jsx>{`
-      .${styles.dark} .highlight {
+      // .${styles.dark} .highlight {
+      //   box-shadow: 0 0 .75em rgb(70, 210, 255);
+      // }
+      // .${styles.light} .highlight {
+      //   box-shadow: 0 0 .75em rgb(216, 139, 235);
+      // }
+      .select-none {
+
+      }
+      .group {
+        height: 1.75em;
+        width: 1.75em;
+      }
+      .${styles.dark} .main {
+        background: linear-gradient(45deg, #0b8793e8, #946a90e8);
         box-shadow: 0 0 .75em rgb(70, 210, 255);
       }
-      .${styles.light} .highlight {
+      .${styles.light} .main {
+        background-image: linear-gradient(45deg, #ffa2a280 0%, #bbc1bf80 19%, #57c6e180 42%, #b49fda80 79%, #7ac5d880 100%);
         box-shadow: 0 0 .75em rgb(216, 139, 235);
       }
     `}</style>
     {/* {modal && <Modal modal={modal} toggleModal={()=>toggleModal(null)} />} */}
-    <nav className={`${darkMode ? styles.dark : styles.light} select-none absolute top-16 right-20 flex flex-col justify-center`}>
+    <nav className={`${darkMode ? styles.dark : styles.light} z-50 select-none sticky top-0 flex flex-row-reverse p-10 pointer-events-none`}>
       <div className="group relative h-7 w-7">
         <div
           onClick={toggle}
-          className={`absolute rounded-sm cursor-pointer rotate-45 h-full w-full border border-gray-500 dark:border-white border-opacity-80 group-hover:scale-125 group-hover:border-opacity-100 transition ease-linear
+          className={`main pointer-events-auto absolute rounded-sm cursor-pointer rotate-45 h-full w-full border border-gray-500 dark:border-gray-400 border-opacity-80 group-hover:scale-125 group-hover:border-opacity-100 transition ease-linear
         `}/>
-        <div className={`highlight pointer-events-none absolute rounded-sm cursor-pointer rotate-45 h-full w-full group-hover:border group-hover:scale-50 group-hover:border-opacity-25 transition ease-linear`}/>
+        {/* <div className={`highlight pointer-events-none absolute rounded-sm cursor-pointer rotate-45 h-full w-full group-hover:border group-hover:scale-50 group-hover:border-gray-500 group-hover:border-opacity-25 transition ease-linear`}/> */}
       </div>
-      <div
-        // ref={containerRef}
-        className={`${!state ? styles.close : styles.open} top-14 absolute w-full flex flex-col items-center text-gray-500 text-xs`}
-      >
-        <div className="transition cursor-pointer absolute border border-gray-500 dark:border-white border-opacity-50 hover:text-black dark:hover:text-white hover:border-opacity-100 rounded-sm h-7 w-7 flex justify-center items-center">
+      <div className={`${!state ? styles.close : styles.open} top-24 absolute h-10 bg-blue-900 flex flex-col items-end text-gray-500 text-xs`}>
+        <div className="transition pointer-events-auto cursor-pointer absolute border border-gray-500 dark:border-gray-400 border-opacity-50 hover:text-black dark:hover:text-white hover:border-opacity-100 rounded-sm h-7 w-7 flex justify-center items-center">
           <i className="fas fa-home" />
         </div>
-        <div className="transition cursor-pointer absolute border border-gray-500 dark:border-white border-opacity-50 hover:text-black dark:hover:text-white hover:border-opacity-100 rounded-sm h-7 w-7 flex justify-center items-center">
+        <div className="transition pointer-events-auto cursor-pointer absolute border border-gray-500 dark:border-gray-400 border-opacity-50 hover:text-black dark:hover:text-white hover:border-opacity-100 rounded-sm h-7 w-7 flex justify-center items-center">
           <i className="far fa-moon" />
         </div>
-        <div className="transition cursor-pointer absolute border border-gray-500 dark:border-white border-opacity-50 hover:text-black dark:hover:text-white hover:border-opacity-100 rounded-sm h-7 w-7 flex justify-center items-center">
+        <div className="transition pointer-events-auto cursor-pointer absolute border border-gray-500 dark:border-gray-400 border-opacity-50 hover:text-black dark:hover:text-white hover:border-opacity-100 rounded-sm h-7 w-7 flex justify-center items-center">
           <i className="fas fa-laptop-code" />
         </div>
-        <div className="transition cursor-pointer absolute border border-gray-500 dark:border-white border-opacity-50 hover:text-black dark:hover:text-white hover:border-opacity-100 rounded-sm h-7 w-7 flex justify-center items-center">
+        <div className="transition pointer-events-auto cursor-pointer absolute border border-gray-500 dark:border-gray-400 border-opacity-50 hover:text-black dark:hover:text-white hover:border-opacity-100 rounded-sm h-7 w-7 flex justify-center items-center">
           <i className="fas fa-list-ul" />
         </div>
-        <div className="transition cursor-pointer absolute border border-gray-500 dark:border-white border-opacity-50 hover:text-black dark:hover:text-white hover:border-opacity-100 rounded-sm h-7 w-7 flex justify-center items-center">
+        <div className="transition pointer-events-auto cursor-pointer absolute border border-gray-500 dark:border-gray-400 border-opacity-50 hover:text-black dark:hover:text-white hover:border-opacity-100 rounded-sm h-7 w-7 flex justify-center items-center">
           <i className="fas fa-address-card" />
         </div>
-        <div className="transition cursor-pointer absolute border border-gray-500 dark:border-white border-opacity-50 hover:text-black dark:hover:text-white hover:border-opacity-100 rounded-sm h-7 w-7 flex justify-center items-center">
+        <div className="transition pointer-events-auto cursor-pointer absolute border border-gray-500 dark:border-gray-400 border-opacity-50 hover:text-black dark:hover:text-white hover:border-opacity-100 rounded-sm h-7 w-7 flex justify-center items-center">
           <i className="fas fa-question" />
         </div>
       </div>

@@ -68,7 +68,7 @@ const App = () => {
     <Head>
     <title>Advanced Todos</title>
     </Head>
-    <div className={`${styles.app} animate-fade-in min-h-screen flex justify-center items-center`}>
+    <div className={`${styles.app} animate-fade-in flex justify-center`}>
       <div className={`${styles.vertical_container} flex flex-col md:hidden`}>
         <Results transactions={transactions} />
         <div className={styles.spacer} />

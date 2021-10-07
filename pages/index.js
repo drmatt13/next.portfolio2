@@ -23,8 +23,8 @@ export default function Home() {
     }
     `}</style>
     <Head></Head>
-    <div className="h-screen w-full overscroll-y-auto">
-    </div>
+    {/* <div className="h-screen w-full overscroll-y-auto">
+    </div> */}
     {/* <div className="animate-fade-in container py-5 px-5 md:px-0">
       <div className="dark:text-white">mobile device: {mobile ? "true" : "false"}</div>
     </div> */}

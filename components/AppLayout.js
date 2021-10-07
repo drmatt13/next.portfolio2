@@ -24,10 +24,12 @@ const AppLayout = ({ children }) => {
       }
     `}</style>
     <div className={`${darkMode ? "dark" : "light"}`}>
-      <div className="relative h-screen overflow-y-auto">
-        { children }
+      <div className="relative h-screen overflow-y-hidden">
+        <Navbar2 />
+        <div className="absolute pt-28 top-0 h-full w-full overflow-y-auto">
+          { children }
+        </div>
       </div>
-      <Navbar2 />
     </div>
     <Navbar />
   </>

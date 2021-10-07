@@ -45,6 +45,9 @@
 }
 .dark {
   .open {
+    > div {
+      background-color: black;
+    }
     > div:hover {
       box-shadow: 0 0 .75em rgb(70, 210, 255);
     }
@@ -52,6 +55,9 @@
 }
 .light {
   .open {
+    > div {
+      background-color: white;
+    }
     > div:hover {
       box-shadow: 0 0 .75em rgb(216, 139, 235);
     }
