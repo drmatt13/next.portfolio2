@@ -2,6 +2,7 @@ import { useContext } from 'react'
 
 // components
 import Navbar from './Navbar'
+import Navbar2 from './Navbar2'
 
 // context
 import _appContext from '../context/_appContext'
@@ -26,6 +27,7 @@ const AppLayout = ({ children }) => {
       <div className="relative h-screen overflow-y-auto">
         { children }
       </div>
+      <Navbar2 />
     </div>
     <Navbar />
   </>

@@ -1,0 +1,79 @@
+@for $i from 1 through 6 {
+  @keyframes fade-out#{$i} {
+    0% {
+      opacity: 1;
+      pointer-events: none;
+      transform: rotate(45deg + 180deg * $i / 6);
+      margin-top: 3.5rem * ($i - 1);
+    }
+    100% {
+      opacity: 0;
+      pointer-events: none;
+      transform: rotate(45deg);
+      margin-top: -3.5rem;
+    }
+  }
+  @keyframes fade-in#{$i} {
+    0% {
+      pointer-events: none;
+      opacity: 0;
+      transform: rotate(45deg);
+      margin-top: -3.5rem;
+    }
+    100% {
+      opacity: 1;
+      transform: rotate(45deg + 180deg * $i / 6);
+      margin-top: 3.5rem * ($i - 1);
+    }
+  }
+  @keyframes fade-out-i#{$i} {
+    0% {
+      transform: rotate(-45deg - 180deg * $i / 6);
+    }
+    100% {
+      transform: rotate(-45deg);
+    }
+  }
+  @keyframes fade-in-i#{$i} {
+    0% {
+      transform: rotate(-45deg);
+    }
+    100% {
+      transform: rotate(-45deg - 180deg * $i / 6);
+    }
+  }
+}
+.dark {
+  .open {
+    > div:hover {
+      box-shadow: 0 0 .75em rgb(70, 210, 255);
+    }
+  }
+}
+.light {
+  .open {
+    > div:hover {
+      box-shadow: 0 0 .75em rgb(216, 139, 235);
+    }
+  }
+}
+.open {
+  @for $i from 1 through 6 {
+    > div:nth-child(#{$i}) {
+      animation: fade-in#{$i} .25s ease-out forwards;
+      i {
+        animation: fade-in-i#{$i} .25s ease-out forwards;
+      }
+    }
+  }
+}
+.close {
+  @for $i from 1 through 6 {
+    > div:nth-child(#{$i}) {
+      animation: fade-out#{$i} .25s ease-out forwards;
+      i {
+        animation: fade-out-i#{$i} .25s ease-out forwards;
+      }
+    }
+  }
+}
