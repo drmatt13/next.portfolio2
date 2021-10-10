@@ -1,10 +1,16 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
+
+// components
 import CodeCard from '../components/CodeCard'
 
+// context
+import _appContext from '../context/_appContext'
+
 export default function Notes ({data}) {
+  const { mobile } = useContext(_appContext)
   const [notes] = useState(data)
   return <>
-    <div className="w-full pb-28 flex flex-col items-center">
+    <div className={`${mobile ? "pb-14" : "pb-28"} w-full flex flex-col items-center`}>
       {notes && notes.map((data, key) => (
         <CodeCard key={key} data={data} />
       ))}

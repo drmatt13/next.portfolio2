@@ -51,11 +51,11 @@ const AppLayout = ({ children }) => {
         background-color: white;
       }
       .bg2 {
-        background: url(/images/home/background-blueflex.png);
+        background: url(/images/layout/background-blueflex.png);
         background-size: cover;
       }
-      .bg3 { background: url(/images/home/background-fixed-rb.png) right bottom no-repeat }
-      .bg4 { background: url(/images/home/background-fixed-tl.png) no-repeat }
+      .bg3 { background: url(/images/layout/${darkMode ? "background-fixed-rb.png" : "imageonline-co-hueshifted.png"}) right bottom no-repeat }
+      .bg4 { background: url(/images/layout/background-fixed-tl.png) no-repeat }
 
     `}</style>
     <div className={`${darkMode ? "dark" : "light"}`}>

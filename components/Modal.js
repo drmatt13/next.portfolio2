@@ -104,9 +104,12 @@ const Modal = ({ modal, toggleModal }) => {
           width: 92.5vw;
         }
       }
+      .bg-black {
+        height: 200vh
+      }
     `}</style>
-    <div className="animate-fade-in absolute overflow-x-hidden top-0 left-0 h-full w-full flex justify-center items-center">
-      <div className="absolute bg-black bg-opacity-25 h-full w-screen" onClick={()=>toggleModal(null)} />
+    <div className="animate-fade-in absolute overflow-y-hidden overflow-x-hidden top-0 left-0 h-full w-full flex justify-center items-center">
+      <div className="absolute bg-black bg-opacity-25 w-screen" onClick={()=>toggleModal(null)} />
       <div className="modal rounded-2xl shadow-lg bg-gray-300 dark:bg-gray-700 bg-opacity-95 dark:bg-opacity-90 transition-colors">
         <div 
           className="absolute top-3 right-3 h-6 w-6 flex justify-center items-center rounded-full bg-gray-800 dark:bg-gray-200 text-gray-200 dark:text-black bg-opacity-80 hover:bg-red-500 dark:hover:bg-red-500 hover:cursor-pointer transition-colors duration-150 ease-out"

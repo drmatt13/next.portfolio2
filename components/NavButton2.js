@@ -25,7 +25,7 @@ const NavButton2 = ({ className, onClick }) => {
         transition
         ease-linear
         border
-        border-white
+      border-white
         border-opacity-10
       `} />
     </div>
