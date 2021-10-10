@@ -14,17 +14,12 @@ export default function Home() {
   return <>
     <style jsx>{`
     div {
-      background: url(images/home/background-sparks.jpg) center top repeat-y;
-      animation: sparks-move 70s infinite linear;
-      @keyframes sparks-move{
-        0%    { background-position: center top; }
-        100%  { background-position: center -1150px; }
-      }
+      height: 200vh;
     }
     `}</style>
     <Head></Head>
-    {/* <div className="h-screen w-full overscroll-y-auto">
-    </div> */}
+    <div className="">
+    </div>
     {/* <div className="animate-fade-in container py-5 px-5 md:px-0">
       <div className="dark:text-white">mobile device: {mobile ? "true" : "false"}</div>
     </div> */}

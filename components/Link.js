@@ -6,7 +6,7 @@ const Link = ({ className, href, toggleModal, children }) => {
       await router.push(`/redirect?${href.substring(1).split('/').join(':')}`)
     else 
       await router.push(href)
-    toggleModal(null)
+    toggleModal(undefined)
   }
   return <>
     <style jsx>{`

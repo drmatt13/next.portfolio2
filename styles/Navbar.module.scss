@@ -3,64 +3,60 @@
     0% {
       opacity: 1;
       pointer-events: none;
-      transform: rotate(45deg + 180deg * $i / 6);
-      margin-top: 3.5rem * ($i - 1);
+      margin-top: 150% * ($i - 1) + 175%;
     }
     100% {
       opacity: 0;
       pointer-events: none;
-      transform: rotate(45deg);
-      margin-top: -3.5rem;
+      margin-top: 0;
     }
   }
   @keyframes fade-in#{$i} {
     0% {
       pointer-events: none;
       opacity: 0;
-      transform: rotate(45deg);
-      margin-top: -3.5rem;
+      margin-top: 0
     }
     100% {
       opacity: 1;
-      transform: rotate(45deg + 180deg * $i / 6);
-      margin-top: 3.5rem * ($i - 1);
-    }
-  }
-  @keyframes fade-out-i#{$i} {
-    0% {
-      transform: rotate(-45deg - 180deg * $i / 6);
-    }
-    100% {
-      transform: rotate(-45deg);
-    }
-  }
-  @keyframes fade-in-i#{$i} {
-    0% {
-      transform: rotate(-45deg);
-    }
-    100% {
-      transform: rotate(-45deg - 180deg * $i / 6);
+      margin-top: 150% * ($i - 1) + 175%;
     }
   }
 }
 .dark {
-  .open {
-    > div {
-      background-color: black;
-    }
-    > div:hover {
-      box-shadow: 0 0 .75em rgb(70, 210, 255);
-    }
+  .open > div, .close > div {
+    box-shadow: 0 0 .25em #0008;
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+  .open > div:hover {
+    background: white;
+    border-color: white;
+    
+  }
+  i:hover { box-shadow: 0 0 1em white }
+  .moon:hover {
+    background-color: rgb(124, 58, 237);
+    box-shadow: 0 0 1em rgb(124, 58, 237);
+    border-color: rgb(124, 58, 237) !important;
+    color: white;
   }
 }
 .light {
-  .open {
-    > div {
-      background-color: white;
-    }
-    > div:hover {
-      box-shadow: 0 0 .75em rgb(216, 139, 235);
-    }
+  .open > div, .close > div {
+    box-shadow: 0 0 .5em #fff8;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+  }
+  .open > div:hover {
+    background: black;
+    border-color: black;
+  }
+  i:hover { box-shadow: 0 0 1em black }
+  .sun:hover {
+    background-color: rgb(251, 191, 36);
+    box-shadow: 0 0 1em rgb(251, 191, 36);
+    border-color: rgb(251, 191, 36) !important;
+    color: black;
   }
 }
 .open {

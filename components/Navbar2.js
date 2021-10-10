@@ -1,9 +1,8 @@
-import { useState, useRef, useContext } from 'react'
-// import Link from './Link'
+import { useContext } from 'react'
+import { useRouter } from 'next/router'
 
 // components
-// import Modal from './Modal'
-// import NavButton from './NavButton'
+import NavButton from './NavButton2'
 
 // styles
 import styles from '../styles/Navbar.module.scss'
@@ -11,72 +10,83 @@ import styles from '../styles/Navbar.module.scss'
 // context
 import _appContext from '../context/_appContext'
 
-const Navbar = () => {
+const Navbar = ({ nav, setNav, modal, setModal, toggleModal }) => {
 
-  const { darkMode, mobile } = useContext(_appContext),
-        [state, setState] = useState(false)
-        // [modal, setModal] = useState(null)
+  const { darkMode, setDarkMode } = useContext(_appContext),
+        router = useRouter()
 
-  // const containerRef = useRef()
+  const toggleDarkMode = () => {
+    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.remove('dark')
+      localStorage.theme = 'light'
+      setDarkMode(false)
+    } else {
+      document.documentElement.classList.add('dark')
+      localStorage.theme = 'dark'
+      setDarkMode(true)
+    }
+  }
 
-  const toggle = () => {
-    // containerRef.current.classList.add("show")
-    setState(!state)
-    console.log(state);
+  const redirectHome = async () => {
+    if (router.pathname === '/')
+      await router.push(`/redirect`)
+    else 
+      await router.push('/')
+    setNav(false)
+    setModal(undefined)
+  }
+
+  const toggleNav = () => {
+    if (nav === undefined) setNav(true)
+    else setNav(!nav)
   }
 
   return <>
     <style jsx>{`
-      // .${styles.dark} .highlight {
-      //   box-shadow: 0 0 .75em rgb(70, 210, 255);
-      // }
-      // .${styles.light} .highlight {
-      //   box-shadow: 0 0 .75em rgb(216, 139, 235);
-      // }
-      .select-none {
-
+      .relative {
+        height: 5vh;
+        width: 5vh;
+        min-height: 1.5em;
+        min-width: 1.5em;
+        max-height: 2.25em;
+        max-width: 2.25em;
       }
-      .group {
-        height: 1.75em;
-        width: 1.75em;
-      }
-      .${styles.dark} .main {
-        background: linear-gradient(45deg, #0b8793e8, #946a90e8);
+      .${styles.dark} .parent {
         box-shadow: 0 0 .75em rgb(70, 210, 255);
+        border: 1px solid transparent;
+        border-image: linear-gradient(to bottom right, #b827fc60 0%, #2c90fc60 25%, #b8fd3360 50%, #fec83760 75%, #fd189260 100%);
+        border-image-slice: 1;
       }
-      .${styles.light} .main {
-        background-image: linear-gradient(45deg, #ffa2a280 0%, #bbc1bf80 19%, #57c6e180 42%, #b49fda80 79%, #7ac5d880 100%);
+      .${styles.light} .parent {
         box-shadow: 0 0 .75em rgb(216, 139, 235);
+        border: 1px solid transparent;
+        border-image: linear-gradient(45deg, #0b879380, #946a9080);
+        border-image-slice: 1;
+      }
+      .${styles.dark} .child {
+        background: linear-gradient(45deg, #0b8793e8, #946a90e8);
+        border: none;
+      }
+      .${styles.light} .child {
+        background-image: linear-gradient(45deg, #ffa2a2b0 0%, #bbc1bfb0 19%, #57c6e1b0 42%, #b49fdab0 79%, #7ac5d8b0 100%)
       }
     `}</style>
-    {/* {modal && <Modal modal={modal} toggleModal={()=>toggleModal(null)} />} */}
-    <nav className={`${darkMode ? styles.dark : styles.light} z-50 select-none sticky top-0 flex flex-row-reverse p-10 pointer-events-none`}>
-      <div className="group relative h-7 w-7">
+    <nav className={`${darkMode ? styles.dark : styles.light} z-50 sticky py-10 pr-8 xs:pr-10 sm:pr-14 lg:pr-20 flex flex-row-reverse select-none pointer-events-none`}>
+      <div className="relative">
         <div
-          onClick={toggle}
-          className={`main pointer-events-auto absolute rounded-sm cursor-pointer rotate-45 h-full w-full border border-gray-500 dark:border-gray-400 border-opacity-80 group-hover:scale-125 group-hover:border-opacity-100 transition ease-linear
-        `}/>
-        {/* <div className={`highlight pointer-events-none absolute rounded-sm cursor-pointer rotate-45 h-full w-full group-hover:border group-hover:scale-50 group-hover:border-gray-500 group-hover:border-opacity-25 transition ease-linear`}/> */}
-      </div>
-      <div className={`${!state ? styles.close : styles.open} top-24 absolute h-10 bg-blue-900 flex flex-col items-end text-gray-500 text-xs`}>
-        <div className="transition pointer-events-auto cursor-pointer absolute border border-gray-500 dark:border-gray-400 border-opacity-50 hover:text-black dark:hover:text-white hover:border-opacity-100 rounded-sm h-7 w-7 flex justify-center items-center">
-          <i className="fas fa-home" />
+          onClick={toggleNav}
+          className={`group parent pointer-events-auto absolute rounded-sm cursor-pointer rotate-45 h-full w-full border border-gray-500 dark:border-gray-600 border-opacity-80 hover:scale-125 hover:border-opacity-100 transition ease-linear
+        `}>
+          <div className={`child pointer-events-none absolute opacity-0 group-hover:opacity-100 rounded-sm cursor-pointer h-full w-full group-hover:border group-hover:scale-50 group-hover:border-gray-500 group-hover:border-opacity-25 transition ease-linear`}/>
         </div>
-        <div className="transition pointer-events-auto cursor-pointer absolute border border-gray-500 dark:border-gray-400 border-opacity-50 hover:text-black dark:hover:text-white hover:border-opacity-100 rounded-sm h-7 w-7 flex justify-center items-center">
-          <i className="far fa-moon" />
-        </div>
-        <div className="transition pointer-events-auto cursor-pointer absolute border border-gray-500 dark:border-gray-400 border-opacity-50 hover:text-black dark:hover:text-white hover:border-opacity-100 rounded-sm h-7 w-7 flex justify-center items-center">
-          <i className="fas fa-laptop-code" />
-        </div>
-        <div className="transition pointer-events-auto cursor-pointer absolute border border-gray-500 dark:border-gray-400 border-opacity-50 hover:text-black dark:hover:text-white hover:border-opacity-100 rounded-sm h-7 w-7 flex justify-center items-center">
-          <i className="fas fa-list-ul" />
-        </div>
-        <div className="transition pointer-events-auto cursor-pointer absolute border border-gray-500 dark:border-gray-400 border-opacity-50 hover:text-black dark:hover:text-white hover:border-opacity-100 rounded-sm h-7 w-7 flex justify-center items-center">
-          <i className="fas fa-address-card" />
-        </div>
-        <div className="transition pointer-events-auto cursor-pointer absolute border border-gray-500 dark:border-gray-400 border-opacity-50 hover:text-black dark:hover:text-white hover:border-opacity-100 rounded-sm h-7 w-7 flex justify-center items-center">
-          <i className="fas fa-question" />
-        </div>
+        {nav !== undefined && <div className={`${!nav ? styles.close : styles.open} absolute h-full w-full flex flex-col items-center text-xs`}>
+          <NavButton className="fas fa-home" onClick={redirectHome} />
+          <NavButton onClick={toggleDarkMode} className={darkMode ? `fas fa-moon text-purple-600 ${styles.moon}` : `fas fa-sun text-yellow-400 text-base ${styles.sun}`} />
+          <NavButton className="fas fa-laptop-code" onClick={()=>toggleModal("apps")} />
+          <NavButton className="fas fa-list-ul" onClick={()=>toggleModal("notes")} />
+          <NavButton className="fas fa-address-card" onClick={()=>toggleModal("contact")} />
+          <NavButton className="fas fa-music" onClick={()=>toggleModal("about")} />
+        </div>}
       </div>
     </nav>
   </>
