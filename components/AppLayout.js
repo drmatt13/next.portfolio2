@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useContext } from 'react'
+import { useState, useContext } from 'react'
 
 // components
 // import Navbar from './Navbar'
@@ -11,10 +11,9 @@ import _appContext from '../context/_appContext'
 const AppLayout = ({ children }) => {
 
   const { darkMode } = useContext(_appContext),
+        [buttons, setButtons] = useState(),
         [modal, setModal] = useState(),
-        [nav, setNav] = useState()
-        // [height, setHeight] = useState('100%'),
-        // containerRef = useRef()
+        [nav, setNav] = useState(true)
 
   const toggleModal = x => {
     if (modal) {
@@ -23,20 +22,15 @@ const AppLayout = ({ children }) => {
         return null
       }
     }
-    if (!x) {
+    if (x) setNav(false)
+    else {
+      setNav(true)
       setModal(null)
       return null
     }
     setModal(x)
-    setNav(false)
+    setButtons(false)
   }
-
-  // useEffect(() => {
-    // containerRef.current.addEventListener("scroll", () => {
-      // setHeight(`${containerRef.current.scrollHeight}`)
-    // })
-  // }, [])
-
   return <>
     <style jsx>{`
       .dark {
@@ -61,12 +55,12 @@ const AppLayout = ({ children }) => {
     <div className={`${darkMode ? "dark" : "light"}`}>
     
       <div className="relative h-screen overflow-y-hidden">
-        <Navbar2 nav={nav} setNav={setNav} modal={modal} setModal={setModal} toggleModal={toggleModal} />
+        <Navbar2 nav={nav} setNav={setNav} buttons={buttons} setButtons={setButtons} setModal={setModal} toggleModal={toggleModal} />
         <div className="bg2 absolute top-0 left-0 h-full w-full" />
         <div className="bg3 absolute top-0 left-0 h-full w-full" />
         <div className="bg4 absolute top-0 left-0 h-full w-full" />
         <div 
-          onClick={() => {setNav(false)}}
+          onClick={() => {setButtons(false)}}
           className="absolute pt-28 top-0 h-screen w-full overflow-y-auto"
         >
           { children }

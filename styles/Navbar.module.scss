@@ -2,7 +2,7 @@
 $frames: 100 / 30;
 
 @for $i from 1 through 6 {
-  @keyframes fade-out#{$i} {
+  @keyframes close#{$i} {
     @for $j from 1 through 30 {
       0% {
         pointer-events: none;
@@ -18,13 +18,15 @@ $frames: 100 / 30;
       }
     }
   }
-  @keyframes fade-in#{$i} {
-    @for $j from 1 through 30 {
-      #{$j * $frames * 1%} {
-        opacity: $j * 1 / 30;
-        margin-top: $j * 150% / 30 * ($i - 1) + 175% * $j / 30;
-        margin-right: math.sin(math.cos(math.$pi * $i) * math.$pi * $j * 1 / 30) * 100%;
-      }
+  @keyframes open#{$i} {
+    0% {
+      pointer-events: none;
+      opacity: 0;
+      margin-top: 0;
+    }
+    100% {
+      opacity: 1;
+      margin-top: 150% * ($i - 1) + 175%;
     }
   }
 }
@@ -36,7 +38,6 @@ $frames: 100 / 30;
   .open > div:hover {
     background: white;
     border-color: white;
-    
   }
   i:hover { box-shadow: 0 0 1em white }
   .moon:hover {
@@ -68,9 +69,7 @@ $frames: 100 / 30;
   @for $i from 1 through 6 {
     > div:nth-child(#{$i}) {
       opacity: 0;
-      // animation: fade-in#{$i} .5s linear forwards;
-      animation: fade-in#{$i} $i * 1 / 6 * .4s ease-in forwards;
-      animation-delay: $i * .06s;
+      animation: open#{$i} $i * 1 / 6 * .25s linear forwards;
       z-index: -1 * $i;
     }
   }
@@ -78,8 +77,7 @@ $frames: 100 / 30;
 .close {
   @for $i from 1 through 6 {
     > div:nth-child(#{$i}) {
-      animation: fade-out#{$i} $i * 1 / 6 * .4s ease-out forwards;
-      // animation-delay: $i * .05s;
+      animation: close#{$i} $i * 1 / 6 * .4s ease-out forwards
     }
   }
 }

@@ -10,7 +10,7 @@ import styles from '../styles/Navbar.module.scss'
 // context
 import _appContext from '../context/_appContext'
 
-const Navbar = ({ nav, setNav, modal, setModal, toggleModal }) => {
+const Navbar = ({ nav, setNav, buttons, setButtons, setModal, toggleModal }) => {
 
   const { darkMode, setDarkMode } = useContext(_appContext),
         router = useRouter()
@@ -32,13 +32,13 @@ const Navbar = ({ nav, setNav, modal, setModal, toggleModal }) => {
       await router.push(`/redirect`)
     else 
       await router.push('/')
-    setNav(false)
+    setButtons(false)
     setModal(undefined)
   }
 
-  const toggleNav = () => {
-    if (nav === undefined) setNav(true)
-    else setNav(!nav)
+  const toggleButtons = () => {
+    if (buttons === undefined) setButtons(true)
+    else setButtons(!buttons)
   }
 
   return <>
@@ -68,20 +68,20 @@ const Navbar = ({ nav, setNav, modal, setModal, toggleModal }) => {
       }
     `}</style>
     <nav className={`${darkMode ? styles.dark : styles.light} z-50 sticky py-10 pr-8 xs:pr-10 sm:pr-14 lg:pr-20 flex flex-row-reverse select-none pointer-events-none`}>
-      <div className="relative">
+      <div className={`relative ${nav ? "opacity-100 duration-200" : "opacity-0 duration-500"} transition-opacity`}>
         <div
-          onClick={toggleNav}
-          className={`group parent pointer-events-auto absolute rounded-sm cursor-pointer rotate-45 h-full w-full border border-gray-500 dark:border-gray-600 border-opacity-80 hover:scale-125 hover:border-opacity-100 transition ease-linear
+          onClick={toggleButtons}
+          className={`${nav ? "pointer-events-auto" : "pointer-events-none"} group parent absolute rounded-sm cursor-pointer rotate-45 h-full w-full border border-gray-500 dark:border-gray-600 border-opacity-80 hover:scale-125 hover:border-opacity-100 transition ease-linear
         `}>
           <div className={`child pointer-events-none absolute opacity-0 group-hover:opacity-100 rounded-sm cursor-pointer h-full w-full group-hover:border group-hover:scale-50 group-hover:border-gray-500 group-hover:border-opacity-25 transition ease-linear`}/>
         </div>
-        {nav !== undefined && <div className={`${!nav ? styles.close : styles.open} absolute h-full w-full flex flex-col items-center text-xs`}>
+        {buttons !== undefined && <div className={`${!buttons ? styles.close : styles.open} absolute h-full w-full flex flex-col items-center text-xs`}>
           <NavButton className="fas fa-home" onClick={redirectHome} />
-          <NavButton onClick={toggleDarkMode} className={darkMode ? `fas fa-moon text-purple-600 ${styles.moon}` : `fas fa-sun text-yellow-400 text-base ${styles.sun}`} />
           <NavButton className="fas fa-laptop-code" onClick={()=>toggleModal("apps")} />
           <NavButton className="fas fa-list-ul" onClick={()=>toggleModal("notes")} />
           <NavButton className="fas fa-address-card" onClick={()=>toggleModal("contact")} />
           <NavButton className="fas fa-music" onClick={()=>toggleModal("about")} />
+          <NavButton onClick={toggleDarkMode} className={darkMode ? `fas fa-moon text-purple-600 ${styles.moon}` : `fas fa-sun text-yellow-400 text-base ${styles.sun}`} />
         </div>}
       </div>
     </nav>
