@@ -1,25 +1,30 @@
+@use 'sass:math';
+$frames: 100 / 30;
+
 @for $i from 1 through 6 {
   @keyframes fade-out#{$i} {
-    0% {
-      opacity: 1;
-      pointer-events: none;
-      margin-top: 150% * ($i - 1) + 175%;
-    }
-    100% {
-      opacity: 0;
-      pointer-events: none;
-      margin-top: 0;
+    @for $j from 1 through 30 {
+      0% {
+        pointer-events: none;
+      }
+      #{100% - $j * $frames * 1%} {
+        opacity: $j * 1 / 30;
+        margin-top: $j * 150% / 30 * ($i - 1) + 175% * $j / 30;
+        margin-right: math.sin(math.cos(math.$pi * $i) * math.$pi * $j * 1 / 30) * 100%;
+      }
+      100% {
+        opacity: 0;
+        pointer-events: none;
+      }
     }
   }
   @keyframes fade-in#{$i} {
-    0% {
-      pointer-events: none;
-      opacity: 0;
-      margin-top: 0
-    }
-    100% {
-      opacity: 1;
-      margin-top: 150% * ($i - 1) + 175%;
+    @for $j from 1 through 30 {
+      #{$j * $frames * 1%} {
+        opacity: $j * 1 / 30;
+        margin-top: $j * 150% / 30 * ($i - 1) + 175% * $j / 30;
+        margin-right: math.sin(math.cos(math.$pi * $i) * math.$pi * $j * 1 / 30) * 100%;
+      }
     }
   }
 }
@@ -62,20 +67,19 @@
 .open {
   @for $i from 1 through 6 {
     > div:nth-child(#{$i}) {
-      animation: fade-in#{$i} .25s ease-out forwards;
-      i {
-        animation: fade-in-i#{$i} .25s ease-out forwards;
-      }
+      opacity: 0;
+      // animation: fade-in#{$i} .5s linear forwards;
+      animation: fade-in#{$i} $i * 1 / 6 * .4s ease-in forwards;
+      animation-delay: $i * .06s;
+      z-index: -1 * $i;
     }
   }
 }
 .close {
   @for $i from 1 through 6 {
     > div:nth-child(#{$i}) {
-      animation: fade-out#{$i} .25s ease-out forwards;
-      i {
-        animation: fade-out-i#{$i} .25s ease-out forwards;
-      }
+      animation: fade-out#{$i} $i * 1 / 6 * .4s ease-out forwards;
+      // animation-delay: $i * .05s;
     }
   }
 }

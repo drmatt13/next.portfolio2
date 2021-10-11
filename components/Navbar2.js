@@ -44,12 +44,8 @@ const Navbar = ({ nav, setNav, modal, setModal, toggleModal }) => {
   return <>
     <style jsx>{`
       .relative {
-        height: 5vh;
-        width: 5vh;
-        min-height: 1.5em;
-        min-width: 1.5em;
-        max-height: 2.25em;
-        max-width: 2.25em;
+        height: clamp(1.5em, 5vh, 2.25em);
+        width: clamp(1.5em, 5vh, 2.25em);
       }
       .${styles.dark} .parent {
         box-shadow: 0 0 .75em rgb(70, 210, 255);
