@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }) {
     typeof window !== 'undefined' ?
       /Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
       :
-      null
+      false
   )
 
   const [darkMode, setDarkMode] = useState(false)

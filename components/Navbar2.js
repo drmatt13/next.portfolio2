@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useEffect, useContext, useRef } from 'react'
 import { useRouter } from 'next/router'
 
 // components
@@ -10,10 +10,12 @@ import styles from '../styles/Navbar.module.scss'
 // context
 import _appContext from '../context/_appContext'
 
-const Navbar = ({ nav, setNav, buttons, setButtons, setModal, toggleModal }) => {
+const Navbar = ({ nav, buttons, setButtons, setModal, toggleModal }) => {
 
-  const { darkMode, setDarkMode } = useContext(_appContext),
-        router = useRouter()
+  const { darkMode, setDarkMode, mobile } = useContext(_appContext),
+  router = useRouter(),
+  parent = useRef(),
+  child = useRef()
 
   const toggleDarkMode = () => {
     if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -40,6 +42,13 @@ const Navbar = ({ nav, setNav, buttons, setButtons, setModal, toggleModal }) => 
     if (buttons === undefined) setButtons(true)
     else setButtons(!buttons)
   }
+
+  useEffect(() => {
+    if (mobile) {
+      parent.current.classList.add('duration-75')
+      child.current.classList.add('duration-75')
+    }
+  }, [mobile])
 
   return <>
     <style jsx>{`
@@ -68,20 +77,69 @@ const Navbar = ({ nav, setNav, buttons, setButtons, setModal, toggleModal }) => 
       }
     `}</style>
     <nav className={`${darkMode ? styles.dark : styles.light} z-50 sticky py-10 pr-8 xs:pr-10 sm:pr-14 lg:pr-20 flex flex-row-reverse select-none pointer-events-none`}>
-      <div className={`relative ${nav ? "opacity-100 duration-200" : "opacity-0 duration-500"} transition-opacity`}>
+      <div className={`relative ${nav ? "opacity-100 duration-300" : "opacity-0 duration-700"} transition-opacity`}>
         <div
+          ref={parent}
           onClick={toggleButtons}
-          className={`${nav ? "pointer-events-auto" : "pointer-events-none"} group parent absolute rounded-sm cursor-pointer rotate-45 h-full w-full border border-gray-500 dark:border-gray-600 border-opacity-80 hover:scale-125 hover:border-opacity-100 transition ease-linear
-        `}>
-          <div className={`child pointer-events-none absolute opacity-0 group-hover:opacity-100 rounded-sm cursor-pointer h-full w-full group-hover:border group-hover:scale-50 group-hover:border-gray-500 group-hover:border-opacity-25 transition ease-linear`}/>
+          onTouchStart={e => {
+            e.target.classList.add("group")
+            e.target.classList.add("hover:scale-125")
+            e.target.classList.add("hover:border-opacity-100")
+          }}
+          onTouchEnd={e => {
+            e.target.classList.remove("group")
+            e.target.classList.remove("hover:scale-125")
+            e.target.classList.remove("hover:border-opacity-100")
+          }}
+          className={`
+            ${nav ? "pointer-events-auto" : "pointer-events-none"} 
+            group 
+            parent 
+            absolute 
+            rounded-sm 
+            cursor-pointer 
+            rotate-45 
+            h-full 
+            w-full 
+            border 
+            border-gray-500 
+            dark:border-gray-600 
+            border-opacity-80 
+            hover:scale-125 
+            hover:border-opacity-100 
+            transition ease-linear
+          `}
+        >
+          <div
+            ref={child}
+            className={`
+              child pointer-events-none 
+              absolute 
+              opacity-0 
+              group-hover:opacity-100 
+              rounded-sm 
+              cursor-pointer 
+              h-full 
+              w-full 
+              group-hover:border 
+              group-hover:scale-50 
+              group-hover:border-gray-500 
+              group-hover:border-opacity-25 
+              transition ease-linear
+            `}
+          />
         </div>
         {buttons !== undefined && <div className={`${!buttons ? styles.close : styles.open} absolute h-full w-full flex flex-col items-center text-xs`}>
           <NavButton className="fas fa-home" onClick={redirectHome} />
+          <NavButton 
+            mode={darkMode}
+            onClick={toggleDarkMode} 
+            className={darkMode ? `fas fa-moon text-purple-600` : `fas fa-sun text-yellow-400 text-base`} 
+          />
           <NavButton className="fas fa-laptop-code" onClick={()=>toggleModal("apps")} />
           <NavButton className="fas fa-list-ul" onClick={()=>toggleModal("notes")} />
           <NavButton className="fas fa-address-card" onClick={()=>toggleModal("contact")} />
           <NavButton className="fas fa-music" onClick={()=>toggleModal("about")} />
-          <NavButton onClick={toggleDarkMode} className={darkMode ? `fas fa-moon text-purple-600 ${styles.moon}` : `fas fa-sun text-yellow-400 text-base ${styles.sun}`} />
         </div>}
       </div>
     </nav>

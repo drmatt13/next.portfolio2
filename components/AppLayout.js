@@ -55,7 +55,7 @@ const AppLayout = ({ children }) => {
     <div className={`${darkMode ? "dark" : "light"}`}>
     
       <div className="relative h-screen overflow-y-hidden">
-        <Navbar2 nav={nav} setNav={setNav} buttons={buttons} setButtons={setButtons} setModal={setModal} toggleModal={toggleModal} />
+        <Navbar2 nav={nav} buttons={buttons} setButtons={setButtons} setModal={setModal} toggleModal={toggleModal} />
         <div className="bg2 absolute top-0 left-0 h-full w-full" />
         <div className="bg3 absolute top-0 left-0 h-full w-full" />
         <div className="bg4 absolute top-0 left-0 h-full w-full" />
