@@ -107,7 +107,8 @@ const Navbar = ({ nav, buttons, setButtons, setModal, toggleModal }) => {
             border-opacity-80 
             hover:scale-125 
             hover:border-opacity-100 
-            transition ease-linear
+            transition-all
+            ease-linear
           `}
         >
           <div
@@ -125,7 +126,8 @@ const Navbar = ({ nav, buttons, setButtons, setModal, toggleModal }) => {
               group-hover:scale-50 
               group-hover:border-gray-500 
               group-hover:border-opacity-25 
-              transition ease-linear
+              transition-all
+              ease-linear
             `}
           />
         </div>

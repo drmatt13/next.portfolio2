@@ -57,11 +57,11 @@ const NavButton2 = ({ className, mode, onClick }) => {
           items-center 
           text-md
           rounded-full
-          transition
+          transition-all
           ease-linear
           border
         border-white
-          border-opacity-10
+          border-opacity-5
         `} 
       />
     </div>

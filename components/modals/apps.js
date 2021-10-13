@@ -23,7 +23,7 @@ const AppsModal = ({ toggleModal }) => {
   ])
 
   return <>
-    <div className={`${styles.modal_container} animate-fade-in`}>
+    <div className={`${styles.modal_container} animate-fade-in pr-2.5 m-2.5`}>
       {apps.map((app, i) => (
         <div className={styles.margin_container} key={i}>
           <Link

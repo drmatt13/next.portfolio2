@@ -1,7 +1,6 @@
 import { useState, useContext } from 'react'
 
 // components
-// import Navbar from './Navbar'
 import Modal from './Modal'
 import Navbar2 from './Navbar2'
 
@@ -16,12 +15,6 @@ const AppLayout = ({ children }) => {
         [nav, setNav] = useState(true)
 
   const toggleModal = x => {
-    if (modal) {
-      if (modal === x) {
-        setModal(null)
-        return null
-      }
-    }
     if (x) setNav(false)
     else {
       setNav(true)
@@ -31,6 +24,7 @@ const AppLayout = ({ children }) => {
     setModal(x)
     setButtons(false)
   }
+  
   return <>
     <style jsx>{`
       .dark {
@@ -50,10 +44,8 @@ const AppLayout = ({ children }) => {
       }
       .bg3 { background: url(/images/layout/${darkMode ? "background-fixed-rb.png" : "imageonline-co-hueshifted.png"}) right bottom no-repeat }
       .bg4 { background: url(/images/layout/background-fixed-tl.png) no-repeat }
-
     `}</style>
     <div className={`${darkMode ? "dark" : "light"}`}>
-    
       <div className="relative h-screen overflow-y-hidden">
         <Navbar2 nav={nav} buttons={buttons} setButtons={setButtons} setModal={setModal} toggleModal={toggleModal} />
         <div className="bg2 absolute top-0 left-0 h-full w-full" />
@@ -67,8 +59,7 @@ const AppLayout = ({ children }) => {
         </div>
       </div>
     </div>
-    {modal && <Modal modal={modal} toggleModal={()=>toggleModal(null)} />}
-    {/* <Navbar /> */}
+    {modal && <Modal modal={modal} toggleModal={toggleModal} />}
   </>
 }
 

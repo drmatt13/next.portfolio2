@@ -9,14 +9,13 @@ import styles from '../styles/CodeCard.module.scss'
 
 const CodeCard = ({ data }) => {
 
-  const { darkMode, mobile } = useContext(_appContext)
-
-  const [height, setHeight] = useState(200)
-  const [previousTab, setPreviousTab] = useState(0)
-  const [selectedTab, setSelectedTab] = useState(0)
-  const containerRef = useRef()
-  const wrapperRef = useRef()
-  const headerRef = useRef()
+  const { darkMode, mobile } = useContext(_appContext),
+        [previousTab, setPreviousTab] = useState(0),
+        [selectedTab, setSelectedTab] = useState(0),
+        [height, setHeight] = useState(200),
+        containerRef = useRef(),
+        wrapperRef = useRef(),
+        headerRef = useRef()
 
   const deconstructLanguage = useCallback((language) => {
     const object = {
@@ -157,49 +156,41 @@ const CodeCard = ({ data }) => {
   return <>
     <style global="true">{`
       pre {
-        color:${darkMode ? "white" : "black"};
+        color:${darkMode ? "white" : "black"}
       }
       ${!mobile && `
         pre::-webkit-scrollbar {
           width: 12.5px;
           height: 12.5px;
         }
-        
         pre::-webkit-scrollbar-thumb {
           background-color: ${darkMode ? "rgba(255, 255, 255, 0.125)" : "rgba(0, 0, 0, 0.125)"};
           border-radius: 6.25px;
         }
-        
         pre::-webkit-scrollbar-thumb:hover {
-          background-color: ${darkMode ? "rgba(255, 255, 255, 0.175)" : "rgba(0, 0, 0, 0.175)"};
+          background-color: ${darkMode ? "rgba(255, 255, 255, 0.175)" : "rgba(0, 0, 0, 0.175)"}
         }
-        
         pre::-webkit-scrollbar-track {
           background: rgba(0, 0, 0, 0.125);
           border-radius: 6.25px;
           object-fit: fill;
         }
-        
         pre::-webkit-scrollbar-corner {
           background-color: rgba(0, 0, 0, 0);
         }
-
         @media only screen and (max-width: 640px) {
           pre::-webkit-scrollbar {
             width: 6.25px;
             height: 6.25px;
           }
-          
           pre::-webkit-scrollbar-thumb {
-            border-radius: 3.125px;
+            border-radius: 3.125px
           }
-          
           pre::-webkit-scrollbar-track {
-            border-radius: 3.125px;
+            border-radius: 3.125px
           }
         }
       `}
-
       code.hljs{display:block;overflow-x:auto;padding:1em}code.hljs{padding:3px 5px} .hljs-keyword,.hljs-meta-keyword{font-weight:700}
       ${darkMode ? 
         `.hljs{color:#eff;background:#263238}.hljs ::selection{color:#314549}.hljs-comment{color:#546e7a}.hljs-tag{color:#b2ccd6}.hljs-operator,.hljs-punctuation,.hljs-subst{color:#eff}.hljs-operator{opacity:.7}.hljs-bullet,.hljs-deletion,.hljs-name,.hljs-selector-tag,.hljs-template-variable,.hljs-variable{color:#f07178}.hljs-attr,.hljs-link,.hljs-literal,.hljs-number,.hljs-symbol,.hljs-variable.constant_{color:#f78c6c}.hljs-class .hljs-title,.hljs-title,.hljs-title.class_{color:#ffcb6b}.hljs-strong{font-weight:700;color:#ffcb6b}.hljs-addition,.hljs-code,.hljs-string,.hljs-title.class_.inherited__{color:#c3e88d}.hljs-built_in,.hljs-doctag,.hljs-keyword.hljs-atrule,.hljs-quote,.hljs-regexp{color:#89ddff}.hljs-attribute,.hljs-function .hljs-title,.hljs-section,.hljs-title.function_,.ruby .hljs-property{color:#82aaff}.diff .hljs-meta,.hljs-keyword,.hljs-template-tag,.hljs-type{color:#c792ea}.hljs-emphasis{color:#c792ea;font-style:italic}.hljs-meta,.hljs-meta.hljs-keyword,.hljs-meta .hljs-string{color:#ff5370}.hljs-meta` 
@@ -218,7 +209,7 @@ const CodeCard = ({ data }) => {
         background: radial-gradient( circle farthest-corner at 1.3% 2.8%,  rgba(239,249,249,1) 0%, rgb(235, 243, 255) 100.2% );
       }
       .${styles.header} {
-        ${darkMode ? "color: grey;" : "color: black;"}
+        ${darkMode ? "color: grey" : "color: black"}
       }
       .${styles.wrapper} {
         height: ${height}px
@@ -226,7 +217,7 @@ const CodeCard = ({ data }) => {
     `}</style>
     <style global="true">{`
       .hljs-comment {
-        color: grey;
+        color: grey
       }
     `}</style>
     <div className={`${styles.cardContainer} ${darkMode ? "dark" : "light"} animate-fade-in`} ref={containerRef}>
