@@ -77,6 +77,11 @@ const Modal = ({ modal, toggleModal }) => {
       @media only screen and (max-width: 1023px) {
         .modal { width: clamp(0px, 92.5vw, 500px) }
       }
+      ${mobile ? `
+        @media only screen and (max-width: 641px) {
+          .modal { width: clamp(92.5vw, 92.5vw, 92.5vw) }
+        }` : ``
+      }
       @media only screen and (max-height: 441px) {
         .modal { min-height: 90% }
       }
@@ -85,6 +90,9 @@ const Modal = ({ modal, toggleModal }) => {
         margin-right: 1px;
         max-width: 25%;
         width: 100px;
+      }
+      @media only screen and (max-width: 500px) {
+        .tab { width: 25% }
       }
       .selected {
         color: white;

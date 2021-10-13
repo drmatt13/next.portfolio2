@@ -15,7 +15,7 @@ const NotesModal = ({ toggleModal }) => {
     <div className="animate-fade-in pr-2.5 m-2.5 max-h-full overflow-y-auto grid gap-4 grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {keys.map((key, i) => (
         <div key={i} className="h-36 flex flex-col shadow-lg border-2 dark:border-gray-600 bg-gray-200 dark:bg-gray-400 rounded-lg overflow-hidden">
-          <h4 className="text-center text-lg bg-gray-100 dark:bg-gray-500 border-b border-gray-300 dark:border-gray-600">{key}</h4>
+          <h4 className="h-7 xs:h-8 px-2 flex justify-center items-center text-sm xs:text-lg bg-gray-100 dark:bg-gray-500 border-b border-gray-300 dark:border-gray-600 truncate">{key}</h4>
           <div className="flex-1 text-black p-2 overflow-y-auto">
             {notes[key].map((note, j) => (
               <Link 
