@@ -87,12 +87,14 @@ const Modal = ({ modal, toggleModal }) => {
       }
       .tab {
         height: clamp(2em, 5vh, 2.5em);
-        margin-right: 1px;
         max-width: 25%;
         width: 100px;
       }
       @media only screen and (max-width: 500px) {
         .tab { width: 25% }
+      }
+      .mr-1px {
+        margin-right: 1px
       }
       .selected {
         color: white;
@@ -115,6 +117,7 @@ const Modal = ({ modal, toggleModal }) => {
                 onClick={()=>toggleModal(m)}
                 className={`
                   ${modal === m ? "selected" : ""}
+                  ${m !== "about" ? "mr-1px" : ""}
                   tab 
                   flex 
                   justify-center 
