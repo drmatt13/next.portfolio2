@@ -1,0 +1,40 @@
+@keyframes slide-icons {
+    0% {
+      transform: translate(0, 0)
+    }
+    100% {
+      transform: translate(-228%, 0)
+    }
+}
+@keyframes slide-blur {
+  0% {
+    transform: translate(0, 50%)
+  }
+  100% {
+    transform: translate(-228%, 50%)
+  }
+}
+.slider_container {
+  animation: slide-icons 20s infinite linear;
+  margin-bottom: 4rem;
+  > div {
+    flex-shrink: 0;
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+    > div {
+      display: block !important;
+    }
+  }
+}
+.platform_container {
+  animation: slide-blur 20s infinite linear;
+  > div {
+    transform: rotateX(180deg);
+    flex-shrink: 0;
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+    > div {
+      display: block !important;
+    }
+  }
+}
