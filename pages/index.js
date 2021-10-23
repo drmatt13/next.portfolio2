@@ -84,7 +84,7 @@ export default function Home() {
           </div>
         </div>
         <div className="flex-1 hidden sm:flex justify-center">
-          <MirrorIcons />
+          {/* <MirrorIcons /> */}
         </div>
       </div>
 
