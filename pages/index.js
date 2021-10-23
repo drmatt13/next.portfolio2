@@ -79,7 +79,7 @@ export default function Home() {
         <div className="mb-10 flex-7 flex items-center justify-center text-gray-800 dark:text-white">
           <div className="custom-text text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
             <div>Hi,</div>
-            <div>I'm <span className={styles.rainbow_underline}><span className={`${styles.glitch}`} data-text="MATT">MATT</span></span>,</div>
+            <div>{"I'm"} <span className={styles.rainbow_underline}><span className={`${styles.glitch}`} data-text="MATT">MATT</span></span>,</div>
             <div>Full stack developer</div>
           </div>
         </div>
