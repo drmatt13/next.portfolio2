@@ -52,7 +52,7 @@ const AppLayout = ({ children }) => {
         <div className="bg3 absolute top-0 left-0 h-full w-full" />
         <div className="bg4 absolute top-0 left-0 h-full w-full" />
         <div 
-          onClick={() => {setButtons(false)}}
+          onClick={() => {buttons !== undefined ? setButtons(false):"";}}
           className="absolute pt-28 top-0 h-screen w-full overflow-y-auto"
         >
           { children }

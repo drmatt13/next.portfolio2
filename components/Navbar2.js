@@ -76,7 +76,7 @@ const Navbar = ({ nav, buttons, setButtons, setModal, toggleModal }) => {
         background-image: linear-gradient(45deg, #ffa2a2b0 0%, #bbc1bfb0 19%, #57c6e1b0 42%, #b49fdab0 79%, #7ac5d8b0 100%)
       }
     `}</style>
-    <nav className={`${darkMode ? styles.dark : styles.light} z-50 sticky py-10 pr-8 xs:pr-10 sm:pr-14 lg:pr-20 flex flex-row-reverse select-none pointer-events-none`}>
+    <nav className={`${darkMode ? styles.dark : styles.light} z-50 h-28 sticky py-10 pr-8 xs:pr-10 sm:pr-14 lg:pr-20 flex flex-row-reverse select-none pointer-events-none`}>
       <div className={`relative ${nav ? "opacity-100 duration-300" : "opacity-0 duration-700"} transition-opacity`}>
         <div
           ref={parent}

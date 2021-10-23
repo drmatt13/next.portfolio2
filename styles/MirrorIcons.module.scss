@@ -3,22 +3,31 @@
       transform: translate(0, 0)
     }
     100% {
-      transform: translate(-228%, 0)
+      transform: translate(-100%, 0)
     }
 }
-@keyframes slide-blur {
-  0% {
-    transform: translate(0, 50%)
-  }
-  100% {
-    transform: translate(-228%, 50%)
-  }
-}
+// @keyframes slide-blur {
+//   0% {
+//     transform: translate(0, 50%)
+//   }
+//   100% {
+//     transform: translate(-228%, 50%)
+//   }
+// }
 .slider_container {
-  animation: slide-icons 20s infinite linear;
+  // animation: slide-icons 5s infinite linear;
+
+
   margin-bottom: 4rem;
+  // overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  
   > div {
-    flex-shrink: 0;
+    // float: left;
+    // flex-shrink: 0;
+    
+    
     margin-left: 0.75rem;
     margin-right: 0.75rem;
     > div {
@@ -28,7 +37,9 @@
 }
 .platform_container {
   animation: slide-blur 20s infinite linear;
+  
   > div {
+    
     transform: rotateX(180deg);
     flex-shrink: 0;
     margin-left: 0.75rem;
