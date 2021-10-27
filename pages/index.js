@@ -10,6 +10,7 @@ import _appContext from '../context/_appContext'
 
 // styles
 import styles from '../styles/Home.module.scss'
+import glitch from '../styles/glitch.module.scss'
 
 export default function Home() {
 
@@ -33,7 +34,6 @@ export default function Home() {
     }
     .svg {
       height: clamp(34vh, 30vw, 550px);
-      max-width: 95%;
     }
     .second {
       height: clamp(25vh, 70vw, 800px)
@@ -79,7 +79,7 @@ export default function Home() {
         <div className="mb-10 flex-7 flex items-center justify-center text-gray-800 dark:text-white">
           <div className="custom-text text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
             <div>Hi,</div>
-            <div>{"I'm"} <span className={styles.rainbow_underline}><span className={`${styles.glitch}`} data-text="MATT">MATT</span></span>,</div>
+            <div>{"I'm"} <span className={`${glitch.text}`} data-text="MATT">MATT</span>,</div>
             <div>Full stack developer</div>
           </div>
         </div>
@@ -89,9 +89,36 @@ export default function Home() {
       </div>
 
       <div className="sm:flex-1 flex justify-center items-end">
-        <div className="bg-blue-500 relative">
-          {/* <div className="absolute"></div> windows */}
-          <img className="svg" src="/images/home/test2.svg" />
+        <div className="relative select-none">
+          <div 
+            className={`${styles.window_container} absolute grid grid-cols-4`}
+            style={{
+              // height: '54.1%',
+              // rowGap: '2.7%',
+              // width: '57.7%',
+              // columnGap: '2.5%',
+              // marginLeft: '3.7%',
+              // backgroundImage: `url("/images/home/placeholder3.png")`,
+              // backgroundSize: 'cover',
+              // backgroundPosition: 'bottom',
+              // backgroundRepeat: 'no-repeat',
+              
+            }}
+          >
+            <div/>
+            <div/>
+            <div/>
+            <div/>
+            <div/>
+            <div/>
+            <div/>
+            <div/>
+            <div/>
+            <div/>
+            <div/>
+            <div/>
+          </div>
+          <img className="svg" src="/images/home/test1.svg" />
         </div>
       </div>
     </div>
@@ -117,9 +144,6 @@ export default function Home() {
           <div style={{flex: ".2"}}></div>
         </div>
       </div> 
-    </div>
-    <div className="w-full flex justify-center">
-      <div className="w-11/12 h-1 bg-black bg-opacity-25 dark:bg-red-200 dark:bg-opacity-10 rounded-full" />
     </div>
     <div style={{height: "75vh"}}>
 
