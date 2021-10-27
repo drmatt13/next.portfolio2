@@ -81,12 +81,13 @@ const CodeCard = ({ data }) => {
   }, [])
 
   const generateCodeCard = useCallback(() => {
-    let count = 0
-    for (let [key, value] of Object.entries(data)) {
+    for (let x = {i: 0, data: Object.entries(data)}; x.i < x.data.length; x.i++) {
 
-      let deconstruct = key.split(" ")
-      
-      const [style, language, extraStyle] = deconstructLanguage(deconstruct[0])
+      let i = x.i,
+        [key, value] = x.data[x.i],
+        deconstruct = key.split(" "),
+        [style, language, extraStyle] = deconstructLanguage(deconstruct[0])
+        
       if (value !== null) {
         let iframe
         // create tabs
@@ -102,8 +103,7 @@ const CodeCard = ({ data }) => {
         } else {
           div.innerHTML = `<i class="${style}"></i>${deconstruct.length === 1 ? key : deconstruct.slice(1).join(' ')}`
         }
-        div.setAttribute("data", count)
-        div.addEventListener("click", () => {setSelectedTab(parseInt(div.getAttribute("data")))})
+        div.addEventListener("click", () => {setSelectedTab(i)})
         headerRef.current.appendChild(div)
         
         // generate tabs content
@@ -116,7 +116,7 @@ const CodeCard = ({ data }) => {
           wrapperRef.current.appendChild(pre)
         }
       }
-      count++
+      // count++
     }
     // if there is a tab, set first tab to active
     if (wrapperRef.current.childNodes[0]) {

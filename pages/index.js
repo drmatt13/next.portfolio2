@@ -32,16 +32,16 @@ export default function Home() {
       flex: 7;
     }
     .svg {
-      height: clamp(40vh, 30vw, 550px);
+      height: clamp(34vh, 30vw, 550px);
       max-width: 95%;
     }
     .second {
-      height: clamp(450px, 60vw, 1000px)
+      height: clamp(25vh, 70vw, 800px)
     }
     @media (max-width: 639px) {
-      .second {
-        height: 200vh
-      }
+      // .second {
+      //   height: 200vh
+      // }
     }
     .gradient {
       background: rgb(255,255,255);
@@ -51,7 +51,7 @@ export default function Home() {
       }
     }
     .placeholder1 {
-      background: lightblue url("/images/home/placeholder1.png") center;
+      background: lightblue url("/images/home/placeholder1.png") center
     }
     .placeholder2 {
       background: lightblue url("/images/home/placeholder2.png") center
@@ -61,7 +61,7 @@ export default function Home() {
     }
     .placeholder {
       background-size: cover;
-      width: clamp(25vh, 28vw, 400px);
+      width: clamp(25vh, 22vw, 300px);
       box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     }
     @media (max-width: 639px) {
@@ -84,12 +84,15 @@ export default function Home() {
           </div>
         </div>
         <div className="flex-1 hidden sm:flex justify-center">
-          {/* <MirrorIcons /> */}
+          <MirrorIcons />
         </div>
       </div>
 
       <div className="sm:flex-1 flex justify-center items-end">
-        <img className="svg" src="/images/home/test2.svg" />
+        <div className="bg-blue-500 relative">
+          {/* <div className="absolute"></div> windows */}
+          <img className="svg" src="/images/home/test2.svg" />
+        </div>
       </div>
     </div>
     <div className="second relative">
@@ -98,15 +101,18 @@ export default function Home() {
         style={{clipPath: "polygon(0 0, 100% 0, 100% 52.5%, 0 72.5%)"}}
       />
       <div className="absolute top-0 h-full w-full flex flex-col">
-        <div className="flex flex-col items-center justify-evenly text-gray-800 dark:text-white" style={{flex: ".5"}}>
+        <div 
+          className="flex-1 flex flex-col items-center justify-evenly text-gray-800 dark:text-white"
+          style={{maxHeight: "300px"}}
+        >
           <div className="text-5xl">Heading</div>
           <div>kasdmsmdmsdm sdf sdf sdf sdfsdfsdf  sdfsdfsdf  sdfsdfsdf </div>
         </div>
         <div className="flex-1 flex flex-col">
-          <div className="flex-1 flex flex-col sm:flex-row justify-evenly items-center sm:items-stretch">
-            <div className="placeholder1 placeholder cursor-pointer rounded-2xl shadow-2xl"></div>
-            <div className="placeholder2 placeholder cursor-pointer rounded-2xl shadow-2xl"></div>
-            <div className="placeholder3 placeholder cursor-pointer rounded-2xl shadow-2xl"></div>
+          <div className="flex-1 flex justify-center items-center sm:items-stretch">
+            <div className="placeholder1 placeholder mx-8 cursor-pointer rounded-2xl shadow-2xl"></div>
+            <div className="placeholder2 placeholder mx-8 cursor-pointer rounded-2xl shadow-2xl"></div>
+            <div className="placeholder3 placeholder mx-8 cursor-pointer rounded-2xl shadow-2xl"></div>
           </div>
           <div style={{flex: ".2"}}></div>
         </div>
