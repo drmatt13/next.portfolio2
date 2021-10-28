@@ -18,66 +18,11 @@ export default function Home() {
 
   return <>
     <style>{`
-    .first {
-      height: clamp(50vh, 40vw, 1000px)
-    }
-    @media (max-width: 639px) {
-      .first {
-        height: auto;
-      }
-    }
-    .custom-text {
-      font-family: 'IBM Plex Mono', monospace;
-    }
-    .flex-7 {
-      flex: 7;
-    }
-    .svg {
-      height: clamp(34vh, 30vw, 550px);
-    }
-    .second {
-      height: clamp(25vh, 70vw, 800px)
-    }
-    @media (max-width: 639px) {
-      // .second {
-      //   height: 200vh
-      // }
-    }
-    .gradient {
-      background: rgb(255,255,255);
-      ${darkMode ? 
-        `background: linear-gradient(-5deg, rgba(0,0,0,.5) 40%, rgba(155, 50, 255,.25) 100%);` :
-        `background: linear-gradient(-7deg, rgba(255,255,255,.25) 50%, rgba(155, 50, 255,.5) 100%);`
-      }
-    }
-    .placeholder1 {
-      background: lightblue url("/images/home/placeholder1.png") center
-    }
-    .placeholder2 {
-      background: lightblue url("/images/home/placeholder2.png") center
-    }
-    .placeholder3 {
-      background: lightblue url("/images/home/placeholder3.png") center
-    }
-    .placeholder {
-      background-size: cover;
-      width: clamp(25vh, 22vw, 300px);
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    }
-    @media (max-width: 639px) {
-      .placeholder {
-        height: 50vh;
-        width: clamp(35vh, 40vw, 400px);
-        margin-bottom: 20px;
-        border-radius: 25px;
-      }
-    }
     `}</style>
-    <div className="first flex flex-col sm:flex-row">
-      
+    <div className="flex flex-col sm:flex-row">
       <div className="sm:flex-1 flex flex-col">  
-        <div className="mb-10 flex-7 flex items-center justify-center text-gray-800 dark:text-white">
-          <div className="custom-text text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
+        <div className="flex items-center justify-center text-gray-800 dark:text-white" style={{flex: 7}}>
+          <div className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl" style={{fontFamily: "'IBM Plex Mono', monospace"}}>
             <div>Hi,</div>
             <div>{"I'm"} <span className={`${glitch.text}`} data-text="MATT">MATT</span>,</div>
             <div>Full stack developer</div>
@@ -87,45 +32,25 @@ export default function Home() {
           <MirrorIcons />
         </div>
       </div>
-
       <div className="sm:flex-1 flex justify-center items-end">
-        <div className="relative select-none">
-          <div 
-            className={`${styles.window_container} absolute grid grid-cols-4`}
-            style={{
-              // height: '54.1%',
-              // rowGap: '2.7%',
-              // width: '57.7%',
-              // columnGap: '2.5%',
-              // marginLeft: '3.7%',
-              // backgroundImage: `url("/images/home/placeholder3.png")`,
-              // backgroundSize: 'cover',
-              // backgroundPosition: 'bottom',
-              // backgroundRepeat: 'no-repeat',
-              
-            }}
-          >
-            <div/>
-            <div/>
-            <div/>
-            <div/>
-            <div/>
-            <div/>
-            <div/>
-            <div/>
-            <div/>
-            <div/>
-            <div/>
-            <div/>
+        <div className={`${styles.svg_master_container} relative select-none mt-10 sm:mt-24 2xl:mt-36`}>
+          <div className={`${darkMode ? styles.dark : styles.light} absolute grid grid-cols-4`}>
+            <div/><div/><div/><div/><div/><div/><div/><div/><div/><div/><div/><div/>
           </div>
-          <img className="svg" src="/images/home/test1.svg" />
+          <img className="relative" src="/images/home/test1.svg" />
         </div>
       </div>
     </div>
-    <div className="second relative">
+    <div className="relative" style={{height: "clamp(25vh, 70vw, 800px)"}}>
       <div 
-        className="h-full w-full flex flex-col gradient bg-black bg-opacity-25 dark:bg-red-200 dark:bg-opacity-10" 
-        style={{clipPath: "polygon(0 0, 100% 0, 100% 52.5%, 0 72.5%)"}}
+        className="h-full w-full flex flex-col bg-black bg-opacity-25 dark:bg-red-200 dark:bg-opacity-10" 
+        style={{
+          clipPath: "polygon(0 0, 100% 0, 100% 52.5%, 0 72.5%)",
+          background: `${darkMode ? 
+            "linear-gradient(-5deg, rgba(0, 0, 0, .5) 40%, rgba(155, 50, 255,.25) 100%)" : 
+            "linear-gradient(-7deg, rgba(255, 255, 255, .25) 50%, rgba(155, 50, 255, .5) 100%)"
+          }`
+        }}
       />
       <div className="absolute top-0 h-full w-full flex flex-col">
         <div 
@@ -137,18 +62,17 @@ export default function Home() {
         </div>
         <div className="flex-1 flex flex-col">
           <div className="flex-1 flex justify-center items-center sm:items-stretch">
-            <div className="placeholder1 placeholder mx-8 cursor-pointer rounded-2xl shadow-2xl"></div>
-            <div className="placeholder2 placeholder mx-8 cursor-pointer rounded-2xl shadow-2xl"></div>
-            <div className="placeholder3 placeholder mx-8 cursor-pointer rounded-2xl shadow-2xl"></div>
+            <div className={`${styles.placeholder1} ${styles.placeholder} mx-8 cursor-pointer rounded-2xl shadow-2xl`}></div>
+            <div className={`${styles.placeholder2} ${styles.placeholder} mx-8 cursor-pointer rounded-2xl shadow-2xl`}></div>
+            <div className={`${styles.placeholder3} ${styles.placeholder} mx-8 cursor-pointer rounded-2xl shadow-2xl`}></div>
           </div>
           <div style={{flex: ".2"}}></div>
         </div>
       </div> 
     </div>
     <div style={{height: "75vh"}}>
-
     </div>
-    <div className="gradient flex items-center justify-evenly" style={{height: "25vh"}}>
+    <div className="flex items-center justify-evenly bg-black bg-opacity-20" style={{height: "25vh"}}>
       Footer
     </div>
   </>

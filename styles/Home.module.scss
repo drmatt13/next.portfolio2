@@ -1,16 +1,53 @@
-.window_container {
-  height: 54.1%;
-  row-gap: 2.7%;
-  width: 57.7%;
-  column-gap: 2.5%;
-  margin-left: 3.7%;
-  background-image: url("/images/home/placeholder3.png");
+.svg_master_container {
+  .dark {
+    background-image: url("/images/home/darkgalaxy.jpg");
+  }
+  .light {
+    background-image: url("/images/home/pinkclouds.jpg");
+  }
+  > div {
+    height: 54.1%;
+    row-gap: 2.7%;
+    width: 57.7%;
+    column-gap: 2.5%;
+    margin-left: 3.7%;
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    div {
+      box-shadow: 0 0 3px rgba(0, 0, 0, .5);
+      border-radius: 2px;
+    }
+  }
+  img {
+    height: 100%;
+    width: clamp(250px, 70vh, 40vw);
+  }
+  @media (max-width: 639px) {
+    img {
+      width: 100%;
+    }
+  }
+}
+.placeholder1 {
+  background: url("/images/home/placeholder1.png") center
+}
+.placeholder2 {
+  background: url("/images/home/placeholder2.png") center
+}
+.placeholder3 {
+  background: url("/images/home/placeholder3.png") center
+}
+.placeholder {
   background-size: cover;
-  background-position: bottom;
-  background-repeat: no-repeat;
-  // opacity: 0.1;
-
-  div {
-    background: rgba(0, 0, 0, .5);
+  width: clamp(25vh, 22vw, 300px);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+@media (max-width: 639px) {
+  .placeholder {
+    height: 50vh;
+    width: clamp(35vh, 40vw, 400px);
+    margin-bottom: 20px;
+    border-radius: 25px;
   }
 }
