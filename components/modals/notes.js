@@ -4,19 +4,12 @@ import Link from '../Link'
 const NotesModal = ({ toggleModal }) => {
   const [notes] = useState({
     'd3': ['d3'],
-    'data-structures': ['binary search trees', 'linked lists', 'stacks and queues'],
-    'docker': ['placeholder'],
-    'geolocation': ['placeholder'],
-    'graph-ql': ['placeholder'],
-    'kubernetes': ['placeholder'],
+    'data-structures': ['binary heaps', 'binary search trees', 'linked lists', 'stacks and queues'],
+    'express-js': ['basics', 'mongoose'],
     'math': ['placeholder'],
-    'miscellaneous': ['placeholder'],
+    'miscellaneous': ['base', 'image upload', 'read file', 'scroll1', 'search user'],
     'next-js': ['api', 'mongoose', 'next', 'router', 'tailwind'],
-    'node-js': ['placeholder'],
-    'postgre-sql': ['placeholder'],
-    'python': ['placeholder'],
     'react': ['context1', 'redux1'],
-    'temp': ['base', 'image upload', 'read file', 'scroll1', 'search user'],
     'test-collection': ['card1', 'card2', 'card3'],
     'three': ['three 2', 'three'],
 })

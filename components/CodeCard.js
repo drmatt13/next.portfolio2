@@ -48,7 +48,14 @@ const CodeCard = ({ data }) => {
       "cmd": ["fas fa-terminal", null],
       "terminal": ["fas fa-terminal", null],
       "output": ["fas fa-code", null, "output"],
-      "image":  ["fas fa-image", null],
+      "img-sm":  ["fas fa-image", null],
+      "img-md":  ["fas fa-image", null],
+      "img-lg":  ["fas fa-image", null],
+      "img-sm-center":  ["fas fa-image", null],
+      "img-md-center":  ["fas fa-image", null],
+      "img-lg-center":  ["fas fa-image", null],
+      "img-white":  ["fas fa-image", null],
+      "img-full":  ["fas fa-image", null],
       "readme": ["far fa-file-alt", null],
       "readme2": ["far fa-file-alt", null, "consolas"]
     }
@@ -80,14 +87,17 @@ const CodeCard = ({ data }) => {
     return iframe
   }, [])
 
-  const generateCodeCard = useCallback(() => {
-    for (let x = {i: 0, data: Object.entries(data)}; x.i < x.data.length; x.i++) {
+  const test = () => {
+    console.log(console.log(selectedTab))
+  }
 
+  // generateCodeCard
+  useEffect(() => {
+    for (let x = {i: 0, data: Object.entries(data)}; x.i < x.data.length; x.i++) {
       let i = x.i,
         [key, value] = x.data[x.i],
         deconstruct = key.split(" "),
         [style, language, extraStyle] = deconstructLanguage(deconstruct[0])
-        
       if (value !== null) {
         let iframe
         // create tabs
@@ -96,37 +106,48 @@ const CodeCard = ({ data }) => {
           iframe = render(value)
           div.setAttribute("render", true)
           div.innerHTML = `<i class="devicon-codepen-plain" style="color: limegreen;"></i>${deconstruct.length === 1 ? key : deconstruct.slice(1).join(' ')}`
-        } else if (["image-sm", "image-md", "image-lg"].includes(key)) {
-
-          // image functionality ------- delete this note after
-
         } else {
           div.innerHTML = `<i class="${style}"></i>${deconstruct.length === 1 ? key : deconstruct.slice(1).join(' ')}`
         }
         div.addEventListener("click", () => {setSelectedTab(i)})
         headerRef.current.appendChild(div)
-        
         // generate tabs content
         if (iframe) wrapperRef.current.appendChild(iframe)
         else {
-          const pre = document.createElement('pre')
-          pre.style.display = "none"
-          if (extraStyle) pre.classList.add(styles[extraStyle])
-          pre.innerHTML = language ? hljs.highlight(value.toString().trim(), { language }).value : value.toString().trim()
-          wrapperRef.current.appendChild(pre)
+          key = key.split(" ")[0]
+          if (["img-sm", "img-md", "img-lg", "img-sm-center", "img-md-center", "img-lg-center", "img-white", "img-full"].includes(key)) {
+            const imgWrapper = document.createElement('div')
+            imgWrapper.className = styles.img_wrapper
+            imgWrapper.style.display = "none"
+            if (["img-sm-center", "img-md-center", "img-lg-center", "img-white"].includes(key)) {
+              imgWrapper.style.justifyContent = "center"
+            }
+            if (["img-white"].includes(key)) {
+              imgWrapper.style.backgroundColor = "white"
+            }
+            const img = document.createElement('img')
+            img.className = styles[key]
+            img.src = `/images/notes/${value}`
+            imgWrapper.appendChild(img)
+            wrapperRef.current.appendChild(imgWrapper)
+          } else {
+            const pre = document.createElement('pre')
+            pre.style.display = "none"
+            if (extraStyle) pre.classList.add(styles[extraStyle])
+            pre.innerHTML = language ? hljs.highlight(value.toString().trim(), { language }).value : value.toString().trim()
+            wrapperRef.current.appendChild(pre)
+          }
         }
       }
-      // count++
     }
     // if there is a tab, set first tab to active
     if (wrapperRef.current.childNodes[0]) {
       headerRef.current.childNodes[0].classList.add(styles.selected)
       wrapperRef.current.childNodes[0].style.display = null
     }
-  }, [selectedTab, setSelectedTab])
+  }, [setSelectedTab])
 
-  useEffect(generateCodeCard, [])
-
+  // create reactive height
   useEffect(() => {
     // toggle tabs
     headerRef.current.childNodes[previousTab].removeAttribute("class")
@@ -137,14 +158,17 @@ const CodeCard = ({ data }) => {
       wrapperRef.current.childNodes[selectedTab].srcdoc = wrapperRef.current.childNodes[selectedTab].srcdoc
       wrapperRef.current.childNodes[selectedTab].classList.add("fade-in")
     }
-    // toggle pre elements
+    // toggle displays
     wrapperRef.current.childNodes[previousTab].style.display = "none"
     wrapperRef.current.childNodes[selectedTab].style.display = null
     // store tab that was modified
     setPreviousTab(selectedTab)
-    // modify height of pre tag
+    // modify height of display
     wrapperRef.current.style.display = null
-    if (wrapperRef.current.childNodes[selectedTab].offsetHeight <= 200)
+
+    if (wrapperRef.current.childNodes[selectedTab].firstChild.tagName === "IMG")
+      setHeight(0)
+    else if (wrapperRef.current.childNodes[selectedTab].offsetHeight <= 200)
       setHeight(200)
     else if (wrapperRef.current.childNodes[selectedTab].offsetHeight < 500) 
       setHeight(wrapperRef.current.childNodes[selectedTab].offsetHeight)
@@ -212,7 +236,7 @@ const CodeCard = ({ data }) => {
         ${darkMode ? "color: grey" : "color: black"}
       }
       .${styles.wrapper} {
-        height: ${height}px
+        height: ${height == 0 ? "auto" : `${height}px`}
       }
     `}</style>
     <style global="true">{`

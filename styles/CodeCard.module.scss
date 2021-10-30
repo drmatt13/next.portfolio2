@@ -51,6 +51,30 @@
   .wrapper {
     position: relative;
     transition: height .2s ease-in-out;
+    overflow: hidden;
+    // display: flex;
+  }
+  .img_wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    @apply animate-fade-in;
+    
+    img {
+      padding: 20px;
+      max-width: 100%;
+      object-fit: contain;
+    }
+    .img-sm {max-height: 300px}
+    .img-md {max-height: 400px}
+    .img-lg {max-height: 500px}
+    .img-sm-center {max-height: 300px}
+    .img-md-center {max-height: 400px}
+    .img-lg-center {max-height: 500px}
+    .img-white {max-height: 500px}
+    .img-full {
+      max-height: 100%;
+    }
   }
   pre {
     flex: 1;
@@ -60,7 +84,7 @@
   }
   .output {
     font-family: Consolas, monaco, monospace;
-    color: rgb(50, 225, 120) !important;
+    // color: rgb(50, 225, 120) !important;
   }
   .consolas {
     font-family: Consolas, monaco, monospace
