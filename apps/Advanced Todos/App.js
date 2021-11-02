@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Head from 'next/head'
 
 // styles
@@ -15,54 +15,34 @@ const App = () => {
 
   const [modal, setModal] = useState()
 
-  // populate from local storage
+  // populate from local storage - recurring: [weekly, biweekly, monthly, yearly]
   const [transactions, setTransactions] = useState([
-    {
-      "name": "name",
-      "amount": 500,
-      "start": "10/1/2021",
-      "stop": "11/10/2021",
-      "recurring": "biweekly"
-    },
-    {
-      "name": "test",
-      "amount": -450,
-      "start": "8/9/2021",
-      "stop": "12/6/2021",
-      "recurring": "biweekly"
-    },
-    {
-      "name": "transaction",
-      "amount": 250,
-      "start": "8/15/2021",
-      // "stop": "9/10/2021",
-      "recurring": "yearly"
-    },
-    {
-      "name": "side job esfefeefefefwefwefwefwef",
-      "amount": 400,
-      "start": "8/6/2021",
-      // "stop": "9/10/2021",
-      // "recurring": "yearly"
-    },
-    {
-      "name": "master card - 5039",
-      "amount": -250,
-      "start": "8/19/2021",
-      // "stop": "9/10/2021",
-      // "recurring": "yearly"
-    }
+    // {
+    //   "name": "name",
+    //   "amount": 500,
+    //   "start": "10/1/2021",
+    //   "stop": "11/10/2021",
+    //   "recurring": "biweekly"
+    // }
   ])
 
   const [todos, setTodos] = useState([
-    {
-      "name": "todo",
-      "todo": "todo",
-      "start": "8/21/2021",
-      "stop": "12/4/2021",
-      "recurring": "monthly"
-    }
+    // {
+    //   "name": "todo",
+    //   "todo": "todo",
+    //   "start": "8/21/2021",
+    //   "stop": "12/4/2021",
+    //   "recurring": "monthly"
+    // }
   ])
+
+  // populate state from local storage
+  useEffect(() => {
+    const x1 = JSON.parse(localStorage.getItem('transactions')),
+          x2 = JSON.parse(localStorage.getItem('todos'))
+    if (x1) setTransactions(x1)
+    if (x2) setTodos(x2)
+  }, [])
 
   return <>
     <Head>

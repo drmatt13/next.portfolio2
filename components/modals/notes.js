@@ -3,14 +3,13 @@ import Link from '../Link'
 
 const NotesModal = ({ toggleModal }) => {
   const [notes] = useState({
-    'd3': ['d3'],
+    'canvas': ['d3 basic'],
     'data-structures': ['binary heaps', 'binary search trees', 'linked lists', 'stacks and queues'],
     'express-js': ['basics', 'mongoose'],
-    'math': ['placeholder'],
-    'miscellaneous': ['base', 'image upload', 'read file', 'scroll1', 'search user'],
+    'math': ['statistics-1'],
+    'miscellaneous': ['image upload', 'local storage', 'scroll', 'search user', 'touch controls', 'upload_download file'],
     'next-js': ['api', 'mongoose', 'next', 'router', 'tailwind'],
-    'react': ['context1', 'redux1'],
-    'test-collection': ['card1', 'card2', 'card3'],
+    'react': ['context', 'redux'],
     'three': ['three 2', 'three'],
 })
   const [keys] = useState(Object.keys(notes))

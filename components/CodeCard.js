@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef, useContext } from 'react'
+import { useState, useEffect, useRef, useContext } from 'react'
 import hljs from 'highlight.js';
 
 // context
@@ -12,12 +12,13 @@ const CodeCard = ({ data }) => {
   const { darkMode, mobile } = useContext(_appContext),
         [previousTab, setPreviousTab] = useState(0),
         [selectedTab, setSelectedTab] = useState(0),
+        // [animate, setAnimate] = useState(undefined),
         [height, setHeight] = useState(200),
         containerRef = useRef(),
         wrapperRef = useRef(),
         headerRef = useRef()
 
-  const deconstructLanguage = useCallback((language) => {
+  const deconstructLanguage = language => {
     const object = {
       "c": ["devicon-c-plain colored", "c"],
       "c++": ["devicon-cplusplus-plain colored", "c++"],
@@ -60,9 +61,9 @@ const CodeCard = ({ data }) => {
       "readme2": ["far fa-file-alt", null, "consolas"]
     }
     return (language in object) ? object[language] : ["fas fa-question", null]
-  }, []) 
+  } 
 
-  const render = useCallback((values) => {
+  const render = (values) => {
     let iframe = document.createElement("iframe")
     let code = []
     for (let [key, value] of Object.entries(data)) {
@@ -85,11 +86,31 @@ const CodeCard = ({ data }) => {
     iframe.srcdoc = code.join(" ")
     iframe.style.display = "none"
     return iframe
-  }, [])
-
-  const test = () => {
-    console.log(console.log(selectedTab))
   }
+
+  const animateHeight = el => {
+    // if (el) {
+    //   // setHeight(1000)
+    //   if (el === "IMG") setAnimate("IMG")
+    //   else setAnimate("PRE")
+    // } else {
+      if (wrapperRef.current.childNodes[selectedTab].clientHeight <= 150) setHeight(150)
+      else if (wrapperRef.current.childNodes[selectedTab].clientHeight < 500) setHeight(wrapperRef.current.childNodes[selectedTab].clientHeight)
+      else setHeight(500)
+    // }
+  }
+
+  // useEffect(() => {
+    // if (animate) {
+      // if (animate === "IMG") setHeight(0)
+      // else {
+      //   animateHeight(undefined)
+      // }
+      // console.log((wrapperRef.current.childNodes[selectedTab].clientHeight))
+      // animateHeight(undefined)
+      // setAnimate(undefined)
+    // }
+  // }, [animate])
 
   // generateCodeCard
   useEffect(() => {
@@ -156,25 +177,20 @@ const CodeCard = ({ data }) => {
     } else {
       headerRef.current.childNodes[selectedTab].classList.add(styles.render)
       wrapperRef.current.childNodes[selectedTab].srcdoc = wrapperRef.current.childNodes[selectedTab].srcdoc
-      wrapperRef.current.childNodes[selectedTab].classList.add("fade-in")
+      wrapperRef.current.childNodes[selectedTab].classList.add("fade-in-fast")
     }
     // toggle displays
     wrapperRef.current.childNodes[previousTab].style.display = "none"
     wrapperRef.current.childNodes[selectedTab].style.display = null
-    // store tab that was modified
-    setPreviousTab(selectedTab)
     // modify height of display
     wrapperRef.current.style.display = null
-
-    if (wrapperRef.current.childNodes[selectedTab].firstChild.tagName === "IMG")
-      setHeight(0)
-    else if (wrapperRef.current.childNodes[selectedTab].offsetHeight <= 200)
-      setHeight(200)
-    else if (wrapperRef.current.childNodes[selectedTab].offsetHeight < 500) 
-      setHeight(wrapperRef.current.childNodes[selectedTab].offsetHeight)
-    else 
-      setHeight(500)
+    // if (wrapperRef.current.childNodes[selectedTab].firstChild.tagName === "IMG")
+      // animateHeight("IMG")
+    // else 
+      animateHeight("PRE")
     wrapperRef.current.style.display = "flex"
+    // store tab that was modified
+    setPreviousTab(selectedTab)
   }, [selectedTab])
 
   return <>
@@ -224,12 +240,12 @@ const CodeCard = ({ data }) => {
     `}</style>
     <style jsx>{`
       .dark {
-        background: #232526;  /* fallback for old browsers */
+        background: #232526;
         background: -webkit-linear-gradient(to right, #414345, #232526);  /* Chrome 10-25, Safari 5.1-6 */
         background: linear-gradient(to right, #414345, #232526); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
       }
       .light {
-        background: #232526;  /* fallback for old browsers */
+        background: #232526;
         background: radial-gradient( circle farthest-corner at 1.3% 2.8%,  rgba(239,249,249,1) 0%, rgb(235, 243, 255) 100.2% );
       }
       .${styles.header} {
