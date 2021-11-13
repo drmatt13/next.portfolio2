@@ -7,12 +7,12 @@
   background: linear-gradient(#13214240, #5e7b9500) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 .results_container {
-  flex: .5;
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
+  // border-top-left-radius: 1rem;
+  // border-top-right-radius: 1rem;
+  // display: flex;
 }
 @media screen and (max-width: 767px) {
   .results_container {
-    flex: .9;
+    // flex: .9;
   }
 }

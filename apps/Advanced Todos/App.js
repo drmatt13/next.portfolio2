@@ -46,10 +46,6 @@ const App = () => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [transactions, todos]);
 
-  // useEffect(() => {
-  // console.log("dataPoints", dataPoints);
-  // }, [dataPoints]);
-
   return (
     <>
       <Head>
@@ -76,7 +72,7 @@ const App = () => {
           />
         </div>
         <div className={`${styles.right_container} hidden md:flex flex-col`}>
-          <Results transactions={transactions} />
+          <Results dataPoints={dataPoints} />
           <div className={styles.spacer} />
           <Todos todos={todos} setTodos={setTodos} setModal={setModal} />
         </div>

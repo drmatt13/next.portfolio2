@@ -24,7 +24,6 @@ const Calander = ({ transactions, todos, setModal, setDataPoints }) => {
       (date, year, month, day, i, generateData = false) => {
         const dataPoints = generateData ? [] : undefined;
         daysObjects[i] = { value: 0, objects: [], styles: {} };
-        // console.log(i);
         if (month === -1) {
           month = 11;
           year--;
@@ -58,14 +57,13 @@ const Calander = ({ transactions, todos, setModal, setDataPoints }) => {
                   } else if (frequency === "biweekly") {
                     if (diff % 14 === 0) flag = true;
                   } else if (frequency === "monthly") {
-                    // compare days in a month
-                    // if (current._i.split("-")[2] < start._i.split("-")[2] && )
-                    // console.log(
-                    // daysInMonth(date.getMonth(), date.getFullYear())
-                    // obj[key]
-                    // start._i.split("-")[2]
-                    // current._i.split("-")[2]
-                    // );
+                    if (start._i.split("-")[2] <= current.daysInMonth()) {
+                      if (current._i.split("-")[2] === start._i.split("-")[2])
+                        flag = true;
+                    } else {
+                      if (current._i.split("-")[2] == current.daysInMonth())
+                        flag = true;
+                    }
                   }
                   if (flag) {
                     if (objType === "todos")
