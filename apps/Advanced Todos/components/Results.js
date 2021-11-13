@@ -11,11 +11,15 @@ const Results = ({ dataPoints }) => {
     canvasContainerRef = useRef(),
     { darkMode } = useContext(_appContext);
 
-  useEffect(() => {
+  const paintCanvas = (ctx, dataPoints) => {
+    const canvas = ctx.canvas;
+    const width = canvas.width;
+    const height = canvas.height;
+    console.log(width);
     canvasRef.current.width = canvasContainerRef.current.clientWidth;
     canvasRef.current.height = canvasContainerRef.current.clientHeight;
-    const ctx = canvasRef.current.getContext("2d");
-    const { width, height } = canvasRef.current;
+    // const ctx = canvasRef.current.getContext("2d");
+    // const { width, height } = canvasRef.current;
     ctx.beginPath();
     ctx.moveTo(0, height / 2);
     ctx.lineTo(width, height);
@@ -25,6 +29,14 @@ const Results = ({ dataPoints }) => {
     ctx.moveTo(0, height / 2);
     ctx.lineTo(width, 0);
     ctx.stroke();
+    // requestAnimationFrame(paintCanvas.bind(null, ctx, dataPoints));
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      paintCanvas(canvasRef.current.getContext("2d"), dataPoints);
+    });
+    paintCanvas(canvasRef.current.getContext("2d"), dataPoints);
   }, [dataPoints]);
 
   return (
