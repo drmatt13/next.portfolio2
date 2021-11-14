@@ -53,7 +53,7 @@ const App = () => {
       </Head>
       <div className={`${styles.app} animate-fade-in flex justify-center`}>
         <div className={`${styles.vertical_container} flex flex-col md:hidden`}>
-          <Results transactions={transactions} />
+          <Results dataPoints={dataPoints} />
           <div className={styles.spacer} />
         </div>
         <div className={styles.left_container}>

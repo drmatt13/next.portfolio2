@@ -68,7 +68,7 @@ const Calander = ({ transactions, todos, setModal, setDataPoints }) => {
                   if (flag) {
                     if (objType === "todos")
                       daysObjects[i]["styles"]["todo"] = true;
-                    if (generateData) dataPoints.push(obj[key].amount);
+                    if (generateData) dataPoints.push(+obj[key].amount);
                     daysObjects[i].value += +obj[key].amount;
                   }
                 }
