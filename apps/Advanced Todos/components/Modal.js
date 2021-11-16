@@ -90,7 +90,7 @@ const Modal = ({ setModal, modal, type, data, setTransactions, setTodos }) => {
       `::-webkit-calendar-picker-indicator {
         filter: invert(1);
       }` : ''}  */}
-      <div className="absolute -top-28 left-0 h-screen w-full bg-gray-600 dark:bg-black bg-opacity-25 dark:bg-opacity-50 flex justify-center items-center">
+      <div className="fixed top-0 left-0 h-screen w-full bg-gray-600 dark:bg-black bg-opacity-25 dark:bg-opacity-50 flex justify-center items-center">
         <div
           className="absolute top-0 left-0 h-full w-full"
           onClick={closeModal}

@@ -58,7 +58,7 @@ const Calander = ({ transactions, todos, setModal, setDataPoints }) => {
                     if (diff % 14 === 0) flag = true;
                   } else if (frequency === "monthly") {
                     if (start._i.split("-")[2] <= current.daysInMonth()) {
-                      if (current._i.split("-")[2] === start._i.split("-")[2])
+                      if (+current._i.split("-")[2] == +start._i.split("-")[2])
                         flag = true;
                     } else {
                       if (current._i.split("-")[2] == current.daysInMonth())
@@ -132,10 +132,16 @@ const Calander = ({ transactions, todos, setModal, setDataPoints }) => {
       setDataPoints,
     ]),
     calculateStyles = useCallback((obj) => {
-      if (obj.green) return styles.green;
-      if (obj.red) return styles.red;
-      if (obj.todo) return styles.todo;
-      if (obj.alt) return styles.alt;
+      if (obj.alt) {
+        // if (obj.green) return styles.green;
+        // if (obj.red) return styles.red;
+        // if (obj.todo) return styles.todo;
+        return styles.alt;
+      } else {
+        if (obj.green) return styles.green;
+        if (obj.red) return styles.red;
+        if (obj.todo) return styles.todo;
+      }
       return "";
     }, []);
 

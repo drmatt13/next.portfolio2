@@ -52,8 +52,20 @@ const App = () => {
         <title>Advanced Todos</title>
       </Head>
       <div className={`${styles.app} animate-fade-in flex justify-center`}>
-        <div className={`${styles.vertical_container} flex flex-col md:hidden`}>
-          <Results dataPoints={dataPoints} />
+        <div
+          className={`flex flex-col md:hidden`}
+          style={{
+            width: "400px",
+            maxWidth: "80vw",
+          }}
+        >
+          <Results
+            todos={todos}
+            setTodos={setTodos}
+            transactions={transactions}
+            setTransactions={setTransactions}
+            dataPoints={dataPoints}
+          />
           <div className={styles.spacer} />
         </div>
         <div className={styles.left_container}>
@@ -72,7 +84,13 @@ const App = () => {
           />
         </div>
         <div className={`${styles.right_container} hidden md:flex flex-col`}>
-          <Results dataPoints={dataPoints} />
+          <Results
+            todos={todos}
+            setTodos={setTodos}
+            transactions={transactions}
+            setTransactions={setTransactions}
+            dataPoints={dataPoints}
+          />
           <div className={styles.spacer} />
           <Todos todos={todos} setTodos={setTodos} setModal={setModal} />
         </div>
