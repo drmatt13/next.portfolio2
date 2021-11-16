@@ -1,9 +1,11 @@
 .svg_master_container {
-  .dark {
-    background-image: url("/images/home/darkgalaxy.jpg");
+  .dark div  {
+    background: url("/images/home/darkgalaxy.jpeg") no-repeat right top fixed; 
+    background-size: auto 95%;
   }
-  .light {
-    background-image: url("/images/home/pinkclouds.jpg");
+  .light div {
+    background: url("/images/home/test.jpeg") no-repeat right top fixed;
+    background-size: auto 95%;
   }
   > div {
     height: 54.1%;
@@ -11,12 +13,16 @@
     width: 57.7%;
     column-gap: 2.5%;
     margin-left: 3.7%;
-    background-size: cover;
-    background-position: bottom;
-    background-repeat: no-repeat;
+    // background-size: cover;
+    // background-position: bottom;
+    // background-repeat: no-repeat;
     div {
       box-shadow: 0 0 3px rgba(0, 0, 0, .5);
       border-radius: 2px;
+      // background-image: url("/images/home/pinkclouds.jpg");
+      // background-attachment: fixed;
+      // background-repeat: no-repeat;
+      // background-size: auto 10%;
     }
   }
   img {

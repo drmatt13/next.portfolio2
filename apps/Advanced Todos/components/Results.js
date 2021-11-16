@@ -203,10 +203,10 @@ const Results = ({
       >
         <div className="flex justify-evenly items-center text-sm dark:text-white bg-white dark:bg-gray-700 border-b border-gray-200 dark:dark:border-gray-600">
           <div className="truncate py-0.5 h-full flex items-center pr-2 pl-3 flex-1 text-green-800 dark:text-green-400">
-            +<span className="pl-1">${income}</span>
+            +<span className="pl-0.5">${income}</span>
           </div>
           <div className="truncate py-0.5 h-full flex items-center px-2 flex-1 border-l border-gray-500 text-red-700 dark:text-red-500">
-            -<span className="pl-1">${Math.abs(expenses)}</span>
+            -<span className="pl-0.5">${Math.abs(expenses)}</span>
           </div>
           <div
             onClick={importData}
