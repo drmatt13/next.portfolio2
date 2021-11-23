@@ -5,6 +5,7 @@ const NotesModal = ({ toggleModal }) => {
   const [notes] = useState({
     'canvas': ['d3 basic'],
     'data-structures': ['binary heaps', 'binary search trees', 'linked lists', 'stacks and queues'],
+    'docker': ['intro'],
     'express-js': ['basics', 'mongoose'],
     'math': ['statistics-1'],
     'miscellaneous': ['image upload', 'local storage', 'scroll', 'search user', 'touch controls', 'upload_download file'],
