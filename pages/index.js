@@ -19,8 +19,32 @@ export default function Home() {
     <>
       <style>{`
     `}</style>
-      <div className="animate-fade-in">
-        <div className="flex flex-col sm:flex-row">
+      <div
+        className="animate-fade-in"
+        style={{
+          minWidth: "350px",
+        }}
+      >
+        <div className="relative flex flex-col sm:flex-row">
+          <div
+            className={`${
+              darkMode ? styles.section1_dark : styles.section1_light
+            } absolute -top-28 w-full`}
+            style={{
+              height: "calc(100% + 7rem)",
+              opacity: 0.25,
+              zIndex: -1,
+            }}
+          >
+            {/* lol */}
+          </div>
+          <div className="absolute bottom-4 right-6 md:bottom-5 md:right-10 lg:bottom-6 lg:right-12">
+            <div
+              className={`${styles.get_in_touch} py-3 px-4 text-xs md:py-3 md:px-6 md:text-sm lg:py-4 lg:px-8 lg:text-base bg-green-400 dark:bg-pink-500 text-black dark:text-white font-bold select-none cursor-pointer hover:scale-105 hover:shadow-xl transition-transform`}
+            >
+              GET IN TOUCH
+            </div>
+          </div>
           <div className="sm:flex-1 flex flex-col">
             <div
               className="flex items-center justify-center text-gray-800 dark:text-white"
@@ -43,8 +67,8 @@ export default function Home() {
             </div>
             <div className="flex-1 hidden sm:flex justify-center">
               {/* PLACEHOLDER */}
-              {/* <MirrorIcons /> */}
-              <div className="h-24 w-full mx-10 mb-4 bg-blue-500 bg-opacity-50" />
+              <MirrorIcons />
+              {/* <div className="h-24 w-full mx-10 mb-4 bg-blue-500 bg-opacity-50" /> */}
               {/* PLACEHOLDER */}
             </div>
           </div>
@@ -91,10 +115,10 @@ export default function Home() {
                 }`,
               }}
             >
-              <div className="text-5xl">Heading</div>
-              <div>kasdmsmdmsdm sdf sdf sdf sdfsdfsdf sdfsdfsdf sdfsdfsdf </div>
+              <div className="text-5xl">Live Websites</div>
+              <div>check out some of my websites, i hope you like them</div>
             </div>
-            <div className="relative flex-1 flex flex-col select-none">
+            <div className="relative sm:flex-1 flex flex-col select-none">
               <div
                 className="absolute h-full w-full"
                 style={{
@@ -121,7 +145,7 @@ export default function Home() {
                 ></div>
               </div>
             </div>
-            <div style={{ flex: ".2" }}></div>
+            <div className="hidden sm:block" style={{ flex: ".2" }} />
           </div>
         </div>
 
@@ -131,11 +155,9 @@ export default function Home() {
           <div className="h-full w-full flex flex-col bg-white bg-opacity-50 rounded-2xl" />
         </div>
         <div
-          className="flex items-center justify-evenly bg-black bg-opacity-20"
-          style={{ height: "25vh" }}
-        >
-          Footer
-        </div>
+          className="flex items-center justify-evenly bg-purple-700 bg-opacity-20"
+          style={{ height: "25vh", maxHeight: "125px" }}
+        ></div>
       </div>
     </>
   );

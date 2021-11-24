@@ -1,8 +1,24 @@
+.section1_light {
+  background: url(/images/home/AdobeStock_121270629.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+.section1_dark {
+  background: url(/images/home/darkgalaxy.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
 .svg_master_container {
   .dark div  {
     background: url("/images/home/darkgalaxy.jpeg") no-repeat right top fixed; 
     background-size: auto 95%;
-    // animation: slideLeft 15s infinite linear;
+    // background: url("/images/home/galaxy3.jpg") repeat fixed; 
+    // background-size: auto 95%;
+    // animation: scale 20s infinite ease-in-out alternate;
+    // background-size: 18vw 18vw;
+    // animation: slideLeft 6000000000s infinite linear;
   }
   .light div {
     background: url("/images/home/AdobeStock_253500845.jpg") repeat fixed;
@@ -15,6 +31,14 @@
     }
     100% {
       background-position-x: -10000000000%;
+    }
+  }
+  @keyframes scale {
+    0% {
+      background-size: 100%;
+    }
+    100% {
+      background-size: 130%;
     }
   }
   > div {
@@ -45,6 +69,69 @@
     }
   }
 }
+.get_in_touch {
+  position: relative;
+  text-transform: uppercase;
+  border-radius: 4px;
+  z-index: 1;
+  &:before {
+    content: "";
+    position: absolute;
+    animation: rainbow-border 1.5s linear infinite;
+    border-radius: 4px;
+    background: linear-gradient(
+      70deg,
+      #0ebeff,
+      #ffdd40,
+      #ae63e4,
+      #47cf73,
+      #0ebeff,
+      #ffdd40,
+      #ae63e4,
+      #47cf73
+    );
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background-size: 200% 200%;
+  }
+  &:before {
+    bottom: 0;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: auto;
+    width: auto;
+    z-index: -1;
+    border-radius: 3px;
+    margin: 03px;
+    background: inherit;
+  }
+
+
+}
+
+@keyframes rainbow-border {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
 .section2 {
   height: clamp(25vh, 70vw, 800px);
 }
@@ -52,10 +139,10 @@
   background: url("/images/home/placeholder1.png") center
 }
 .placeholder2 {
-  background: url("/images/home/placeholder2.png") center
+  background: url("/images/home/darkgalaxy.jpeg") center
 }
 .placeholder3 {
-  background: url("/images/home/placeholder3.png") center
+  background: url("/images/home/test.jpeg") center
 }
 .placeholder {
   background-size: cover;
@@ -70,12 +157,15 @@
 }
 @media (max-width: 639px) {
   .section2 {
-    // height: clamp(25vh, 70vw, 800px);
-    height: 100vh;
+    // height: clamp(600px, 70vh, 900px);
+    height: 600px;
   }
   .placeholder {
-    height: clamp(40vh, 500px, 70vw);
+    // height: clamp(40vh, 500px, 70vw);
     width: 50%;
+    max-width: 250px;
+    min-width: 200px;
+    height: 325px;
     // margin-bottom: 20px;
     border-radius: 25px;
   }
