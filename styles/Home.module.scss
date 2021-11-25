@@ -134,6 +134,7 @@
 
 .section2 {
   height: clamp(25vh, 70vw, 800px);
+  overflow-x: hidden !important;
 }
 .section2_light {
   background: url(/images/home/AdobeStock_121270629.jpeg);

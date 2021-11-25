@@ -4,6 +4,7 @@ import Head from "next/head";
 
 // components
 import MirrorIcons from "../components/MirrorIcons";
+import MobileSliderCards from "../components/MobileSliderCards";
 
 // context
 import _appContext from "../context/_appContext";
@@ -45,7 +46,7 @@ export default function Home() {
               GET IN TOUCH
             </div>
             <div
-              className={`${styles.get_in_touch} flex justify-center items-center mt-2 sm:mt-0 sm:mr-4 py-3 px-4 text-xs md:py-3 md:px-6 md:text-sm lg:py-4 lg:px-8 lg:text-base bg-black dark:bg-gray-900 text-black text-white font-bold select-none cursor-pointer hover:scale-105 hover:shadow-xl transition-transform`}
+              className={`${styles.get_in_touch} flex justify-center items-center mt-2 sm:mt-0 sm:mr-4 py-3 px-4 text-xs md:py-3 md:px-6 md:text-sm lg:py-4 lg:px-8 lg:text-base bg-black dark:bg-gray-900 text-white font-bold select-none cursor-pointer hover:scale-105 hover:shadow-xl transition-transform`}
             >
               ABOUT ME
             </div>
@@ -132,8 +133,14 @@ export default function Home() {
                   }`,
                 }}
               >
-                <div className="text-5xl">Live Websites</div>
-                <div>check out some of my websites, i hope you like them</div>
+                <div className="text-5xl">
+                  <p className="px-2">Live Websites</p>
+                </div>
+                <div>
+                  <p className="px-6">
+                    check out some of my websites, i hope you like them
+                  </p>
+                </div>
               </div>
               <div className="relative sm:flex-1 flex flex-col select-none">
                 <div
@@ -148,16 +155,15 @@ export default function Home() {
                   }}
                 />
                 {/* Mobile Touch */}
-                <div className="sm:hidden z-10 flex justify-center">
-                  <div
-                    className={`${styles.placeholder1} ${styles.placeholder} cursor-pointer rounded-2xl shadow-2xl`}
-                  ></div>
-                  {/* <div
-                  className={`${styles.placeholder1} ${styles.placeholder} cursor-pointer rounded-2xl shadow-2xl`}
-                ></div>
-                <div
-                  className={`${styles.placeholder1} ${styles.placeholder} cursor-pointer rounded-2xl shadow-2xl`}
-                ></div> */}
+                <div className="sm:hidden z-10">
+                  <MobileSliderCards
+                    cards={[
+                      styles.placeholder3,
+                      styles.placeholder2,
+                      styles.placeholder1,
+                    ]}
+                    style={styles.placeholder}
+                  />
                 </div>
                 {/* Mobile Touch */}
                 <div className="hidden flex-1 sm:flex justify-center items-stretch z-10">

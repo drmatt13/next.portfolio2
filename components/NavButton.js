@@ -1,105 +1,74 @@
-import { useEffect, useContext, useRef } from 'react'
+import { useEffect, useContext, useRef } from "react";
 
 // context
-import _appContext from '../context/_appContext'
+import _appContext from "../context/_appContext";
 
-const NavButton = ({ icon, onClick, active, darkButton=null }) => {
+// styles
+import styles from "../styles/NavButton.module.scss";
 
-  const { darkMode, setDarkMode, mobile } = useContext(_appContext)
+const NavButton = ({ className, mode, onClick }) => {
+  const { darkMode, mobile } = useContext(_appContext),
+    i = useRef();
 
-  const ref = useRef()
-
-  const toggleDarkMode = () => {
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.remove('dark')
-      localStorage.theme = 'light'
-      setDarkMode(false)
-    } else {
-      document.documentElement.classList.add('dark')
-      localStorage.theme = 'dark'
-      setDarkMode(true)
-    }
-  }
-
-  const touchStart = () => {
-    if (mobile) {
-      ref.current.classList.remove("dark:text-gray-300", "bg-white", "dark:hover:text-black", "hover:shadow", "hover:bg-yellow-300", "dark:hover:bg-purple-500", "hover:bg-green-300", "dark:hover:bg-green-300")
-      if (darkButton) ref.current.classList.add("bg-yellow-300", "dark:bg-purple-500", "dark:text-black")
-      else ref.current.classList.add("dark:bg-green-300", "dark:text-black", "bg-green-300")
-    }
-  }
-
-  const touchEnd = () => {
-    if (mobile) {
-      ref.current.classList.add("dark:text-gray-300", "bg-white")
-      if (darkButton) ref.current.classList.remove("bg-yellow-300", "dark:bg-purple-500", "dark:text-black")
-      else ref.current.classList.remove("dark:bg-green-300", "dark:text-black", "bg-green-300")
-    }
-  }
-
+  // only applies to darkMode toggle btn
   useEffect(() => {
-    if (mobile) {
-      ref.current.classList.remove("dark:hover:text-black", "hover:shadow", "hover:bg-yellow-300", "dark:hover:bg-purple-500", "hover:bg-green-300", "dark:hover:bg-green-300")
-    }
-  })
-
-  return <>
-  <style jsx>{`
-    .dark {
-      ${active ? `
-        background-color: rgba(52, 211, 153) !important;
-        color: black;` : 
-        ``
+    if (mode !== undefined) {
+      if (!mobile) {
+        i.current.classList.add(styles.i);
+        i.current.classList.add(styles.alt);
+      } else {
+        i.current.classList.remove(styles.i);
+        i.current.classList.remove(styles.alt);
       }
     }
-    .light {
-      ${active ? `background-color: rgba(52, 211, 153) !important;` : ``}
-    }
-  `}</style>
-    <div
-      ref={ref}
-      onClick={darkButton ? toggleDarkMode : onClick} 
-      onTouchStart={touchStart}
-      onTouchEnd={touchEnd}
-      className={`
-        ${darkMode ? "dark" : "light"}
-        flex 
-        justify-center 
-        items-center        
-        hover:cursor-pointer 
-        transition-colors 
-        duration-200 
-        ease-out
-        text-sm
-        h-10
-        w-10
-        mx-1
-        my-2
-        sm:text-lg
-        sm:h-11
-        sm:w-11
-        sm:mx-1.5  
-        md:text-xl
-        md:h-12 
-        md:w-12 
-        md:mx-2 
-        md:my-2.5 
-        rounded-full
-        bg-white
-        dark:bg-gray-700 
-        dark:text-gray-300
-        dark:hover:text-black
-        hover:shadow
-        ${darkButton ? 
-          `hover:bg-yellow-300 dark:hover:bg-purple-500`
-          :
-          `hover:bg-green-300 dark:hover:bg-green-300`
-        }
-    `}>
-      {darkButton && <i className={`${darkMode ? "far fa-moon" : "fas fa-sun"}`} />}
-      {!darkButton && <i className={icon} />}
-    </div>
-  </>
-}
+  }, [mode]);
 
-export default NavButton
+  return (
+    <>
+      <div
+        className={`
+      ${darkMode ? styles.dark : styles.light}
+      transition
+      ease-linear
+      pointer-events-auto
+      cursor-pointer 
+      absolute
+      h-full 
+      w-full
+      rounded-full
+    `}
+      >
+        <i
+          ref={i}
+          onClick={onClick}
+          onTouchStart={(e) => {
+            e.target.classList.add(styles.i);
+            if (mode !== undefined) e.target.classList.add(styles.alt);
+          }}
+          onTouchEnd={(e) => {
+            e.target.classList.remove(styles.i);
+            e.target.classList.remove(styles.alt);
+          }}
+          className={`
+          ${styles.i}
+          ${className} 
+          h-full 
+          w-full 
+          flex 
+          justify-center 
+          items-center 
+          text-md
+          rounded-full
+          transition-all
+          ease-linear
+          border
+        border-white
+          border-opacity-5
+        `}
+        />
+      </div>
+    </>
+  );
+};
+
+export default NavButton;
