@@ -1,139 +1,199 @@
-.section1_light {
-  background: url(/images/home/AdobeStock_121270629.jpeg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: bottom;
+@keyframes slideLeft {
+  0% { background-position-x: 0 }
+  100% { background-position-x: -10000000000% }
 }
-.section1_dark {
-  background: url(/images/home/darkgalaxy.jpeg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: right;
-}
-.svg_master_container {
-  .dark div  {
-    background: url("/images/home/darkgalaxy.jpeg") no-repeat right top fixed; 
-    background-size: auto 95%;
-    // background: url("/images/home/galaxy3.jpg") repeat fixed; 
-    // background-size: auto 95%;
-    // animation: scale 20s infinite ease-in-out alternate;
-    // background-size: 18vw 18vw;
-    // animation: slideLeft 6000000000s infinite linear;
+.dark > .header {
+  > div:first-of-type {
+    background: url(/images/home/darkgalaxy.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right;
   }
-  .light div {
+  .svg_master_container > div div {
+    background: url("/images/home/AdobeStock_2310836743.jpg") repeat fixed;
+    background-size: 300px 300px;
+    animation: slideLeft 80000000000s infinite linear;
+  }
+}
+.light > .header {
+  > div:first-of-type {
+    background: url(/images/home/AdobeStock_121270629.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+  }
+  .svg_master_container > div div {
     background: url("/images/home/AdobeStock_253500845.jpg") repeat fixed;
     background-size: 55vw 55vw;
     animation: slideLeft 6000000000s infinite linear;
   }
-  @keyframes slideLeft {
-    0% {
-      background-position-x: 0;
+}
+.header {  
+  .svg_master_container {
+    // @keyframes galaxyRotate {
+    //   0% { background-position: 0 0 }
+    //   100% { background-position: -10000000000% 0 }
+    // }
+    > div {
+      height: 54.1%;
+      row-gap: 2.7%;
+      width: 57.7%;
+      column-gap: 2.5%;
+      margin-left: 3.7%;
+      div {
+        box-shadow: 0 0 3px rgba(0, 0, 0, .5);
+        border-radius: 2px;
+      }
     }
-    100% {
-      background-position-x: -10000000000%;
-    }
-  }
-  @keyframes scale {
-    0% {
-      background-size: 100%;
-    }
-    100% {
-      background-size: 130%;
-    }
-  }
-  > div {
-    height: 54.1%;
-    row-gap: 2.7%;
-    width: 57.7%;
-    column-gap: 2.5%;
-    margin-left: 3.7%;
-    // background-size: cover;
-    // background-position: bottom;
-    // background-repeat: no-repeat;
-    div {
-      box-shadow: 0 0 3px rgba(0, 0, 0, .5);
-      border-radius: 2px;
-      // background-image: url("/images/home/pinkclouds.jpg");
-      // background-attachment: fixed;
-      // background-repeat: no-repeat;
-      // background-size: auto 10%;
-    }
-  }
-  img {
-    height: 100%;
-    width: clamp(250px, 70vh, 40vw);
-  }
-  @media (max-width: 639px) {
     img {
+      height: 100%;
+      width: clamp(250px, 70vh, 40vw);
+    }
+    @media (max-width: 639px) {
+      img { width: 100% }
+    }
+  }
+  .rainbow_button {
+    position: relative;
+    text-transform: uppercase;
+    border-radius: 4px;
+    z-index: 1;
+    &:before {
+      content: "";
+      position: absolute;
+      animation: rainbow-border 1.5s linear infinite;
+      border-radius: 4px;
+      background: linear-gradient(
+        70deg,
+        #0ebeff,
+        #ffdd40,
+        #ae63e4,
+        #47cf73,
+        #0ebeff,
+        #ffdd40,
+        #ae63e4,
+        #47cf73
+      );
       width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      background-size: 200% 200%;
+    }
+    &:before { bottom: 0 }
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: auto;
+      width: auto;
+      z-index: -1;
+      border-radius: 3px;
+      margin: 03px;
+      background: inherit;
+    }
+  }
+  @keyframes rainbow-border {
+    0% { background-position: 0% 50% }
+    50% { background-position: 100% 50% }
+    100% { background-position: 200% 50% }
+  }
+}
+.dark > .body > div:first-of-type {
+  background: url(/images/home/darkgalaxy.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.light > .body > div:first-of-type {
+  background: url(/images/home/AdobeStock_121270629.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+.body {
+  p:first-of-type {
+    // background: url("/images/home/fire2.jpg") repeat fixed;
+    // background-size: 100vh 100vh;
+    // -webkit-background-clip: text;
+    // -webkit-text-fill-color: transparent;
+    // animation: slideLeft 500000000s infinite linear;
+  }
+  .design1 { background: url("/images/home/placeholder1.png") center; transition: all .3s linear; height: 100%; }
+  .design2 { background: url("/images/home/darkgalaxy.jpeg") center; transition: all .3s linear; height: 100%; }
+  .design3 { background: url("/images/home/test.jpeg") center; transition: all .3s linear; height: 100%; }
+  .card > div {
+    // height: 100%;
+    width: 100%;
+    // background-color: black;
+    background-size: cover;
+  }
+  .card {
+    position: relative;
+    z-index: 1;
+    min-height: 31vw;
+    height: 50vh;
+    max-height: 35vw;
+    min-width: 175px;
+    width: 25%;
+    max-width: 280px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
+    overflow: hidden;
+    // border-radius: 10px;
+    transition: transform .4s ease-in;
+    &:hover {
+      transition: transform .15s ease-out;
+      box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+      transform: scale(.9);
+    }
+    &:hover > .design1, &:hover > .design2, &:hover > .design3 {
+      transform: scale(1.1);
+      filter: brightness(50%) blur(2px);
+    }
+  }
+  // .card:hover {
+  //   box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+  //   cursor: pointer;
+  //   // transform: scale(1.1);
+  // }
+  @media (min-width: 1200px) {
+    .card {
+      min-height: 375px;
+      max-height: 420px;
     }
   }
 }
-.get_in_touch {
-  position: relative;
-  text-transform: uppercase;
-  border-radius: 4px;
-  z-index: 1;
-  &:before {
-    content: "";
-    position: absolute;
-    animation: rainbow-border 1.5s linear infinite;
-    border-radius: 4px;
-    background: linear-gradient(
-      70deg,
-      #0ebeff,
-      #ffdd40,
-      #ae63e4,
-      #47cf73,
-      #0ebeff,
-      #ffdd40,
-      #ae63e4,
-      #47cf73
-    );
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    background-size: 200% 200%;
-  }
-  &:before {
-    bottom: 0;
-  }
-  &:after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: auto;
-    width: auto;
-    z-index: -1;
-    border-radius: 3px;
-    margin: 03px;
-    background: inherit;
-  }
 
 
-}
 
-@keyframes rainbow-border {
-  0% {
-    background-position: 0% 50%;
-  }
 
-  50% {
-    background-position: 100% 50%;
-  }
 
-  100% {
-    background-position: 200% 50%;
-  }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .section2 {
-  height: clamp(25vh, 70vw, 800px);
+  height: clamp(100vh, 500px, 300vw);
   overflow-x: hidden !important;
 }
 .section2_light {
@@ -170,16 +230,13 @@
 }
 @media (max-width: 639px) {
   .section2 {
-    // height: clamp(600px, 70vh, 900px);
     height: 600px;
   }
   .placeholder {
-    // height: clamp(40vh, 500px, 70vw);
     width: 50%;
     max-width: 250px;
     min-width: 200px;
     height: 325px;
-    // margin-bottom: 20px;
     border-radius: 25px;
   }
 }

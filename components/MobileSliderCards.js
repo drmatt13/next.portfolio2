@@ -6,21 +6,21 @@ const MobileSliderCards = ({ cards, style }) => {
   }, []);
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center z-10">
       <style jsx>{`
         .${style}:hover {
           transform: scale(0.9);
         }
       `}</style>
       <div
-        className={`${cards[0]} ${style} cursor-pointer rounded-2xl shadow-2xl`}
+        className={`${cards[0]} ${style} cursor-pointer rounded-2xl shadow-2xl z-10`}
         style={{
           position: "absolute",
           transform: "translateX(100%) scale(.75)",
         }}
       ></div>
       <div
-        className={`${cards[1]} ${style} cursor-pointer rounded-2xl shadow-2xl`}
+        className={`${cards[1]} ${style} cursor-pointer rounded-2xl shadow-2xl z-10`}
         style={
           {
             // position: "absolute",
@@ -30,7 +30,7 @@ const MobileSliderCards = ({ cards, style }) => {
         }
       ></div>
       <div
-        className={`${cards[2]} ${style} cursor-pointer rounded-2xl shadow-2xl`}
+        className={`${cards[2]} ${style} cursor-pointer rounded-2xl shadow-2xl z-10`}
         style={{
           position: "absolute",
           // left: "-10%",
