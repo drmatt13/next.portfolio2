@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react'
-import Link from 'next/link'
 import Image from 'next/image'
 
 // styles
@@ -20,7 +19,6 @@ const MirrorIcons = () => {
 
   const topObservationRef = useRef();
   const topContainerRef = useRef();
-  // const bottomObservationRef = useRef();
   const bottomContainerRef = useRef();
 
   useEffect(() => {
@@ -36,13 +34,13 @@ const MirrorIcons = () => {
             topContainerRef.current.classList.remove(styles.icon_animation)
             bottomContainerRef.current.classList.remove(styles.blur_animation)
             setTopIcon(topContainerRef.current.firstChild)
+            // bottomContainerRef.current.removeChild(bottomIcon)
+            // bottomContainerRef.current.appendChild(bottomIcon)
+            // setBottomIcon(bottomContainerRef.current.firstChild)
           }
         });
       });
       topObservationRef.current.observe(topIcon);
-      bottomContainerRef.current.removeChild(bottomIcon)
-      bottomContainerRef.current.appendChild(bottomIcon)
-      setBottomIcon(bottomContainerRef.current.firstChild)
     }
   }, [topIcon])
 
@@ -88,7 +86,6 @@ const MirrorIcons = () => {
 
         <div className="absolute w-full h-16 transformed rounded overflow-hidden shadow-xl shadow-indigo-600/50 dark:shadow-purple-500/50">
           <div ref={bottomContainerRef} className={`${styles.platform_container} translate-y-1/2 flex items-start blur-sm`}>
-            <div><Image src="/images/home/kubernetes.svg" height={64} width={64} /></div>
             <div><Image src="/images/home/python.png" height={64} width={64} /></div>
             <div><Image src="/images/home/react.png" height={70} width={80} /></div>
             <div><Image src="/images/home/redux.svg" height={64} width={64} /></div>
@@ -100,6 +97,7 @@ const MirrorIcons = () => {
             <div><Image src="/images/home/mongodb.png" height={48.1} width={71} /></div>
             <div><Image src="/images/home/gcp.png" height={64} width={64} /></div>
             <div><Image src="/images/home/docker.png" height={64} width={72} /></div>
+            <div><Image src="/images/home/kubernetes.svg" height={64} width={64} /></div>
             
           </div>
         </div>
@@ -112,10 +110,3 @@ const MirrorIcons = () => {
 }
 
 export default MirrorIcons
-
-            {/* <div><Image src="/images/home/tailwind.svg" height={64} width={64} /></div> */}
-            {/* <div><Image src="/images/home/postgresql.png" height={55} width={55} /></div> */}
-            {/* <div><Image src="/images/home/mongodb.png" height={48.1} width={71} /></div> */}
-            {/* <div><Image src="/images/home/gcp.png" height={64} width={64} /></div> */}
-            {/* <div><Image src="/images/home/docker.png" height={64} width={72} /></div> */}
-            {/* <div><Image src="/images/home/kubernetes.svg" height={64} width={64} /></div> */}
