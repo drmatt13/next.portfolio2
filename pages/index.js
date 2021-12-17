@@ -18,6 +18,9 @@ export default function Home() {
 
   return (
     <>
+      <style global>{`
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+      `}</style>
       <div
         className={`${darkMode ? styles.dark : styles.light} animate-fade-in`}
         style={{

@@ -16,6 +16,7 @@ const MirrorIcons = () => {
 
   const [topIcon, setTopIcon] = useState()
   const [bottomIcon, setBottomIcon] = useState()
+  const [animate, setAnimate] = useState(false)
 
   const topObservationRef = useRef();
   const topContainerRef = useRef();
@@ -23,17 +24,17 @@ const MirrorIcons = () => {
 
   useEffect(() => {
     topContainerRef.current.classList.add(styles.icon_animation)
-    bottomContainerRef.current.classList.add(styles.blur_animation)
+    // bottomContainerRef.current.classList.add(styles.blur_animation)
     if (topIcon) {
       topObservationRef.current = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (!entry.isIntersecting) {
+            setAnimate(false)
             topContainerRef.current.removeChild(topIcon)
             topContainerRef.current.appendChild(topIcon)
             topObservationRef.current.unobserve(topIcon)
-            topContainerRef.current.classList.remove(styles.icon_animation)
-            bottomContainerRef.current.classList.remove(styles.blur_animation)
             setTopIcon(topContainerRef.current.firstChild)
+            // bottomContainerRef.current.classList.remove(styles.blur_animation)
             // bottomContainerRef.current.removeChild(bottomIcon)
             // bottomContainerRef.current.appendChild(bottomIcon)
             // setBottomIcon(bottomContainerRef.current.firstChild)
@@ -42,7 +43,14 @@ const MirrorIcons = () => {
       });
       topObservationRef.current.observe(topIcon);
     }
-  }, [topIcon])
+  }, [topIcon, setTopIcon])
+
+  useEffect(() => {
+    if (!animate) {
+      topContainerRef.current.classList.remove(styles.icon_animation)
+      setAnimate(true)
+    }
+  }, [animate, setAnimate])
 
   useEffect(() => {
     setTopIcon(topContainerRef.current.firstChild)
