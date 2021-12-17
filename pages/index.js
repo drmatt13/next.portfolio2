@@ -18,9 +18,6 @@ export default function Home() {
 
   return (
     <>
-      <style>{`
-      @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-    `}</style>
       <div
         className={`${darkMode ? styles.dark : styles.light} animate-fade-in`}
         style={{
@@ -55,7 +52,7 @@ export default function Home() {
               style={{ flex: 7 }}
             >
               <div
-                className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl"
+                className="text-2xl sm:text-2xl sm:mt-10 md:text-3xl lg:text-4xl lg:mt-0 xl:text-5xl"
                 style={{ fontFamily: "'IBM Plex Mono', monospace" }}
               >
                 <div>Hi,</div>
@@ -135,7 +132,7 @@ export default function Home() {
               </p>
             </div>
             <p className="px-6 pb-12 text-center">
-              check out some of my other projects, i hope you like them :)
+              check out some of my other web projects, i hope you like them :)
             </p>
           </div>
           <div className="relative overflow-x-hidden sm:overflow-x-visible">

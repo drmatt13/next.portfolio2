@@ -7,10 +7,11 @@ const NotesModal = ({ toggleModal }) => {
     'data-structures': ['binary heaps', 'binary search trees', 'linked lists', 'stacks and queues'],
     'docker': ['intro'],
     'express-js': ['basics', 'mongoose'],
+    'firebase': ['intro'],
     'math': ['statistics-1'],
     'miscellaneous': ['image upload', 'local storage', 'scroll', 'search user', 'touch controls', 'upload_download file'],
     'next-js': ['api', 'mongoose', 'next', 'router', 'tailwind'],
-    'react': ['context', 'redux'],
+    'react': ['context', 'redux', 'router_v6'],
     'three': ['three 2', 'three'],
 })
   const [keys] = useState(Object.keys(notes))

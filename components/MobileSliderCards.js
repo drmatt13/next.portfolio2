@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 const MobileSliderCards = ({ cards, style }) => {
   useEffect(() => {
-    console.log(cards);
+    // console.log(cards);
   }, []);
 
   return (
