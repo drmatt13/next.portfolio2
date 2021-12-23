@@ -18,9 +18,9 @@ export default function Home() {
 
   return (
     <>
-      <style global>{`
+      {/* <style global="true">{`
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-      `}</style>
+      `}</style> */}
       <div
         className={`${darkMode ? styles.dark : styles.light} animate-fade-in`}
         style={{
@@ -49,13 +49,13 @@ export default function Home() {
               ABOUT ME
             </div>
           </div>
-          <div className="sm:flex-1 flex flex-col">
+          <div className="flex flex-col sm:w-[50%]">
             <div
               className="flex items-center justify-center text-gray-800 dark:text-white"
               style={{ flex: 7 }}
             >
               <div
-                className="text-2xl sm:text-2xl sm:mt-10 md:text-3xl lg:text-4xl lg:mt-0 xl:text-5xl"
+                className="text-2xl sm:text-2xl sm:mb-10 sm:pl-10 md:mb-20 md:text-3xl lg:pl-0 lg:mb-0 lg:text-4xl lg:mt-0 xl:text-5xl"
                 style={{ fontFamily: "'IBM Plex Mono', monospace" }}
               >
                 <div>Hi,</div>
@@ -69,7 +69,7 @@ export default function Home() {
                 <div>Full stack developer</div>
               </div>
             </div>
-            <div className="flex-1 hidden sm:flex justify-center">
+            <div className="flex-1 hidden lg:flex justify-center">
               {/* PLACEHOLDER */}
               <MirrorIcons />
               {/* <div className="h-24 w-full mx-10 mb-4 bg-blue-500 bg-opacity-50" /> */}
