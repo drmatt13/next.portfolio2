@@ -4,7 +4,7 @@ import Head from "next/head";
 
 // components
 import MirrorIcons from "../components/MirrorIcons";
-import MobileSliderCards from "../components/MobileSliderCards";
+// import MobileSliderCards from "../components/MobileSliderCards";
 
 // context
 import _appContext from "../context/_appContext";
@@ -18,23 +18,13 @@ export default function Home() {
 
   return (
     <>
-      {/* <style global="true">{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-      `}</style> */}
-      <div
-        className={`${darkMode ? styles.dark : styles.light} animate-fade-in`}
-        style={{
-          minWidth: "350px",
-        }}
-      >
+      <div className={`${darkMode ? styles.dark : styles.light} min-w-[350px] animate-fade-in`}>
         {/* SECTION 1 */}
         <div className={`${styles.header} relative flex flex-col sm:flex-row`}>
           <div
-            className="absolute -top-28 w-full"
+            className="absolute -top-28 w-full opacity-[.25] z-[-1]"
             style={{
-              height: "calc(100% + 7rem)",
-              opacity: 0.25,
-              zIndex: -1,
+              height: "calc(100% + 7rem)"
             }}
           />
           <div className="absolute flex flex-col sm:flex-row-reverse bottom-4 right-6 md:bottom-5 md:right-10 lg:bottom-6 lg:right-12">
@@ -50,12 +40,9 @@ export default function Home() {
             </div>
           </div>
           <div className="flex flex-col sm:w-[50%]">
-            <div
-              className="flex items-center justify-center text-gray-800 dark:text-white"
-              style={{ flex: 7 }}
-            >
+            <div className="flex-[7] flex items-center justify-center text-gray-800 dark:text-white">
               <div
-                className="flex-shrink text-2xl sm:translate-y-[25%] sm:pl-6 md:mb-0 md:text-3xl md:translate-y-[10%] lg:pl-0 lg:mb-0 lg:text-4xl lg:mt-0 lg:translate-y-0 xl:text-5xl whitespace-nowrap"
+                className="flex-shrink text-2xl sm:translate-y-[25%] md:pl-6 md:mb-0 md:text-3xl md:translate-y-[10%] lg:pl-0 lg:mb-0 lg:text-4xl lg:mt-0 lg:translate-y-0 xl:text-5xl whitespace-nowrap"
                 style={{ fontFamily: "'IBM Plex Mono', monospace" }}
               >
                 <div>Hi,</div>
@@ -70,10 +57,7 @@ export default function Home() {
               </div>
             </div>
             <div className="flex-1 hidden sm:flex justify-center animate-fade-in">
-              {/* PLACEHOLDER */}
               <MirrorIcons />
-              {/* <div className="h-24 w-full mx-10 mb-4 bg-blue-500 bg-opacity-50" /> */}
-              {/* PLACEHOLDER */}
             </div>
           </div>
           <div className="sm:flex-1 flex justify-center items-end">
@@ -98,30 +82,18 @@ export default function Home() {
             </div>
           </div>
         </div>
-
-        {/* SECTION 2 + 3 + Footer Background container */}
+        {/* SECTION 2 Footer Background container */}
         <div className={`${styles.body} relative`}>
-          <div
-            className="absolute h-full w-full"
-            style={{
-              opacity: "0.25",
-              zIndex: -1,
-            }}
-          />
-          {/* SECTION 2 */}
-          <div
-            className="relative text-gray-800 dark:text-white"
-            style={{ minHeight: "25vh" }}
-          >
+          <div className="absolute h-full w-full z-[-1] opacity-[0.25]" />
+          <div className="relative text-gray-800 dark:text-white min-h-[25vh]">
             <div
-              className="absolute h-full w-full"
+              className="absolute h-full w-full z-[-1]"
               style={{
                 background: `${
                   darkMode
                     ? "linear-gradient(-5deg, rgba(0, 0, 0, .5) 40%, rgba(155, 50, 255,.25) 100%)"
                     : "linear-gradient(-7deg, rgba(255, 255, 255, .25) 50%, rgba(75, 50, 255, .5) 100%)"
-                }`,
-                zIndex: -1,
+                }`
               }}
             />
             <div className="text-5xl py-12 text-center">
@@ -138,63 +110,31 @@ export default function Home() {
               check out some of my other web projects, i hope you like them :)
             </p>
           </div>
-          <div className="relative overflow-x-hidden sm:overflow-x-visible">
+          <div className="relative">
             <div
-              className="absolute h-full w-full"
+              className="absolute h-full w-full z-[-1]"
               style={{
-                clipPath: "polygon(0 0, 100% 0, 100% 25%, 0 75%)",
                 background: `${
                   darkMode ? "rgba(0, 0, 0, .5)" : "rgba(255, 255, 255, .25)"
                 }`,
               }}
             />
-            {/* Mobile slider */}
-            <div className="sm:hidden">
-              <MobileSliderCards
-                cards={[
-                  styles.placeholder3,
-                  styles.placeholder2,
-                  styles.placeholder1,
-                ]}
-                style={styles.placeholder}
-              />
-            </div>
-            {/* Mobile slider */}
-            <div
-              className="hidden sm:flex justify-evenly"
-              style={{
-                maxWidth: 1200,
-                margin: "0 auto",
-              }}
-            >
-              <div className={`${styles.card} group`}>
-                <div className="absolute h-4/5 z-10 bg-gray-900 bg-gradient-to-b from-white dark:from-gray-900 to-blue-400 dark:to-purple-600 translate-y-full group-hover:translate-y-1/4 opacity-0 group-hover:opacity-100 transition group-hover:duration-300 duration-700">
-                  Test
-                </div>
-                <div className={styles.design1} />
+            <div className="">
+              {/* mobile */}
+              <div className="flex sm:hidden justify-evenly">
+                <div className="h-24 w-full"></div>
               </div>
-              <div className={`${styles.card} group`}>
-                <div className="absolute h-4/5 z-10 bg-gray-900 bg-gradient-to-b from-white dark:from-gray-900 to-blue-400 dark:to-purple-600 translate-y-full group-hover:translate-y-1/4 opacity-0 group-hover:opacity-100 transition group-hover:duration-300 duration-700">
-                  Test
-                </div>
-                <div className={styles.design2} />
+              {/* desktop */}
+              <div className="hidden sm:flex justify-evenly">
+                <div className="h-24 w-full"></div>
               </div>
-              <div className={`${styles.card} group`}>
-                <div className="absolute h-4/5 z-10 bg-gray-900 bg-gradient-to-b from-white dark:from-gray-900 to-blue-400 dark:to-purple-600 translate-y-full group-hover:translate-y-1/4 opacity-0 group-hover:opacity-100 transition group-hover:duration-300 duration-700">
-                  Test
-                </div>
-                <div className={styles.design3} />
+              {/* desktop */}
+              <div className="h-12" />
+              <div className="h-[25vh] max-h-[125px] text-white flex items-center justify-evenly bg-indigo-400/40 dark:bg-purple-800/30">
+                Footer
               </div>
             </div>
           </div>
-          <div className="h-12" />
-          {/* SECTION 3 */}
-          {/* <div></div> */}
-          {/* FOOTER */}
-          <div
-            className="flex items-center justify-evenly bg-blue-500 dark:bg-purple-800 opacity-30"
-            style={{ height: "25vh", maxHeight: "125px" }}
-          ></div>
         </div>
       </div>
     </>
