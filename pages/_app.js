@@ -69,8 +69,8 @@ function MyApp({ Component, pageProps }) {
         <meta name="theme-color" content={darkMode ? "#7d54ed" : "#f33984"} />
         <meta property="og:site_name" content="Next.js-tailwind" />
         <meta property="og:title" content="Matthew Sweeney's Web Portfolio" />
-        <meta property="og:description" content="og:description" />
-        <meta property="og:image" content="/og-image.jpg" />
+        <meta property="og:description" content="A portfolio is essential to establishing and maintaining your credibility as a designer." />
+        <meta property="og:image" content="https://next-portfolio2-omega.vercel.app/og-image.jpg" />
       </Head>
       <_appContext.Provider value={{ mobile, darkMode, setDarkMode }}>
         <AppLayout>
