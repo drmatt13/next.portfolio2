@@ -55,7 +55,7 @@ export default function Home() {
               style={{ flex: 7 }}
             >
               <div
-                className="text-2xl sm:text-2xl sm:mb-10 sm:pl-10 md:mb-20 md:text-3xl lg:pl-0 lg:mb-0 lg:text-4xl lg:mt-0 xl:text-5xl"
+                className="flex-shrink text-2xl sm:mb-5 sm:pl-6 md:mb-0 md:text-3xl lg:pl-0 lg:mb-0 lg:text-4xl lg:mt-0 xl:text-5xl whitespace-nowrap"
                 style={{ fontFamily: "'IBM Plex Mono', monospace" }}
               >
                 <div>Hi,</div>
@@ -69,7 +69,7 @@ export default function Home() {
                 <div>Full stack developer</div>
               </div>
             </div>
-            <div className="flex-1 hidden lg:flex justify-center">
+            <div className="flex-1 hidden md:flex justify-center animate-fade-in">
               {/* PLACEHOLDER */}
               <MirrorIcons />
               {/* <div className="h-24 w-full mx-10 mb-4 bg-blue-500 bg-opacity-50" /> */}
@@ -78,7 +78,7 @@ export default function Home() {
           </div>
           <div className="sm:flex-1 flex justify-center items-end">
             <div
-              className={`${styles.svg_master_container} relative select-none mt-10 sm:mt-24 2xl:mt-36`}
+              className={`${styles.svg_master_container} relative select-none mt-10 sm:mt-12 lg:mt-24 2xl:mt-36`}
             >
               <div className="absolute grid grid-cols-4">
                 <div />

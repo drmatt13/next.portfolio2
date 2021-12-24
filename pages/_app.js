@@ -43,7 +43,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>tailwind / next.js</title>
+        <title>Home | Matthew Sweeney</title>
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
