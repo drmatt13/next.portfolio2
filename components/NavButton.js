@@ -25,18 +25,35 @@ const NavButton = ({ className, mode, onClick }) => {
 
   return (
     <>
+      <style jsx>{`
+        @media (max-height: 700px) {
+          .text-md {
+            font-size: .75rem;
+          }
+        }
+        @media (max-height: 600px) {
+          .text-md {
+            font-size: .6rem;
+          }
+        }
+        @media (max-height: 500px) {
+          .text-md {
+            font-size: .5rem;
+          }
+        }
+      `}</style>
       <div
         className={`
-      ${darkMode ? styles.dark : styles.light}
-      transition
-      ease-linear
-      pointer-events-auto
-      cursor-pointer 
-      absolute
-      h-full 
-      w-full
-      rounded-full
-    `}
+          ${darkMode ? styles.dark : styles.light}
+          transition
+          ease-linear
+          pointer-events-auto
+          cursor-pointer 
+          absolute
+          h-full 
+          w-full
+          rounded-full
+        `}
       >
         <i
           ref={i}
@@ -50,21 +67,21 @@ const NavButton = ({ className, mode, onClick }) => {
             e.target.classList.remove(styles.alt);
           }}
           className={`
-          ${styles.i}
-          ${className} 
-          h-full 
-          w-full 
-          flex 
-          justify-center 
-          items-center 
-          text-md
-          rounded-full
-          transition-all
-          ease-linear
-          border
-        border-white
-          border-opacity-5
-        `}
+            ${styles.i}
+            ${className} 
+            h-full 
+            w-full 
+            flex 
+            justify-center 
+            items-center 
+            text-md
+            rounded-full
+            transition-all
+            ease-linear
+            border
+          border-white
+            border-opacity-5
+          `}
         />
       </div>
     </>

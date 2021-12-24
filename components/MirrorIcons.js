@@ -18,18 +18,14 @@ const MirrorIcons = () => {
       .perspective {
         perspective: 400px;
       }
-      .width {
-        width: clamp(0px, 80vw, 500px);
-      }
       .transformed {
         transform: rotate3d(1, 0, 0, 45deg);
         background: linear-gradient(to bottom, #fff0, #bbb8);
-        // box-shadow: rgba(0, 0, 0, 0.25) 0 .5em .75em;
       }
     `}</style>
-    <div className="w-full pl-[5%] pr-4 md:pl-[7.5%] sm:pr-2 lg:pr-8 2xl:pr-10 justify-center items-stretch">
+    <div className="w-full sm:w-[200%] sm:scale-50 md:w-[125%] md:scale-75 lg:w-full lg:scale-100 pl-[5%] pr-4 md:pl-[7.5%] sm:pr-2 lg:pr-8 2xl:pr-10 translate-y-[25%] md:translate-y-[20%] lg:translate-y-[5%] xl:translate-y-0">
       <div className="w-4" />
-      <div className="relative perspective flex items-center translate-y-[25%] md:translate-y-[20%] xl:translate-y-[10%] 2xl:translate-y-0">
+      <div className="relative perspective flex items-center">
 
         <div className={`z-10 relative flex overflow-x-hidden`}>
           <div className={`${styles.icon_container} flex items-end mb-16`}>

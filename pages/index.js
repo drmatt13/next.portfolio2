@@ -55,7 +55,7 @@ export default function Home() {
               style={{ flex: 7 }}
             >
               <div
-                className="flex-shrink text-2xl sm:mb-5 sm:pl-6 md:mb-0 md:text-3xl lg:pl-0 lg:mb-0 lg:text-4xl lg:mt-0 xl:text-5xl whitespace-nowrap"
+                className="flex-shrink text-2xl sm:translate-y-[25%] sm:pl-6 md:mb-0 md:text-3xl md:translate-y-[10%] lg:pl-0 lg:mb-0 lg:text-4xl lg:mt-0 lg:translate-y-0 xl:text-5xl whitespace-nowrap"
                 style={{ fontFamily: "'IBM Plex Mono', monospace" }}
               >
                 <div>Hi,</div>
@@ -69,7 +69,7 @@ export default function Home() {
                 <div>Full stack developer</div>
               </div>
             </div>
-            <div className="flex-1 hidden md:flex justify-center animate-fade-in">
+            <div className="flex-1 hidden sm:flex justify-center animate-fade-in">
               {/* PLACEHOLDER */}
               <MirrorIcons />
               {/* <div className="h-24 w-full mx-10 mb-4 bg-blue-500 bg-opacity-50" /> */}
