@@ -67,6 +67,7 @@ function MyApp({ Component, pageProps }) {
           content="width=device-width,initial-scale=1.0,user-scalable=no"
         />
         <meta name="theme-color" content={darkMode ? "#7d54ed" : "#f33984"} />
+        {/* <meta property="og:url" content="" /> */}
         <meta property="og:site_name" content="Next.js-tailwind" />
         <meta property="og:title" content="Matthew Sweeney's Web Portfolio" />
         <meta property="og:description" content="A portfolio is essential to establishing and maintaining your credibility as a designer." />

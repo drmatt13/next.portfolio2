@@ -50,6 +50,11 @@
         width: 100%;
       }
     }
+    @media (min-width: 2048px) {
+      img {
+        width: 819.2px !important;
+      }
+    }
     @media (min-width: 1024px) {
       img {
         width: clamp(475px, 70vh, 40vw);

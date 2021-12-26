@@ -60,8 +60,8 @@ const AppLayout = ({ children }) => {
           background: url(/images/layout/background-fixed-tl.png) no-repeat;
         }
       `}</style>
-      <div className={`${darkMode ? "dark" : "light"}`}>
-        <div className="relative h-screen overflow-y-hidden">
+      <div className={`${darkMode ? "dark" : "light"} flex justify-center`}>
+        <div className="relative h-screen overflow-y-hidden w-full max-w-[240rem]">
           <Navbar
             nav={nav}
             buttons={buttons}
@@ -76,7 +76,7 @@ const AppLayout = ({ children }) => {
             onClick={() => {
               buttons !== undefined ? setButtons(false) : "";
             }}
-            className="absolute pt-28 top-0 h-screen w-full overflow-y-auto"
+            className="absolute pt-28 top-0 h-full w-full overflow-y-auto"
           >
             {children}
           </div>

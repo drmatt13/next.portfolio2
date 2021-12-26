@@ -1,10 +1,10 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import Image from "next/image";
 import Head from "next/head";
 
 // components
 import MirrorIcons from "../components/MirrorIcons";
-// import MobileSliderCards from "../components/MobileSliderCards";
+import WebsiteCard from "../components/WebsiteCard";
 
 // context
 import _appContext from "../context/_appContext";
@@ -15,7 +15,48 @@ import glitch from "../styles/glitch.module.scss";
 
 export default function Home() {
   const { darkMode, mobile } = useContext(_appContext);
-
+  const [cards] = useState([
+    {
+      src: "/images/home/dog.png",
+      alt: "card-1",
+      title: "Pupper Space",
+      description: "Lorem ipsum, dolor iusto repellendus modi ipsum dolor. sit",
+      link: "/",
+      button: "Click Doggo!",
+    },
+    {
+      src: "/images/home/pinkclouds.jpg",
+      alt: "card-1",
+      title: "Pupper Space",
+      description: "Lorem ipsum, dolor iusto repellendus modi ipsum dolor. sit",
+      link: "/",
+      button: "Click Link",
+    },
+    {
+      src: "/images/home/placeholder1.png",
+      alt: "card-1",
+      title: "Pupper Space",
+      description: "Lorem ipsum, dolor iusto repellendus modi ipsum dolor. sit",
+      link: "/",
+      button: "Click Link",
+    },
+    // {
+    //   src: "/images/cards/card-2.png",
+    //   alt: "card-2",
+    //   title: "Card 2",
+    //   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    //   link: "/",
+    //   button: "Learn More",
+    // },
+    // {
+    //   src: "/images/cards/card-3.png",
+    //   alt: "card-3",
+    //   title: "Card 3",
+    //   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    //   link: "/",
+    //   button: "Learn More",
+    // },
+  ])
   return (
     <>
       <div className={`${darkMode ? styles.dark : styles.light} min-w-[350px] animate-fade-in`}>
@@ -30,6 +71,9 @@ export default function Home() {
           <div className="absolute flex flex-col sm:flex-row-reverse bottom-4 right-6 md:bottom-5 md:right-10 lg:bottom-6 lg:right-12">
             <div
               className={`${styles.rainbow_button} flex justify-center items-center py-3 px-4 text-xs md:py-3 md:px-6 md:text-sm lg:py-4 lg:px-8 lg:text-base bg-green-400 dark:bg-pink-500 text-black dark:text-white font-bold select-none cursor-pointer hover:scale-105 hover:shadow-xl transition-transform`}
+              style={{
+                transitionProperty: "background-color, border-color, color, fill, stroke, transform",
+              }}
             >
               GET IN TOUCH
             </div>
@@ -42,7 +86,7 @@ export default function Home() {
           <div className="flex flex-col sm:w-[50%]">
             <div className="flex-[7] flex items-center justify-center text-gray-800 dark:text-white">
               <div
-                className="flex-shrink text-2xl sm:translate-y-[25%] md:pl-6 md:mb-0 md:text-3xl md:translate-y-[10%] lg:pl-0 lg:mb-0 lg:text-4xl lg:mt-0 lg:translate-y-0 xl:text-5xl whitespace-nowrap"
+                className="flex-shrink text-2xl sm:translate-y-[25%] md:pl-6 md:mb-0 md:text-3xl md:translate-y-[10%] lg:pl-0 lg:mb-0 lg:text-4xl lg:mt-0 lg:translate-y-0 xl:text-5xl whitespace-nowrap 4xl:pl-[5%] 4xl:text-6xl"
                 style={{ fontFamily: "'IBM Plex Mono', monospace" }}
               >
                 <div>Hi,</div>
@@ -85,7 +129,7 @@ export default function Home() {
         {/* SECTION 2 Footer Background container */}
         <div className={`${styles.body} relative`}>
           <div className="absolute h-full w-full z-[-1] opacity-[0.25]" />
-          <div className="relative text-gray-800 dark:text-white min-h-[25vh]">
+          <div className="relative text-gray-800 dark:text-white">
             <div
               className="absolute h-full w-full z-[-1]"
               style={{
@@ -106,7 +150,7 @@ export default function Home() {
                 Websites
               </p>
             </div>
-            <p className="px-6 pb-12 text-center">
+            <p className="px-6 pb-24 text-center">
               check out some of my other web projects, i hope you like them :)
             </p>
           </div>
@@ -119,20 +163,26 @@ export default function Home() {
                 }`,
               }}
             />
-            <div className="">
+            <div>
               {/* mobile */}
               <div className="flex sm:hidden justify-evenly">
                 <div className="h-24 w-full"></div>
               </div>
               {/* desktop */}
-              <div className="hidden sm:flex justify-evenly">
-                <div className="h-24 w-full"></div>
+              <div className="w-full flex justify-center">
+                <div className="hidden w-full lg:w-[80%] xl:w-[70%] 2xl:w-[65%] sm:flex justify-evenly">
+                  {cards && cards.map((data, index) => (
+                    <WebsiteCard key={index} data={data} />
+                  ))}
+                </div>
               </div>
               {/* desktop */}
-              <div className="h-12" />
-              <div className="h-[25vh] max-h-[125px] text-white flex items-center justify-evenly bg-indigo-400/40 dark:bg-purple-800/30">
+              <div className="h-24" />
+
+
+              {/* <div className="h-[25vh] max-h-[125px] text-white flex items-center justify-evenly bg-indigo-400/40 dark:bg-purple-800/30">
                 Footer
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
