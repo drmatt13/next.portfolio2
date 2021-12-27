@@ -140,7 +140,7 @@ export default function Home() {
                 }`
               }}
             />
-            <div className="text-5xl py-12 text-center">
+            <div className="text-2xl sm:text-4xl lg:text-5xl py-8 sm:py-12 text-center">
               <p
                 style={{
                   fontFamily: "'IBM Plex Mono', monospace",
@@ -152,7 +152,7 @@ export default function Home() {
                 </span>
               </p>
             </div>
-            <p className="px-6 text-center">
+            <p className="px-6 text-center text-sm sm:text-md lg:text-base">
               check out some of my other web projects, i hope you like them :)
             </p>
           </div>
