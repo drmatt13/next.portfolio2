@@ -17,45 +17,45 @@ export default function Home() {
   const { darkMode, mobile } = useContext(_appContext);
   const [cards] = useState([
     {
+      src: "/images/home/placeholder1.png",
+      alt: "card",
+      title: "Banned Social",
+      description: "Lorem ipsum, dolor iusto repellendus modi ipsum dolor. sit",
+      link: "/",
+      button: "Welcome Anon",
+    },
+    {
       src: "/images/home/dog.png",
-      alt: "card-1",
+      alt: "card",
       title: "Pupper Space",
       description: "Lorem ipsum, dolor iusto repellendus modi ipsum dolor. sit",
       link: "/",
-      button: "Click Doggo!",
+      button: "Doggo!",
     },
     {
       src: "/images/home/pinkclouds.jpg",
-      alt: "card-1",
-      title: "Pupper Space",
+      alt: "card",
+      title: "Cloud 9",
       description: "Lorem ipsum, dolor iusto repellendus modi ipsum dolor. sit",
       link: "/",
-      button: "Click Link",
+      button: "Find out more",
     },
     {
-      src: "/images/home/placeholder1.png",
-      alt: "card-1",
-      title: "Pupper Space",
+      src: "/images/home/placeholder3.png",
+      alt: "card",
+      title: "Unsplash",
       description: "Lorem ipsum, dolor iusto repellendus modi ipsum dolor. sit",
       link: "/",
-      button: "Click Link",
+      button: "Upload Images",
     },
-    // {
-    //   src: "/images/cards/card-2.png",
-    //   alt: "card-2",
-    //   title: "Card 2",
-    //   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    //   link: "/",
-    //   button: "Learn More",
-    // },
-    // {
-    //   src: "/images/cards/card-3.png",
-    //   alt: "card-3",
-    //   title: "Card 3",
-    //   description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    //   link: "/",
-    //   button: "Learn More",
-    // },
+    {
+      src: "/images/home/placeholder2.png",
+      alt: "card",
+      title: "e Store",
+      description: "Lorem ipsum, dolor iusto repellendus modi ipsum dolor. sit",
+      link: "/",
+      button: "Shop Now",
+    },
   ])
   return (
     <>
@@ -150,7 +150,7 @@ export default function Home() {
                 Websites
               </p>
             </div>
-            <p className="px-6 pb-24 text-center">
+            <p className="px-6 text-center">
               check out some of my other web projects, i hope you like them :)
             </p>
           </div>
@@ -165,19 +165,19 @@ export default function Home() {
             />
             <div>
               {/* mobile */}
-              <div className="flex sm:hidden justify-evenly">
+              {/* <div className="flex sm:hidden justify-evenly">
                 <div className="h-24 w-full"></div>
-              </div>
+              </div> */}
               {/* desktop */}
-              <div className="w-full flex justify-center">
-                <div className="hidden w-full lg:w-[80%] xl:w-[70%] 2xl:w-[65%] sm:flex justify-evenly">
+              <div className="py-12 sm:py-24 w-full flex px-[50%] snap-x gap-8 overflow-auto select-none">
+                {/* <div className="hidden max-w-7xl w-full lg:w-[85%] xl:w-[80%] 2xl:w-[70%] sm:flex justify-start"> */}
                   {cards && cards.map((data, index) => (
                     <WebsiteCard key={index} data={data} />
                   ))}
                 </div>
-              </div>
+              {/* </div> */}
               {/* desktop */}
-              <div className="h-24" />
+              {/* <div className="h-24" /> */}
 
 
               {/* <div className="h-[25vh] max-h-[125px] text-white flex items-center justify-evenly bg-indigo-400/40 dark:bg-purple-800/30">

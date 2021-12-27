@@ -131,51 +131,51 @@
   background-repeat: no-repeat;
   background-position: left;
 }
-.body {
-  .design1 { background: url("/images/home/placeholder1.png") center; transition: all .3s linear; height: 100%; }
-  .design2 { background: url("/images/home/darkgalaxy.jpeg") center; transition: all .3s linear; height: 100%; }
-  .design3 { background: url("/images/home/test.jpeg") center; transition: all .3s linear; height: 100%; }
-  .card > div {
-    // height: 100%;
-    width: 100%;
-    // background-color: black;
-    background-size: cover;
-  }
-  .card {
-    position: relative;
-    z-index: 1;
-    min-height: 31vw;
-    height: 50vh;
-    max-height: 35vw;
-    min-width: 175px;
-    width: 25%;
-    max-width: 280px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
-    overflow: hidden;
-    // border-radius: 10px;
-    transition: transform .4s ease-in;
-    &:hover {
-      transition: transform .15s ease-out;
-      box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
-      transform: scale(.9);
-    }
-    &:hover > .design1, &:hover > .design2, &:hover > .design3 {
-      transform: scale(1.1);
-      filter: brightness(50%) blur(2px);
-    }
-  }
-  // .card:hover {
-  //   box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
-  //   cursor: pointer;
-  //   // transform: scale(1.1);
+// .body {
+//   .design1 { background: url("/images/home/placeholder1.png") center; transition: all .3s linear; height: 100%; }
+//   .design2 { background: url("/images/home/darkgalaxy.jpeg") center; transition: all .3s linear; height: 100%; }
+//   .design3 { background: url("/images/home/test.jpeg") center; transition: all .3s linear; height: 100%; }
+//   .card > div {
+//     // height: 100%;
+//     width: 100%;
+//     // background-color: black;
+//     background-size: cover;
+//   }
+//   .card {
+//     position: relative;
+//     z-index: 1;
+//     min-height: 31vw;
+//     height: 50vh;
+//     max-height: 35vw;
+//     min-width: 175px;
+//     width: 25%;
+//     max-width: 280px;
+//     box-shadow: rgba(0, 0, 0, 0.25) 0px 5px 15px;
+//     overflow: hidden;
+//     // border-radius: 10px;
+//     transition: transform .4s ease-in;
+//     &:hover {
+//       transition: transform .15s ease-out;
+//       box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+//       transform: scale(.9);
+//     }
+//     &:hover > .design1, &:hover > .design2, &:hover > .design3 {
+//       transform: scale(1.1);
+//       filter: brightness(50%) blur(2px);
+//     }
+//   }
+//   // .card:hover {
+//   //   box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+//   //   cursor: pointer;
+//   //   // transform: scale(1.1);
+//   // }
+//   @media (min-width: 1200px) {
+//     .card {
+//       min-height: 375px;
+//       max-height: 420px;
+//     }
   // }
-  @media (min-width: 1200px) {
-    .card {
-      min-height: 375px;
-      max-height: 420px;
-    }
-  }
-}
+// }
 
 
 
@@ -216,36 +216,4 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-}
-.placeholder1 {
-  background: url("/images/home/placeholder1.png") center
-}
-.placeholder2 {
-  background: url("/images/home/darkgalaxy.jpeg") center
-}
-.placeholder3 {
-  background: url("/images/home/test.jpeg") center
-}
-.placeholder {
-  background-size: cover;
-  width: clamp(25vh, 22vw, 300px);
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  transition: transform .1s ease-in;
-}
-.placeholder:hover {
-  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
-  cursor: pointer;
-  transform: scale(1.1);
-}
-@media (max-width: 639px) {
-  .section2 {
-    height: 600px;
-  }
-  .placeholder {
-    width: 50%;
-    max-width: 250px;
-    min-width: 200px;
-    height: 325px;
-    border-radius: 25px;
-  }
 }
