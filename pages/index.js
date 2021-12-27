@@ -143,11 +143,13 @@ export default function Home() {
             <div className="text-5xl py-12 text-center">
               <p
                 style={{
-                  fontFamily: "'Bebas Neue', cursive",
+                  fontFamily: "'IBM Plex Mono', monospace",
                   letterSpacing: "0.25em",
                 }}
               >
-                Websites
+                <span className={`${glitch.text}`} data-text="WEBSITES">
+                  WEBSITES
+                </span>
               </p>
             </div>
             <p className="px-6 text-center">
@@ -164,25 +166,11 @@ export default function Home() {
               }}
             />
             <div>
-              {/* mobile */}
-              {/* <div className="flex sm:hidden justify-evenly">
-                <div className="h-24 w-full"></div>
-              </div> */}
-              {/* desktop */}
-              <div className="py-12 sm:py-24 w-full flex px-[50%] snap-x gap-8 overflow-auto select-none">
-                {/* <div className="hidden max-w-7xl w-full lg:w-[85%] xl:w-[80%] 2xl:w-[70%] sm:flex justify-start"> */}
+              <div className="py-12 sm:py-16 w-full flex px-[50%] snap-x gap-8 overflow-auto select-none">
                   {cards && cards.map((data, index) => (
                     <WebsiteCard key={index} data={data} />
                   ))}
                 </div>
-              {/* </div> */}
-              {/* desktop */}
-              {/* <div className="h-24" /> */}
-
-
-              {/* <div className="h-[25vh] max-h-[125px] text-white flex items-center justify-evenly bg-indigo-400/40 dark:bg-purple-800/30">
-                Footer
-              </div> */}
             </div>
           </div>
         </div>
