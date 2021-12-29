@@ -103,9 +103,7 @@ export default function Home() {
             </div>
           </div>
           <div className="sm:flex-1 flex justify-center items-end">
-            <div
-              className={`${styles.svg_master_container} relative select-none mt-10 sm:mt-12 lg:mt-24 2xl:mt-36`}
-            >
+            <div className={`${styles.svg_master_container} relative select-none mt-10 sm:mt-12 lg:mt-24 2xl:mt-36`}>
               <div className="absolute grid grid-cols-4">
                 <div/><div/><div/><div/><div/><div/><div/><div/><div/><div/><div/><div/>
               </div>
@@ -114,50 +112,58 @@ export default function Home() {
           </div>
         </div>
         {/* SECTION 2 */}
-        <div
-          className={`${styles.body} relative min-h-screen`} 
-          style={{
-            background: `${
-              darkMode
-                ? "linear-gradient(-5deg, rgba(0, 0, 0, .5) 40%, rgba(155, 50, 255,.25) 100%)"
-                : "linear-gradient(-7deg, rgba(255, 255, 255, .25) 50%, rgba(75, 50, 255, .5) 100%)"
-            }`
-          }}
-        >
-          <div className="absolute h-full w-full z-[-1] opacity-[0.25]" />
-          <div className="text-gray-800 dark:text-white">
-            <div className="text-2xl sm:text-4xl lg:text-5xl py-8 sm:py-12 text-center">
-              <p
+        <div className="relative /h-screen h-[200vh]">
+          
+          <div className="sticky -top-28 h-screen w-full">
+            <div className={`${styles.body} relative h-full w-full`}>
+              <div className="absolute top-0 h-full w-full z-[-1] opacity-[0.25]"/>
+              <div 
+                className="absolute top-0 h-full w-full"
                 style={{
-                  fontFamily: "'IBM Plex Mono', monospace",
-                  letterSpacing: "0.25em",
+                  background: `${
+                    darkMode
+                      ? "linear-gradient(-5deg, rgba(0, 0, 0, .5) 40%, rgba(155, 50, 255,.25) 100%)"
+                      : "linear-gradient(-7deg, rgba(255, 255, 255, .25) 50%, rgba(75, 50, 255, .5) 100%)"
+                  }`
                 }}
-              >
-                <span className={`${glitch.text}`} data-text="WEBSITES">
-                  WEBSITES
-                </span>
+              />
+            </div>
+          </div>
+          <div className="absolute top-0 left-0 w-full">
+            <div className="text-gray-800 dark:text-white">
+              <div className="text-2xl sm:text-4xl lg:text-5xl py-8 sm:py-12 text-center">
+                <p
+                  style={{
+                    fontFamily: "'IBM Plex Mono', monospace",
+                    letterSpacing: "0.25em",
+                  }}
+                >
+                  <span className={`${glitch.text}`} data-text="WEBSITES">
+                    WEBSITES
+                  </span>
+                </p>
+              </div>
+              <p className="px-6 text-center text-sm sm:text-md lg:text-base">
+                check out some of my other web projects, i hope you like them :)
               </p>
             </div>
-            <p className="px-6 text-center text-sm sm:text-md lg:text-base">
-              check out some of my other web projects, i hope you like them :)
-            </p>
-          </div>
-          <div className="flex justify-center overflow-x-visible">
-            <style jsx>{`
-              div::-webkit-scrollbar-thumb {
-                background-color: ${darkMode ? "rgb(236, 72, 153)" : "rgba(99, 102, 241, 0.75)"};
-              }
-              div::-webkit-scrollbar-thumb:hover {
-                background-color: ${darkMode ? "rgb(244, 114, 182)" : "rgba(99, 102, 241, 0.6)"}
-              }
-              div::-webkit-scrollbar-track {
-                background: ${darkMode ? "rgba(255, 255, 255, 0.125)" : "rgba(0, 0, 0, 0.125)"};
-              }
-            `}</style>
-            <div className={`${styles.card_scroll} pt-12 pb-10 mb-12 sm:pt-16 sm:pb-14 flex /w-1 /px-80 w-full px-[50%] snap-x gap-8 overflow-auto`}>
-              {cards && cards.map((data, index) => (
-                <WebsiteCard key={index} data={data} />
-              ))}
+            <div className="flex justify-center overflow-x-visible">
+              <style jsx>{`
+                div::-webkit-scrollbar-thumb {
+                  background-color: ${darkMode ? "rgb(236, 72, 153)" : "rgba(99, 102, 241, 0.75)"};
+                }
+                div::-webkit-scrollbar-thumb:hover {
+                  background-color: ${darkMode ? "rgb(244, 114, 182)" : "rgba(99, 102, 241, 0.6)"}
+                }
+                div::-webkit-scrollbar-track {
+                  background: ${darkMode ? "rgba(255, 255, 255, 0.125)" : "rgba(0, 0, 0, 0.125)"};
+                }
+              `}</style>
+              <div className={`${styles.card_scroll} pt-12 pb-10 mb-12 sm:pt-16 sm:pb-14 flex /w-1 /px-80 w-full px-[50%] snap-x gap-8 overflow-auto`}>
+                {cards && cards.map((data, index) => (
+                  <WebsiteCard key={index} data={data} />
+                ))}
+              </div>
             </div>
           </div>
         </div>
