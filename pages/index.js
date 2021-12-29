@@ -1,6 +1,6 @@
-import { useState, useContext } from "react";
-import Image from "next/image";
+import { useState, useEffect, useContext, useRef } from "react";
 import Head from "next/head";
+// import Image from "next/image";
 
 // components
 import MirrorIcons from "../components/MirrorIcons";
@@ -18,7 +18,6 @@ export default function Home() {
   const [cards] = useState([
     {
       src: "/images/home/placeholder1.png",
-      alt: "card",
       title: "Banned Social",
       description: "Lorem ipsum, dolor iusto repellendus modi ipsum dolor. sit",
       link: "/",
@@ -26,7 +25,6 @@ export default function Home() {
     },
     {
       src: "/images/home/dog.png",
-      alt: "card",
       title: "Pupper Space",
       description: "Lorem ipsum, dolor iusto repellendus modi ipsum dolor. sit",
       link: "/",
@@ -34,7 +32,6 @@ export default function Home() {
     },
     {
       src: "/images/home/pinkclouds.jpg",
-      alt: "card",
       title: "Cloud 9",
       description: "Lorem ipsum, dolor iusto repellendus modi ipsum dolor. sit",
       link: "/",
@@ -42,7 +39,6 @@ export default function Home() {
     },
     {
       src: "/images/home/placeholder3.png",
-      alt: "card",
       title: "Unsplash",
       description: "Lorem ipsum, dolor iusto repellendus modi ipsum dolor. sit",
       link: "/",
@@ -50,7 +46,6 @@ export default function Home() {
     },
     {
       src: "/images/home/placeholder2.png",
-      alt: "card",
       title: "e Store",
       description: "Lorem ipsum, dolor iusto repellendus modi ipsum dolor. sit",
       link: "/",
@@ -59,6 +54,9 @@ export default function Home() {
   ])
   return (
     <>
+      <Head>
+        <title>Home | Matthew Sweeney</title>
+      </Head>
       <div className={`${darkMode ? styles.dark : styles.light} min-w-[350px] animate-fade-in`}>
         {/* SECTION 1 */}
         <div className={`${styles.header} relative flex flex-col sm:flex-row`}>
@@ -109,37 +107,25 @@ export default function Home() {
               className={`${styles.svg_master_container} relative select-none mt-10 sm:mt-12 lg:mt-24 2xl:mt-36`}
             >
               <div className="absolute grid grid-cols-4">
-                <div />
-                <div />
-                <div />
-                <div />
-                <div />
-                <div />
-                <div />
-                <div />
-                <div />
-                <div />
-                <div />
-                <div />
+                <div/><div/><div/><div/><div/><div/><div/><div/><div/><div/><div/><div/>
               </div>
               <img className="relative" src="/images/home/test1.svg" />
             </div>
           </div>
         </div>
-        {/* SECTION 2 Footer Background container */}
-        <div className={`${styles.body} relative`}>
+        {/* SECTION 2 */}
+        <div
+          className={`${styles.body} relative min-h-screen`} 
+          style={{
+            background: `${
+              darkMode
+                ? "linear-gradient(-5deg, rgba(0, 0, 0, .5) 40%, rgba(155, 50, 255,.25) 100%)"
+                : "linear-gradient(-7deg, rgba(255, 255, 255, .25) 50%, rgba(75, 50, 255, .5) 100%)"
+            }`
+          }}
+        >
           <div className="absolute h-full w-full z-[-1] opacity-[0.25]" />
-          <div className="relative text-gray-800 dark:text-white">
-            <div
-              className="absolute h-full w-full z-[-1]"
-              style={{
-                background: `${
-                  darkMode
-                    ? "linear-gradient(-5deg, rgba(0, 0, 0, .5) 40%, rgba(155, 50, 255,.25) 100%)"
-                    : "linear-gradient(-7deg, rgba(255, 255, 255, .25) 50%, rgba(75, 50, 255, .5) 100%)"
-                }`
-              }}
-            />
+          <div className="text-gray-800 dark:text-white">
             <div className="text-2xl sm:text-4xl lg:text-5xl py-8 sm:py-12 text-center">
               <p
                 style={{
@@ -156,21 +142,22 @@ export default function Home() {
               check out some of my other web projects, i hope you like them :)
             </p>
           </div>
-          <div className="relative">
-            <div
-              className="absolute h-full w-full z-[-1]"
-              style={{
-                background: `${
-                  darkMode ? "rgba(0, 0, 0, .5)" : "rgba(255, 255, 255, .25)"
-                }`,
-              }}
-            />
-            <div>
-              <div className="py-12 sm:py-16 w-full flex px-[50%] snap-x gap-8 overflow-auto select-none">
-                  {cards && cards.map((data, index) => (
-                    <WebsiteCard key={index} data={data} />
-                  ))}
-                </div>
+          <div className="flex justify-center overflow-x-visible">
+            <style jsx>{`
+              div::-webkit-scrollbar-thumb {
+                background-color: ${darkMode ? "rgb(236, 72, 153)" : "rgba(99, 102, 241, 0.75)"};
+              }
+              div::-webkit-scrollbar-thumb:hover {
+                background-color: ${darkMode ? "rgb(244, 114, 182)" : "rgba(99, 102, 241, 0.6)"}
+              }
+              div::-webkit-scrollbar-track {
+                background: ${darkMode ? "rgba(255, 255, 255, 0.125)" : "rgba(0, 0, 0, 0.125)"};
+              }
+            `}</style>
+            <div className={`${styles.card_scroll} pt-12 pb-10 mb-12 sm:pt-16 sm:pb-14 flex /w-1 /px-80 w-full px-[50%] snap-x gap-8 overflow-auto`}>
+              {cards && cards.map((data, index) => (
+                <WebsiteCard key={index} data={data} />
+              ))}
             </div>
           </div>
         </div>
