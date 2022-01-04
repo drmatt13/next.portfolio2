@@ -1,0 +1,121 @@
+@keyframes slideLeft {
+  0% { background-position-x: 0 }
+  100% { background-position-x: -10000000000% }
+}
+.dark > .content {
+  > div:first-of-type {
+    background: url(/images/home/darkgalaxy.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right;
+  }
+  .svg_master_container > div div {
+    background: url("/images/home/Purple Nebula 4.1 - 1024x1024.png") repeat fixed;
+    background-size: 40vw 40vw;
+    animation: slideLeft 50000000000s infinite linear;
+  }
+}
+.light > .content {
+  > div:first-of-type {
+    background: url(/images/home/AdobeStock_121270629.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+  }
+  .svg_master_container > div div {
+    background: url("/images/home/AdobeStock_253500845.jpg") repeat fixed;
+    background-size: 55vw 55vw;
+    animation: slideLeft 5000000000s infinite linear;
+  }
+}
+.content {  
+  .svg_master_container {
+    > div {
+      height: 54.1%;
+      row-gap: 2.7%;
+      width: 57.7%;
+      column-gap: 2.5%;
+      margin-left: 3.7%;
+      div {
+        box-shadow: 0 0 3px rgba(0, 0, 0, .5);
+        border-radius: 2px;
+      }
+    }
+    img {
+      height: 100%;
+      width: clamp(250px, 70vh, 40vw);
+    }
+    @media (max-height: 575px) {
+      img {
+        width: 100%;
+      }
+    }
+    @media (min-width: 2048px) {
+      img {
+        width: 819.2px !important;
+      }
+    }
+    @media (min-width: 1024px) {
+      img {
+        width: clamp(475px, 70vh, 40vw);
+      }
+    }
+    @media (max-width: 639px) {
+      img { width: 100% }
+    }
+  }
+  @media (max-height: 675px) {
+    .svg_master_container {
+      margin-top: 2rem;
+    }
+  }
+  .rainbow_button {
+    position: relative;
+    text-transform: uppercase;
+    border-radius: 4px;
+    z-index: 1;
+    &:before {
+      content: "";
+      position: absolute;
+      animation: rainbow-border 1.5s linear infinite;
+      border-radius: 4px;
+      background: linear-gradient(
+        70deg,
+        #0ebeff,
+        #ffdd40,
+        #ae63e4,
+        #47cf73,
+        #0ebeff,
+        #ffdd40,
+        #ae63e4,
+        #47cf73
+      );
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      background-size: 200% 200%;
+    }
+    &:before { bottom: 0 }
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: auto;
+      width: auto;
+      z-index: -1;
+      border-radius: 3px;
+      margin: 03px;
+      background: inherit;
+    }
+  }
+  @keyframes rainbow-border {
+    0% { background-position: 0% 50% }
+    50% { background-position: 100% 50% }
+    100% { background-position: 200% 50% }
+  }
+}

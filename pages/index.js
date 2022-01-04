@@ -13,10 +13,18 @@ import _appContext from "../context/_appContext";
 // styles
 import styles from "../styles/Home.module.scss";
 
+export async function getStaticProps() {
+  return {
+    props: {}
+  }
+}
+
 export default function Home() {
+
   const { darkMode, mobile } = useContext(_appContext);
   const [height, setHeight] = useState(0);
   const ref = useRef();
+
   useEffect(() => {
     const handleResize = () => {
       setHeight(ref.current.offsetHeight);
@@ -26,18 +34,19 @@ export default function Home() {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [])
+  }, []);
+
   return (
     <>
       <Head>
         <title>Home | Matthew Sweeney</title>
       </Head>
-      <div className={`${darkMode ? styles.dark : styles.light} relative min-w-[350px] animate-fade-in`}>
+      <div className="relative min-w-[350px] animate-fade-in">
         <Intro />
-        <div style={{height}} className="relative">
+        <div className="relative" style={{height}}>
           <div className="sticky -top-28 h-screen w-full">
-            <div className={`${styles.body} relative h-full w-full`}>
-              <div className="absolute top-0 h-full w-full z-[-1] opacity-[0.25]"/>
+            <div className="relative h-full w-full">
+              <div className={`${darkMode ? styles.dark : styles.light} absolute top-0 h-full w-full z-[-1] opacity-[0.25]`} />
               <div 
                 className="absolute top-0 h-full w-full"
                 style={{
@@ -62,4 +71,4 @@ export default function Home() {
       </div>
     </>
   );
-}
+};

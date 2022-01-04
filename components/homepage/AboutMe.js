@@ -13,9 +13,17 @@ const AboutMe = () => {
         >
           <GlitchText text="ABOUT ME" />
         </div>
-        <p className="px-6 text-center text-sm sm:text-md lg:text-base">
-          lorum 9eif9ewif
-        </p>
+        <div className="w-full flex">
+          <div className="flex-1 space-y-8 columns-2">
+          <p>1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus placeat omnis, numquam cupiditate maiores doloremque labore atque voluptates iure assumenda delectus maxime voluptate eum ullam!</p>
+          <p>2. Lorem ipsum dolor sit amet consectetur eifjiefjiwefjf iwfjijfi wofkwofekwef woewefjwef woedkwedkew owdkkowed oewdkoed adipisicing elit. Minus placeat omnis, numquam cupiditate maiores doloremque labore atque voluptates iure assumenda delectus maxime voluptate eum ullam!</p>
+          <p>3. Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus placeat omnis, numquam cupiditate maiores doloremque labore atque voluptates iure assumenda delectus maxime voluptate eum ullam!</p>
+          <p>4. Lorem ipsum dolor sit maiores doloremque labore atque voluptates iure assumenda delectus maxime voluptate eum ullam!</p>
+          <p>5. Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus placeat omnis, numquam cupiditate maiores doloremque labore atque voluptates iure assumenda delectus maxime voluptate eum ullam!</p>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus placeat omnis, numquam cupiditate maiores doloremque labore atque voluptates iure assumenda delectus maxime voluptate eum ullam!</p>
+          </div>
+          <div className="flex-1">x</div>
+        </div>
       </div>
     </div>
   )
