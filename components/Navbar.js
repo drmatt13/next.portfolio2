@@ -33,7 +33,7 @@ const Navbar = ({ nav, buttons, setButtons, setModal, toggleModal }) => {
   };
 
   const redirectHome = async () => {
-    if (router.pathname === "/") await router.push(`/redirect`);
+    if (["/", "/#about", "/#getintouch"].includes(router.pathname)) await router.push(`/#home`);
     else await router.push("/");
     setButtons(false);
     setModal(undefined);

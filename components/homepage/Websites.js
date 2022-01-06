@@ -44,11 +44,18 @@ const Websites = () => {
       button: "Upload Images",
     },
     {
-      src: "/images/home/placeholder2.png",
+      src: "/images/home/AdobeStock_316550414.jpeg",
       title: "e Store",
       description: "Lorem ipsum, dolor iusto repellendus modi ipsum dolor. sit",
       link: "/",
       button: "Shop Now",
+    },
+    {
+      src: "/images/home/AdobeStock_293831552_Editorial_Use_Only.jpeg",
+      title: "Pokémon Card Manager",
+      description: "Lorem ipsum, dolor iusto repellendus modi ipsum dolor. sit",
+      link: "/",
+      button: "Collect them all!",
     },
   ])
 
@@ -56,7 +63,7 @@ const Websites = () => {
     <>
       <div className="text-gray-800 dark:text-white">
         <div 
-          className="text-2xl sm:text-4xl lg:text-5xl py-8 sm:py-12 text-center"
+          className="text-2xl sm:text-4xl lg:text-5xl py-8 sm:pt-12 text-center"
           style={{
             fontFamily: "'IBM Plex Mono', monospace",
             letterSpacing: "0.25em",
@@ -64,9 +71,39 @@ const Websites = () => {
         >
           <GlitchText text="WEBSITES" />
         </div>
-        <p className="px-6 text-center text-sm sm:text-md lg:text-base">
-          check out some of my other web projects, i hope you like them :)
+        <style jsx>{`
+          p {
+            background: linear-gradient(45deg, 
+              ${
+                darkMode ?
+                  "#d0cdfa, #f0bbe1"
+                  :
+                  "#black, #d0cdfa"
+              }
+            );
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: rgba(
+              ${
+                darkMode ?
+                  "0,0,0,0.1"
+                  :
+                  "0,0,0,0.75"
+              }
+            );
+          }
+        `}</style>
+        <p  
+          className="px-6 text-center text-sm sm:text-md lg:text-base"
+          style={{
+            fontFamily: "'Ubuntu', sans-serif",
+          }}
+        >
+          while you're here, check out some of my other web projects :)
         </p>
+        {/* <p className="px-6 text-center text-sm sm:text-md lg:text-base">
+          i hope you like them :)
+        </p> */}
       </div>
       <div className="flex justify-center overflow-x-visible">
         <style jsx>{`

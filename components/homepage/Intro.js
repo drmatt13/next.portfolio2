@@ -1,4 +1,5 @@
 import { useContext } from 'react'
+import Link from 'next/link'
 
 // components
 import MirrorIcons from "../MirrorIcons";
@@ -15,7 +16,10 @@ const Intro = () => {
   const { darkMode } = useContext(_appContext);
 
   return (
-    <div className={darkMode ? styles.dark : styles.light}>
+    <div 
+      className={darkMode ? styles.dark : styles.light}
+      id="home"
+    >
       <div className={`${styles.content} relative flex flex-col sm:flex-row`}>
         <div
           className="absolute -top-28 w-full opacity-[.25] z-[-1]"
@@ -24,19 +28,23 @@ const Intro = () => {
           }}
         />
         <div className="absolute flex flex-col sm:flex-row-reverse bottom-4 right-6 md:bottom-5 md:right-10 lg:bottom-6 lg:right-12">
-          <div
-            className={`${styles.rainbow_button} flex justify-center items-center py-3 px-4 text-xs md:py-3 md:px-6 md:text-sm lg:py-4 lg:px-8 lg:text-base bg-green-400 dark:bg-pink-500 text-black dark:text-white font-bold select-none cursor-pointer hover:scale-105 hover:shadow-xl transition-transform`}
-            style={{
-              transitionProperty: "background-color, border-color, color, fill, stroke, transform",
-            }}
-          >
-            GET IN TOUCH
-          </div>
+          <Link href="#getintouch">
+            <div
+              className={`${styles.rainbow_button} flex justify-center items-center py-3 px-4 text-xs md:py-3 md:px-6 md:text-sm lg:py-4 lg:px-8 lg:text-base bg-green-400 dark:bg-pink-500 text-black dark:text-white font-bold select-none cursor-pointer hover:scale-105 hover:shadow-xl transition-transform`}
+              style={{
+                transitionProperty: "background-color, border-color, color, fill, stroke, transform",
+              }}
+            >
+              GET IN TOUCH
+            </div>
+          </Link>
+          <Link href="#about">
           <div
             className={`${styles.rainbow_button} flex justify-center items-center mt-2 sm:mt-0 sm:mr-4 py-3 px-4 text-xs md:py-3 md:px-6 md:text-sm lg:py-4 lg:px-8 lg:text-base bg-black dark:bg-gray-900 text-white font-bold select-none cursor-pointer hover:scale-105 hover:shadow-xl transition-transform`}
           >
             ABOUT ME
           </div>
+          </Link>
         </div>
         <div className="flex flex-col sm:w-[50%]">
           <div className="flex-[7] flex items-center justify-center text-gray-800 dark:text-white">
