@@ -99,7 +99,7 @@ const Websites = () => {
             fontFamily: "'Ubuntu', sans-serif",
           }}
         >
-          while you're here, check out some of my other web projects :)
+          {"while you're here, check out some of my other web projects :)"}
         </p>
         {/* <p className="px-6 text-center text-sm sm:text-md lg:text-base">
           i hope you like them :)
