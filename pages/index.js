@@ -21,7 +21,7 @@ export async function getStaticProps() {
 
 export default function Home() {
 
-  const { darkMode, mobile } = useContext(_appContext);
+  const { darkMode } = useContext(_appContext);
   const [height, setHeight] = useState(0);
   const ref = useRef();
 
@@ -41,7 +41,16 @@ export default function Home() {
       <Head>
         <title>Home | Matthew Sweeney</title>
       </Head>
-      <div className="relative min-w-[350px] animate-fade-in">
+      <style global>{`
+        #landing-page *::selection {
+          background: ${darkMode ? "#bf7cb9" : "#fcba03"};
+          color: ${darkMode ? "#fff" : "#000"};
+        }
+      `}</style>
+      <div 
+        className="relative min-w-[350px] animate-fade-in"
+        id="landing-page"
+      >
         <Intro />
         <div className="relative" style={{height}}>
           <div className="sticky -top-28 h-screen w-full">

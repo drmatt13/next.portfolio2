@@ -22,8 +22,8 @@ function getElementIndex(element) {
 const AboutMe = () => {
 
   const { darkMode, mobile } = useContext(_appContext);
-  const [image, setImage] = useState(image4);
-  const [memo] = useState([]);
+  const [image, setImage] = useState(image5);
+  const [memo, setMemo] = useState([]);
   const ref = useRef();
 
   useEffect(() => {
@@ -36,12 +36,16 @@ const AboutMe = () => {
           observer.unobserve(entry.target);
         } 
       })
-    }, { threshold: mobile ? .5 : .75 })
+    }, { threshold: mobile ? .375 : .6 })
     if (ref.current.children.length > 2) {
       for (let i = 2; i < ref.current.children.length; i++) {
         memo.push("shift");
         observer.observe(ref.current.children[i].firstChild);
       }
+    }
+    return () => {
+      observer.disconnect();
+      setMemo([]);
     }
   }, [])
 
@@ -84,6 +88,9 @@ const AboutMe = () => {
             }
           );
         }
+        p:last-of-type {
+          margin-bottom: 0;
+        }
         .shift {
           transform: translateX(-100vw);
           opacity: 0;
@@ -93,7 +100,7 @@ const AboutMe = () => {
           transform: translateX(0) !important;
         }
       `}</style>
-      <div id="about" className='max-w-[140rem] m-auto overflow-x-hidden'>
+      <div id="about" className='pt-12 max-w-[140rem] m-auto overflow-x-hidden'>
         <div 
           ref={ref}
           className="text-gray-800 dark:text-white text-sm md:text-base lg:text-lg xl:text-xl font-semibold"
@@ -116,7 +123,7 @@ const AboutMe = () => {
                 <Image src={image} alt="Matt" width={208} height={208} />
               </div>  
               <div className="mt-8 flex gap-2">
-                {[image4, image2, image5, image1, image3].map((src, i) => (
+                {[image5, image1, image3, image2, image4].map((src, i) => (
                   <div
                     key={i} 
                     className="bg-red-400/20 h-16 w-16 rounded-full cursor-pointer hover:scale-90 overflow-hidden transition-transform"

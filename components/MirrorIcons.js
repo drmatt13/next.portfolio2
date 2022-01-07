@@ -26,7 +26,7 @@ const MirrorIcons = () => {
       //   animation-play-state: paused;
       // }
     `}</style>
-    <div className="max-w-7xl w-full sm:w-[200%] sm:scale-50 md:w-[125%] md:scale-75 lg:w-full lg:scale-100 pl-[5%] pr-4 md:pl-[7.5%] sm:pr-2 lg:pr-8 2xl:pr-10 translate-y-[25%] md:translate-y-[20%] lg:translate-y-[5%] xl:translate-y-0">
+    <div className="max-w-7xl w-full sm:w-[200%] sm:scale-50 md:w-[125%] md:scale-75 lg:w-full lg:scale-100 pl-[5%] pr-4 md:pl-[7.5%] sm:pr-2 lg:pr-8 2xl:pr-10 translate-y-[25%] md:translate-y-[20%] lg:translate-y-[5%] xl:translate-y-0 select-none">
       <div className="w-4" />
       <div className="relative perspective flex items-center">
 

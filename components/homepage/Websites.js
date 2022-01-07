@@ -117,7 +117,7 @@ const Websites = () => {
             background: ${darkMode ? "rgba(255, 255, 255, 0.125)" : "rgba(0, 0, 0, 0.125)"};
           }
         `}</style>
-        <div className={`${styles.scroll} pt-12 pb-10 mb-12 sm:pt-16 sm:pb-14 flex /w-1 /px-80 w-full px-[50%] snap-x gap-8 overflow-auto`}>
+        <div className={`${styles.scroll} pt-12 pb-10 sm:pt-16 sm:pb-14 flex /w-1 /px-80 w-full px-[50%] snap-x gap-8 overflow-auto`}>
           {cards && cards.map((data, index) => (
             <WebsiteCard key={index} data={data} />
           ))}
