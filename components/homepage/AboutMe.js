@@ -36,7 +36,7 @@ const AboutMe = () => {
           observer.unobserve(entry.target);
         } 
       })
-    }, { threshold: .75 })
+    }, { threshold: mobile ? .5 : .75 })
     if (ref.current.children.length > 2) {
       for (let i = 2; i < ref.current.children.length; i++) {
         memo.push("shift");
