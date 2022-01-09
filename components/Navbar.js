@@ -55,11 +55,11 @@ const Navbar = ({ nav, buttons, setButtons, setModal, toggleModal }) => {
       parentRef.current.setAttribute("style", `height: ${size}px !important; width: ${size}px !important;`);
     };
     const adjustWidth = () => {
-      const size = window.screen.Width/20 > 36 
+      const size = window.screen.width/12.5 > 36 
       ? 36 
-      : window.screen.Width/20 < 24
+      : window.screen.width/12.5 < 24
       ? 24
-      : window.screen.Width/20;
+      : window.screen.width/12.5;
       navRef.current.setAttribute("style", `padding-right: ${size}px !important;`);
     };
     if (mobile) {
