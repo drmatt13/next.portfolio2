@@ -13,8 +13,9 @@ import _appContext from "../context/_appContext";
 const Navbar = ({ nav, buttons, setButtons, setModal, toggleModal }) => {
   const { darkMode, setDarkMode, mobile } = useContext(_appContext),
     router = useRouter(),
-    parent = useRef(),
-    child = useRef();
+    navRef = useRef(),
+    parentRef = useRef(),
+    childRef = useRef();
 
   const toggleDarkMode = () => {
     if (
@@ -45,9 +46,33 @@ const Navbar = ({ nav, buttons, setButtons, setModal, toggleModal }) => {
   };
 
   useEffect(() => {
+    const adjustHeight = () => {
+      const size = window.screen.height/20 > 36 
+      ? 36 
+      : window.screen.height/20 < 24
+      ? 24
+      : window.screen.height/20;
+      parentRef.current.setAttribute("style", `height: ${size}px !important; width: ${size}px !important;`);
+    };
+    const adjustWidth = () => {
+      const size = window.screen.Width/20 > 36 
+      ? 36 
+      : window.screen.Width/20 < 24
+      ? 24
+      : window.screen.Width/20;
+      navRef.current.setAttribute("style", `padding-right: ${size}px !important;`);
+    };
     if (mobile) {
-      parent.current.classList.add("duration-75");
-      child.current.classList.add("duration-75");
+      screen.orientation.addEventListener('change', adjustHeight)
+      adjustHeight();
+      adjustWidth();
+      parentRef.current.classList.add("duration-75");
+      childRef.current.classList.add("duration-75");
+      return () => {
+        screen.orientation.removeEventListener('change', adjustHeight)
+      }
+    } else {
+      return () => {}
     }
   }, [mobile]);
 
@@ -58,9 +83,9 @@ const Navbar = ({ nav, buttons, setButtons, setModal, toggleModal }) => {
           height: clamp(1.5em, 5vh, 2.25em);
           width: clamp(1.5em, 5vh, 2.25em);
         }
-        .${styles.dark} .parent {
+        .${styles.dark} .parentRef {
           box-shadow: 0 0 0.75em rgb(70, 210, 255);
-          border: 1px solid transparent;
+          border: 1px solid transparentRef;
           border-image: linear-gradient(
             to bottom right,
             #b827fc60 0%,
@@ -71,9 +96,9 @@ const Navbar = ({ nav, buttons, setButtons, setModal, toggleModal }) => {
           );
           border-image-slice: 1;
         }
-        .${styles.light} .parent {
+        .${styles.light} .parentRef {
           box-shadow: 0 0 0.75em rgb(216, 139, 235);
-          border: 1px solid transparent;
+          border: 1px solid transparentRef;
           border-image: linear-gradient(45deg, #0b879380, #946a9080);
           border-image-slice: 1;
         }
@@ -93,6 +118,7 @@ const Navbar = ({ nav, buttons, setButtons, setModal, toggleModal }) => {
         }
       `}</style>
       <nav
+        ref={navRef}
         className={`${
           darkMode ? styles.dark : styles.light
         } z-50 h-28 sticky py-10 pr-8 xs:pr-10 sm:pr-14 lg:pr-20 flex flex-row-reverse select-none pointer-events-none`}
@@ -103,7 +129,7 @@ const Navbar = ({ nav, buttons, setButtons, setModal, toggleModal }) => {
           } transition-opacity`}
         >
           <div
-            ref={parent}
+            ref={parentRef}
             onClick={toggleButtons}
             onTouchStart={(e) => {
               e.target.classList.add("group");
@@ -118,7 +144,7 @@ const Navbar = ({ nav, buttons, setButtons, setModal, toggleModal }) => {
             className={`
             ${nav ? "pointer-events-auto" : "pointer-events-none"} 
             group 
-            parent 
+            parentRef 
             absolute 
             rounded-sm 
             cursor-pointer 
@@ -136,7 +162,7 @@ const Navbar = ({ nav, buttons, setButtons, setModal, toggleModal }) => {
           `}
           >
             <div
-              ref={child}
+              ref={childRef}
               className={`
               child pointer-events-none 
               absolute 

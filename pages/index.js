@@ -41,7 +41,7 @@ export default function Home() {
       <Head>
         <title>Home | Matthew Sweeney</title>
       </Head>
-      <style global>{`
+      <style global="true">{`
         #landing-page *::selection {
           background: ${darkMode ? "#bf7cb9" : "#fcba03"};
           color: ${darkMode ? "#fff" : "#000"};

@@ -45,11 +45,11 @@
       height: 100%;
       width: clamp(250px, 70vh, 40vw);
     }
-    @media (max-height: 575px) {
-      img {
-        width: 100%;
-      }
-    }
+    // @media (max-height: 575px) {
+    //   img {
+    //     width: 100%;
+    //   }
+    // }
     @media (min-width: 2048px) {
       img {
         width: 819.2px !important;
