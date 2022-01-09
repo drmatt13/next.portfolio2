@@ -48,7 +48,7 @@ export default function Home() {
         }
       `}</style>
       <div 
-        className="relative min-w-[350px] animate-fade-in"
+        className="relative animate-fade-in"
         id="landing-page"
       >
         <Intro />

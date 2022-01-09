@@ -52,9 +52,9 @@ const Navbar = ({ nav, buttons, setButtons, setModal, toggleModal }) => {
       : window.screen.height/20 < 24
       ? 24
       : window.screen.height/20;
-      parentRef.current.setAttribute("style", `height: ${size}px !important; width: ${size}px !important;`);
+      parentRef.current.parentNode.setAttribute("style", `height: ${size}px !important; width: ${size}px !important;`);
     };
-    const adjustWidth = () => {
+    const adjustPadding = () => {
       const size = window.screen.width/12.5 > 36 
       ? 36 
       : window.screen.width/12.5 < 24
@@ -65,7 +65,7 @@ const Navbar = ({ nav, buttons, setButtons, setModal, toggleModal }) => {
     if (mobile) {
       screen.orientation.addEventListener('change', adjustHeight)
       adjustHeight();
-      adjustWidth();
+      adjustPadding();
       parentRef.current.classList.add("duration-75");
       childRef.current.classList.add("duration-75");
       return () => {
