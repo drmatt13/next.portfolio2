@@ -12,6 +12,9 @@ import "tailwindcss/tailwind.css";
 import "../styles/globals.scss";
 
 function MyApp({ Component, pageProps }) {
+
+  const [loading, setLoading] = useState(true);
+  
   // check if mobile device
   const [mobile] = useState(
     typeof window !== "undefined"
@@ -23,8 +26,8 @@ function MyApp({ Component, pageProps }) {
 
   const [darkMode, setDarkMode] = useState(false);
 
-  // tailwind dark mode
   useEffect(() => {
+    // tailwind dark mode
     if (
       localStorage.theme === "dark" ||
       (!("theme" in localStorage) &&
@@ -38,6 +41,20 @@ function MyApp({ Component, pageProps }) {
       localStorage.theme = "light";
       setDarkMode(false);
     }
+    // cache images
+    const count = 0;
+    const bg1 = new Image();
+    const bg2 = new Image();
+    bg1.onload = () => {
+      count++;
+      if (count === 2) setLoading(false);
+    };
+    bg2.onload = () => {
+      count++;
+      if (count === 2) setLoading(false);
+    };
+    bg1.src = '/images/home/darkgalaxy.jpeg';
+    bg2.src = '/images/home/AdobeStock_121270629.jpeg';
   }, []);
 
   return (
@@ -69,15 +86,17 @@ function MyApp({ Component, pageProps }) {
         <meta name="theme-color" content={darkMode ? "#7d54ed" : "#f33984"} />
         {/* <meta property="og:url" content="" /> */}
         <meta property="og:site_name" content="Next.js-tailwind" />
-        <meta property="og:title" content="Matthew Sweeney's Web Portfolio" />
-        <meta property="og:description" content="A portfolio is essential to establishing and maintaining your credibility as a designer." />
+        <meta property="og:title" content="drmatt13's portfolio" />
+        <meta property="og:description" content="Welcome to my landing page, feel free to stick around" />
         <meta property="og:image" content="https://next-portfolio2-omega.vercel.app/og-image.jpg" />
       </Head>
-      <_appContext.Provider value={{ mobile, darkMode, setDarkMode }}>
+      {loading ? <>
+        <div>loading</div>
+      </> : <_appContext.Provider value={{ mobile, darkMode, setDarkMode }}>
         <AppLayout>
           <Component {...pageProps} />
         </AppLayout>
-      </_appContext.Provider>
+      </_appContext.Provider>}
     </>
   );
 }
