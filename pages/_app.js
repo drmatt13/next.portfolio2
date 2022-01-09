@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }) {
   // check if mobile device
   const [mobile] = useState(
     typeof window !== "undefined"
-      ? /Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      ? /Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|DuckDuckGo|Opera Mini/i.test(
           navigator.userAgent
         )
       : false
