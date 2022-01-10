@@ -111,13 +111,13 @@ const Modal = ({ modal, toggleModal }) => {
       <div className="modal relative overflow-y-hidden flex flex-col rounded-2xl shadow-lg bg-gray-300 dark:bg-gray-700 bg-opacity-95 dark:bg-opacity-90 transition-colors">
         <div className="select-none flex-shrink-0 bg-gray-500 bg-opacity-25 w-full flex items-center">
           <div className="flex-1 flex h-full overflow-y-hidden text-xs xs:text-sm sm:text-base">
-            {["apps", "notes", "contact", "about"].map((m, key) => (
+            {["apps", "notes", "contact", "about"].map((tab, key) => (
               <div
                 key={key}
-                onClick={()=>toggleModal(m)}
+                onClick={()=>toggleModal(tab)}
                 className={`
-                  ${modal === m ? "selected" : ""}
-                  ${m !== "about" ? "mr-1px" : ""}
+                  ${modal === tab ? "selected" : ""}
+                  ${tab !== "about" ? "mr-1px" : ""}
                   tab 
                   flex 
                   justify-center 
@@ -133,7 +133,7 @@ const Modal = ({ modal, toggleModal }) => {
                   transition-all
                 `}
               >
-                { m }
+                { tab }
               </div>
             ))}
           </div>

@@ -21,20 +21,31 @@ export async function getStaticProps() {
 
 export default function Home() {
 
-  const { darkMode } = useContext(_appContext);
+  const { darkMode, mobile } = useContext(_appContext);
   const [height, setHeight] = useState(0);
-  const ref = useRef();
+  const backgroundRef = useRef();
+  const contentRef = useRef();
 
   useEffect(() => {
+    // mobile background fix
+    const adjustHeight = () => {
+      backgroundRef.current.setAttribute("style", `height: ${window.screen.height}px !important;`);
+    };
+    if (mobile) {
+      screen.orientation.addEventListener('change', adjustHeight)
+      adjustHeight();
+    }
+    // control height of content secion
     const handleResize = () => {
-      setHeight(ref.current.offsetHeight);
+      setHeight(contentRef.current.offsetHeight);
     };
     window.addEventListener("resize", handleResize);
     handleResize();
     return () => {
       window.removeEventListener("resize", handleResize);
+      if (mobile) screen.orientation.removeEventListener('change', adjustHeight)
     };
-  }, []);
+  }, [mobile]);
 
   return (
     <>
@@ -53,7 +64,10 @@ export default function Home() {
       >
         <Intro />
         <div className="relative" style={{height}}>
-          <div className="sticky -top-28 h-screen w-full">
+          <div 
+            ref={backgroundRef}
+            className="sticky -top-28 h-screen w-full"
+          >
             <div className="relative h-full w-full">
               <div className={`${darkMode ? styles.dark : styles.light} absolute top-0 h-full w-full z-[-1] opacity-[0.25]`} />
               <div 
@@ -70,7 +84,7 @@ export default function Home() {
           </div>
           <div
             className="absolute top-0 w-full"
-            ref={ref}
+            ref={contentRef}
           >
             <Websites />
             <AboutMe />

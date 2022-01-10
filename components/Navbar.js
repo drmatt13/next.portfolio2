@@ -210,7 +210,7 @@ const Navbar = ({ nav, buttons, setButtons, setModal, toggleModal }) => {
                 onClick={() => toggleModal("contact")}
               />
               <NavButton
-                className="fas fa-music"
+                className="fas fa-question"
                 onClick={() => toggleModal("about")}
               />
             </div>
