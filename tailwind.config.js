@@ -24,8 +24,8 @@ module.exports = {
         "fade-in-fast": "fade-in .01s ease-in forwards",
         "spin-slow": "spin 5s linear infinite",
         "wiggle-slow": "wiggle 2s linear infinite",
-        wiggle: "wiggle 1s linear infinite",
-        "wiggle-fast": "wiggle .5s linear infinite",
+        "wiggle": "wiggle 1s linear infinite",
+        "wiggle-fast": "wiggle .5s linear infinite"
       },
       keyframes: {
         "cart-bounce": {

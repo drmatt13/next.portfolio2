@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Head from "next/head";
 
 // components
+import AppLoading from "../components/AppLoading";
 import AppLayout from "../components/AppLayout";
 
 // context
@@ -14,6 +15,25 @@ import "../styles/globals.scss";
 function MyApp({ Component, pageProps }) {
 
   const [loading, setLoading] = useState(true);
+  const [cardSettings, setCardSettings] = useState(false);
+  const [fileSettings, setFileSettings] = useState(false);
+
+  // USE HOOK AND OBTAIN FROM NOSQL DB
+  const [notes, setNotes] = useState({
+    'canvas': ['d3 basic'],
+    'data-structures': ['binary heaps', 'binary search trees', 'linked lists', 'stacks and queues'],
+    'docker': ['intro'],
+    'express-js': ['basics', 'mongoose'],
+    'firebase': ['intro'],
+    'math': ['statistics-1'],
+    'miscellaneous': ['image upload', 'local storage', 'scroll', 'search user', 'touch controls', 'upload_download file'],
+    'next-js': ['api', 'mongoose', 'next', 'router', 'tailwind'],
+    'react': ['context', 'redux', 'router_v6'],
+    'three': ['three 2', 'three'],
+  })
+  // END USE HOOK
+
+  // const { notes, updateNote, deleteNote, loadingNotes } = customHook();
   
   // check if mobile device
   const [mobile] = useState(
@@ -41,20 +61,27 @@ function MyApp({ Component, pageProps }) {
       localStorage.theme = "light";
       setDarkMode(false);
     }
-    // cache images
+    // cache images - optimize later
     const count = 0;
     const bg1 = new Image();
     const bg2 = new Image();
+    const bg3 = new Image();
     bg1.onload = () => {
       count++;
-      if (count === 2) setLoading(false);
+      if (count === 4) setLoading(false);
     };
     bg2.onload = () => {
       count++;
-      if (count === 2) setLoading(false);
+      if (count === 4) setLoading(false);
+    };
+    bg3.onload = () => {
+      count++;
+      if (count === 4) setLoading(false);
     };
     bg1.src = '/images/home/darkgalaxy.jpeg';
     bg2.src = '/images/home/AdobeStock_121270629.jpeg';
+    bg3.src = '/images/home/test1.svg';
+    // cache images - optimize later
   }, []);
 
   return (
@@ -90,9 +117,20 @@ function MyApp({ Component, pageProps }) {
         <meta property="og:description" content="Welcome to my landing page, feel free to stick around" />
         <meta property="og:image" content="https://next-portfolio2-omega.vercel.app/og-image.jpg" />
       </Head>
-      {loading ? <>
-        <div>loading</div>
-      </> : <_appContext.Provider value={{ mobile, darkMode, setDarkMode }}>
+      {loading ? <AppLoading /> : 
+      <_appContext.Provider 
+        value={{ 
+          mobile, 
+          darkMode, 
+          setDarkMode, 
+          cardSettings, 
+          setCardSettings, 
+          fileSettings,
+          setFileSettings,
+          notes, 
+          setNotes 
+        }}
+      >
         <AppLayout>
           <Component {...pageProps} />
         </AppLayout>

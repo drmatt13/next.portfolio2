@@ -8,7 +8,9 @@ import _appContext from '../context/_appContext'
 const DynamicAppModal = dynamic(() => import('./modals/apps')),
       DynamicNoteModal = dynamic(() => import('./modals/notes')),
       DynamicContactModal = dynamic(() => import('./modals/contact')),
-      DynamicAboutModal = dynamic(() => import('./modals/about'))
+      DynamicAboutModal = dynamic(() => import('./modals/about')),
+      DynamicEditFilesModal = dynamic(() => import('./modals/editFiles')),
+      DynamicEditCardsModal = dynamic(() => import('./modals/editCards'))
 
 const Modal = ({ modal, toggleModal }) => {
 
@@ -111,7 +113,7 @@ const Modal = ({ modal, toggleModal }) => {
       <div className="modal relative overflow-y-hidden flex flex-col rounded-2xl shadow-lg bg-gray-300 dark:bg-gray-700 bg-opacity-95 dark:bg-opacity-90 transition-colors">
         <div className="select-none flex-shrink-0 bg-gray-500 bg-opacity-25 w-full flex items-center">
           <div className="flex-1 flex h-full overflow-y-hidden text-xs xs:text-sm sm:text-base">
-            {["apps", "notes", "contact", "about"].map((tab, key) => (
+            {["apps", "notes", "contact", "about"].includes(modal) && ["apps", "notes", "contact", "about"].map((tab, key) => (
               <div
                 key={key}
                 onClick={()=>toggleModal(tab)}
@@ -142,6 +144,8 @@ const Modal = ({ modal, toggleModal }) => {
         {modal === 'notes' && <DynamicNoteModal toggleModal={toggleModal} />}
         {modal === 'contact' && <DynamicContactModal />}
         {modal === 'about' && <DynamicAboutModal />}
+        {modal === 'editFiles' && <DynamicEditFilesModal />}
+        {modal === 'editCards' && <DynamicEditCardsModal />}
       </div>
     </div>
   </>

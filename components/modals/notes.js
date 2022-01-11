@@ -1,20 +1,24 @@
-import { useState } from 'react'
+import { useState, useEffect, useContext } from 'react'
+
+// components
 import Link from '../Link'
 
+// context
+import _appContext from '../../context/_appContext'
+
+
 const NotesModal = ({ toggleModal }) => {
-  const [notes] = useState({
-    'canvas': ['d3 basic'],
-    'data-structures': ['binary heaps', 'binary search trees', 'linked lists', 'stacks and queues'],
-    'docker': ['intro'],
-    'express-js': ['basics', 'mongoose'],
-    'firebase': ['intro'],
-    'math': ['statistics-1'],
-    'miscellaneous': ['image upload', 'local storage', 'scroll', 'search user', 'touch controls', 'upload_download file'],
-    'next-js': ['api', 'mongoose', 'next', 'router', 'tailwind'],
-    'react': ['context', 'redux', 'router_v6'],
-    'three': ['three 2', 'three'],
-})
+
+  const { setFileSettings, notes } = useContext(_appContext);
+
+
   const [keys] = useState(Object.keys(notes))
+
+  useEffect(() => {
+    setFileSettings(true)
+    return () => setFileSettings(false)
+  }, [setFileSettings])
+
   return <>
     <style jsx>{`
       .modal_container {

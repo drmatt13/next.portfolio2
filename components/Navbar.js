@@ -119,9 +119,7 @@ const Navbar = ({ nav, buttons, setButtons, setModal, toggleModal }) => {
       `}</style>
       <nav
         ref={navRef}
-        className={`${
-          darkMode ? styles.dark : styles.light
-        } z-50 h-28 sticky py-10 pr-8 xs:pr-10 sm:pr-14 lg:pr-20 flex flex-row-reverse select-none pointer-events-none`}
+        className={`${darkMode ? styles.dark : styles.light} z-50 h-28 sticky py-10 pr-8 xs:pr-10 sm:pr-14 lg:pr-20 flex flex-row-reverse select-none pointer-events-none`}
       >
         <div
           className={`relative ${

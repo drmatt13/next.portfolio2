@@ -83,12 +83,12 @@ export default function Home() {
             </div>
           </div>
           <div
-            className="absolute top-0 w-full"
+            className="absolute top-0 w-full pb-16"
             ref={contentRef}
           >
-            <Websites />
             <AboutMe />
-            <GetInTouch />
+            <Websites />
+            {/* <GetInTouch /> */}
           </div>
         </div>
       </div>

@@ -2,13 +2,14 @@ import { useState, useContext } from "react";
 
 // components
 import Modal from "./Modal";
+import Settings from "./Settings";
 import Navbar from "./Navbar";
 
 // context
 import _appContext from "../context/_appContext";
 
 const AppLayout = ({ children }) => {
-  const { darkMode } = useContext(_appContext),
+  const { darkMode, cardSettings, fileSettings } = useContext(_appContext),
     [buttons, setButtons] = useState(),
     [modal, setModal] = useState(),
     [nav, setNav] = useState(true);
@@ -22,6 +23,11 @@ const AppLayout = ({ children }) => {
     }
     setModal(x);
     setButtons(false);
+  };
+
+  const customToggle = (x) => {
+    setModal(x);
+    setNav(false);
   };
 
   return (
@@ -69,6 +75,18 @@ const AppLayout = ({ children }) => {
             setModal={setModal}
             toggleModal={toggleModal}
           />
+          {(fileSettings || modal==="editFiles") && <Settings
+            modal={modal}
+            style="fas fa-cog"
+            option={"editFiles"}
+            toggleModal={toggleModal}
+          />}
+          {cardSettings && !modal && <Settings
+            modal={modal}
+            style="fas fa-edit"
+            option={"editCards"}
+            toggleModal={(modal) => buttons ? toggleModal(modal) : customToggle(modal) }
+          />}
           <div className="bg2 absolute top-0 left-0 h-full w-full" />
           <div className="bg3 absolute top-0 left-0 h-full w-full" />
           <div className="bg4 absolute top-0 left-0 h-full w-full" />
