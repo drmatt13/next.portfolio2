@@ -68,15 +68,15 @@ function MyApp({ Component, pageProps }) {
     const bg3 = new Image();
     bg1.onload = () => {
       count++;
-      if (count === 4) setLoading(false);
+      if (count === 3) setLoading(false);
     };
     bg2.onload = () => {
       count++;
-      if (count === 4) setLoading(false);
+      if (count === 3) setLoading(false);
     };
     bg3.onload = () => {
       count++;
-      if (count === 4) setLoading(false);
+      if (count === 3) setLoading(false);
     };
     bg1.src = '/images/home/darkgalaxy.jpeg';
     bg2.src = '/images/home/AdobeStock_121270629.jpeg';
