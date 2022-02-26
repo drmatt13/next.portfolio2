@@ -1,0 +1,46 @@
+@use 'sass:math';
+$frames: math.div(100, 30);
+@for $i from 1 through 6 {
+  @keyframes close#{$i} {
+    @for $j from 1 through 30 {
+      0% {
+        pointer-events: none;
+      }
+      #{100% - $j * $frames * 1%} {
+        opacity: $j * 1 / 30;
+        margin-top: $j * 150% / 30 * ($i - 1) + math.div(175% * $j, 30);
+        margin-right: math.sin(math.div(math.cos(math.$pi * $i) * math.$pi * $j * 1, 30)) * 100%;
+      }
+      100% {
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+  }
+  @keyframes open#{$i} {
+    @for $j from 1 through 30 {
+      #{$j * $frames * 1%} {
+        opacity: math.div($j * 1, 30);
+        margin-top: math.div($j * 150%, 30) * ($i - 1) + math.div(175% * $j, 30);
+        margin-left: math.sin(math.div(math.cos(math.$pi * $i) * math.$pi * $j * 1, 30)) * 100%;
+      }
+    }
+  }
+}
+.open {
+  @for $i from 1 through 6 {
+    > div:nth-child(#{$i}) {
+      opacity: 0;
+      animation: open#{$i} .25s ease-out forwards;
+      animation-delay: (7 - $i) * .05s;
+      z-index: -1 * $i;
+    }
+  }
+}
+.close {
+  @for $i from 1 through 6 {
+    > div:nth-child(#{$i}) {
+      animation: close#{$i} $i * 1 / 6 * .5s ease-out forwards
+    }
+  }
+}

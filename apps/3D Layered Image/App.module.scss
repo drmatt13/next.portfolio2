@@ -1,0 +1,46 @@
+.body {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .image_container {
+    position: relative;
+    border-radius: 20px;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+
+    img {
+      border-radius: 20px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      max-width: 40vw;
+      max-height: 50vh;
+      transition: transform .25s, box-shadow .25s, opacity .25s;
+    }
+
+    img:first-of-type {
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      position: relative;
+    }
+  }
+
+  .image_container:hover {
+    cursor: pointer;
+    img {
+      box-shadow: -20px 20px 20px rgba(0,0,0,0.25);
+    }
+    @for $i from 1 through 5 {
+      img:nth-child(#{$i}) {
+        opacity: 0.2 * $i;
+        transform: 
+          rotate(-30deg) 
+          skew(25deg) 
+          translateX(40px * ($i - 3))
+          translateY(-40px * ($i - 3));
+      }
+    }
+  }
+}

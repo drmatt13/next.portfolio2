@@ -1,0 +1,33 @@
+@keyframes slide-icons {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-1140px);
+    }
+}
+@keyframes slide-blur {
+  0% {
+    transform: translate(0, 50%)
+  }
+  100% {
+    transform: translate(-1140px, 50%)
+  }
+}
+.icon_container {
+  animation: slide-icons 10s infinite linear;
+  > div {
+    flex-shrink: 0;
+    margin-left: 1.5rem;
+    display: flex;
+  }
+}
+.platform_container {
+  animation: slide-blur 10s infinite linear;
+  > div {
+    transform: rotateX(180deg);
+    flex-shrink: 0;
+    margin-left: 1.5rem;
+    display: flex;
+  }
+}

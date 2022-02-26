@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.app {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  height: 100vh;
+  width: 100vw;
+  min-height: 650px;
+  min-width: 200px;
+  // background-color: #8EC5FC;
+  // background-image: linear-gradient(62deg, #c3e1ff 0%, #e5e1ff 100%);
+  color: rgb(136, 151, 167);
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  h1 {
+    font-size: 2.5em;
+    color: rgb(47, 59, 79);
+    text-align: center;
+  }
+
+  .sub_header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+
+    p {
+        padding: 5px 2.5px;
+    }
+  }
+
+  .card {
+    background-image: radial-gradient( circle farthest-corner at 1.3% 2.8%,  rgba(239,249,249,1) 0%, rgb(235, 243, 255) 100.2% );
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .pricing_container {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 30px;
+
+      .pricing_header {
+        position: relative;
+        display: flex;
+        padding: 5px 2.5px;
+        width: 400px;
+        margin-bottom: 20px;
+        justify-content: space-between;
+
+        div {
+          display: flex;
+          align-items: center;
+        }
+        
+        .pageviews {
+          letter-spacing: .15em;
+          margin-left: 25px;
+        }
+        
+        input {
+          position: absolute;
+          top: 70px;
+          width: 400px;
+        }
+        
+        div:last-of-type {
+          margin-right: 25px;
+        }
+        
+        .price {
+          font-size: 2.5em;
+          font-weight: 900;
+          color: rgb(47, 59, 79);
+          padding-right: .2em;
+        }
+      }
+    }
+  
+    .billing_cycle_container {
+      display: flex;
+      width: 500px;
+      margin-bottom: 40px;
+
+      div {
+        display: flex;
+        align-items: center;
+
+        .toggle_btn {
+          background-color: lightsteelblue;
+          height: 25px;
+          width: 45px;
+          border-radius: 12.5px;
+          padding: 5px;
+
+          .circle {
+            height: 15px;
+            width: 15px;
+            border-radius: 7.5px;
+            background-color: rgb(22, 119, 209);
+            transition: all .1s ease-in;
+            transition-property: background-color, margin;
+          }
+          
+          .yearly {
+            margin-left: 20px;
+            background-color: rgb(174, 128, 184) !important;
+          }
+        }
+        
+        .toggle_btn:hover {
+          cursor: pointer;
+        }
+      }
+
+      > div:first-child {
+        flex: 1;
+        justify-content: flex-end;
+      }
+
+      > div:nth-child(2) {
+        margin: auto 20px;
+      }
+
+      > div:last-child {
+        flex: 1;
+
+        span {
+          background-color: peachpuff;
+          color: lightcoral;
+          height: 25px;
+          margin-left: 10px;
+          padding: 10px;
+          border-radius: 12.5px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    }
+
+    .footer {
+      display: flex;
+      width: 400px;
+      
+      > div {
+        flex: 1;
+        
+        i {
+          color: springgreen;
+          padding-right: .5em;
+        }
+      }
+
+      > div:last-of-type {
+        display: flex;
+        align-items: center;
+
+        div {
+          background-color: rgb(49, 67, 99);
+          color: white;
+          font-weight: 400;
+          height: 40px;
+          width: 160px;
+          border-radius: 20px;
+          margin-left: 25px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        div:hover {
+          cursor: pointer;
+          background-color: rgb(77, 98, 134);
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 570px) {
+
+    h1 {
+      font-size: 24px;
+      line-height: 1.1em;
+      margin-bottom: 10px;
+    }
+  
+    .sub_header {
+      flex-direction: column;
+      margin-bottom: 25px;
+  
+      p {
+        text-align: center;
+        padding: 0px 2.5px;
+      }
+
+      p:first-of-type {
+        margin-bottom: 2.5px;
+      }
+    }
+  
+    .card {
+      padding: 40px 20px 20px 20px;
+  
+      .pricing_container {
+        flex-direction: column;
+        margin-bottom: 0 !important;
+  
+        .pricing_header {
+          flex-direction: column;
+          width: 300px;
+          margin-bottom: 10px;
+          justify-content: space-between;
+  
+          div {
+            justify-content: center;
+          }
+          
+          .pageviews {
+            margin-left: 0;
+            margin-bottom: 15px;
+          }
+          
+          input {
+            width: 100%;
+            position: static;
+            margin-bottom: 15px;
+          }
+          
+          div:last-of-type {
+            margin-right: 0;
+          }
+        }
+      }
+    
+      .billing_cycle_container {
+        width: 300px;
+        margin-bottom: 20px;
+        font-size: .75em;
+  
+        > div:first-child {
+          flex: .5;
+          justify-content: center;
+          margin-left: 20px;
+        }
+  
+        > div:last-child {
+          span {
+            height: 25px;
+            width: 75px;
+            padding: 2.5px;
+            border-radius: 12.5px;
+          }
+        }
+      }
+  
+      .footer {
+        flex-direction: column;
+        align-items: center;
+        width: auto;
+  
+        > div:last-of-type {
+          div {
+            margin-top: 15px;
+            margin-left: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+

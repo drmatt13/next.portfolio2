@@ -1,0 +1,57 @@
+.app {
+  padding-bottom: 7rem;
+  .spacer {
+    height: 2.5vw;
+    visibility: hidden;
+    flex-shrink: 0;
+  }
+  .left_container {
+    height: 32.5vw;
+    min-height: calc(500px + 2.5vw);
+    width: 16.25vw;
+    min-width: calc(250px + 2.5vw); 
+    display: flex;
+    flex-direction: column;
+    margin-right: 2.5vw;
+  }
+  .right_container {
+    height: 32.5vw;
+    min-height: calc(500px + 2.5vw);
+    width: 32.5vw;
+    min-width: calc(425px); 
+  }
+  .vertical_container {
+    height: 16.25vw;
+    min-height: calc(250px + 2.5vw);
+    width: 16.25vw;
+    min-width: calc(250px + 2.5vw); 
+  }
+}
+@media screen and (max-width: 767px) {
+  .app {
+    flex-direction: column;
+    align-items: center;
+    .spacer {
+      min-height: 30px;
+      height: 5vh;
+      max-height: 50px;
+    }
+    .left_container {
+      max-height: 160vw;
+      max-width: 80vw;
+      height: 800px;
+      width: 400px;
+      min-height: 0;
+      min-width: 0; 
+      margin-right: 0;
+    }
+    .vertical_container {
+      max-height: 80vw;
+      max-width: 80vw;
+      height: 400px;
+      width: 400px;
+      min-height: 0;
+      min-width: 0; 
+    }
+  }
+}

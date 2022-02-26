@@ -1,0 +1,70 @@
+.dark {
+  // box-shadow: 0 0 1.5em rgba(70, 210, 255, 0.7);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  .green {
+    background-color: rgb(44, 180, 90);
+  }
+  .red {
+    background-color: rgba(214, 88, 65, 0.85);
+  }
+  .yellow {
+    background-color: rgba(255, 226, 39, 0.75);
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #fff6;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #fff8;
+  }
+  ::-webkit-scrollbar-track {
+    background: #fff4;
+  }
+}
+.light {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  .green {
+    background-color: springgreen;
+  }
+  .red {
+    background-color: rgb(255, 111, 86);
+  }
+  .yellow {
+    background-color: rgba(255, 226, 39, 1);
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #0002;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #0004;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0002;
+  }
+}
+.transactions_master_container {
+  height: 15vw;
+  min-height: calc(250px);
+  .transaction:first-of-type {
+    margin-top: 0 !important;
+  }
+  .color {
+    border-bottom-right-radius: .75rem;
+    border-top-right-radius: .75rem;
+  }
+  ::-webkit-scrollbar {
+    width: 6.25px;
+    height: 6.25px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-radius: 3.125px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+  }
+  ::-webkit-scrollbar-track {
+    border-radius: 3.125px;
+    object-fit: fill;
+  }
+  ::-webkit-scrollbar-corner {
+    background-color: rgba(0, 0, 0, 0);
+  }
+}

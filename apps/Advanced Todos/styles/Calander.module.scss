@@ -1,0 +1,116 @@
+.dark {
+  // box-shadow: 0 0 1.5em rgba(70, 210, 255, 0.7);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  .grid_container {
+    > div {
+      background-color: black;
+    }
+    > div:hover {
+      background-color: rgba(37, 37, 37, 0.75);
+      color: white;
+    }
+    .alt {
+      background-color: rgb(31, 41, 55);
+    }
+    .alt:hover {
+      background-color: rgb(66, 80, 97);
+    }
+    .green {
+      background-color: rgb(41, 146, 73);
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .green:hover {
+      background-color: rgb(104, 199, 151);
+      color: black;
+    }
+    .red {
+      background-color: rgba(255, 75, 75, 0.548);
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .red:hover {
+      background-color: rgba(226, 111, 90, 0.85);
+      color: black;
+    }
+    .todo {
+      background-color: rgb(167, 147, 17);
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .todo:hover {
+      background-color: rgba(255, 226, 39, 0.75);
+      color: black;
+    }
+  }
+}
+
+.light {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  .grid_container {
+    > div {
+      background-color: rgba(200, 200, 200, 0.5);
+    }
+    > div:hover {
+      background-color: #fffa;
+    }
+    .alt {
+      background-color: rgba(140, 140, 140, 0.5);
+    }
+    .alt:hover {
+      background-color: rgba(140, 140, 140, 0.75);
+    }
+    .green {
+      background-color: limegreen;
+    }
+    .green:hover {
+      background-color: rgb(124, 255, 168);
+    }
+    .red {
+      background-color: rgb(255, 111, 86);
+    }
+    .red:hover {
+      background-color: rgb(255, 160, 144);
+    }
+    .todo {
+      background-color: rgba(255, 226, 39, 1);
+    }
+    .todo:hover {
+      background-color: rgb(243, 240, 79);
+    }
+  }
+}
+
+.calander_container {
+  height: 15vw;
+  min-height: 250px;
+  .days_container {
+    // flex: .5;
+    > div {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .grid_container {
+    flex: 6;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 1px;
+    > div {
+      padding-left: 2.5px;
+      transition: background-color 0.25s ease-in;
+    }
+    > div:hover {
+      transition: all 0.01s ease-in-out;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    }
+    .green:hover {
+      cursor: pointer;
+    }
+    .red:hover {
+      cursor: pointer;
+    }
+    .todo:hover {
+      cursor: pointer;
+    }
+  }
+}
