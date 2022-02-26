@@ -28,7 +28,7 @@ const WebsiteCard = ({ data: { src, blurDataURL, title, description, link, butto
       }
     `}</style>
 
-    <div className="snap-center group flex flex-col justify-between overflow-hidden border border-indigo-900/30 dark:border-gray-700/30 bg-white dark:bg-slate-700/75 rounded-lg min-w-[14rem] h-[20rem] md:min-w-[16rem] md:h-[22rem] xl:max-w-xs xl:min-w-[20rem] xl:h-[26rem]">
+    <div className="snap-center snap-always group flex flex-col justify-between overflow-hidden border border-indigo-900/30 dark:border-gray-700/30 bg-white dark:bg-slate-700/75 rounded-lg min-w-[14rem] h-[20rem] md:min-w-[16rem] md:h-[22rem] xl:max-w-xs xl:min-w-[20rem] xl:h-[26rem]">
 
       <div className="relative flex overflow-hidden flex-[1.1] transition-all ease-in select-none">
         <div className="flex w-full group-hover:scale-105 transition-all ease-in">
